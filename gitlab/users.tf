@@ -8,3 +8,10 @@ module "ondrejsika" {
   username = "ondrejsika"
   email    = "ondrejsika@ondrejsika.com"
 }
+
+module "tomasgrim" {
+  source   = "./terraform-modules/user"
+  name     = "Tomáš Grim"
+  username = "tomasgrim"
+  email    = "grimi@volny.cz"
+}
