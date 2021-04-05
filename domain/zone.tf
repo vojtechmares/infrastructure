@@ -1,12 +1,5 @@
-locals {
-  vxm_cz_domain         = "vxm.cz"
-  mares_work_domain     = "mares.work"
-  mareshq_com_domain    = "mareshq.com"
-  vojtamares_com_domain = "vojtamares.com"
-}
-
 resource "cloudflare_zone" "vxm_cz" {
-  zone = local.vxm_cz_domain
+  zone = "vxm.cz"
 }
 
 resource "cloudflare_zone_dnssec" "vxm_cz" {
@@ -23,7 +16,7 @@ resource "cloudflare_zone_settings_override" "vxm_cz" {
 }
 
 resource "cloudflare_zone" "mares_work" {
-  zone = local.mares_work_domain
+  zone = "mares.work"
 }
 
 resource "cloudflare_zone_dnssec" "mares_work" {
@@ -40,7 +33,7 @@ resource "cloudflare_zone_settings_override" "mares_work" {
 }
 
 resource "cloudflare_zone" "mareshq_com" {
-  zone = local.mareshq_com_domain
+  zone = "mareshq.com"
 }
 
 resource "cloudflare_zone_dnssec" "mareshq_com" {
@@ -57,7 +50,7 @@ resource "cloudflare_zone_settings_override" "mareshq_com" {
 }
 
 # resource "cloudflare_zone" "vojtamares_com" {
-#   zone = local.vojtamares_com_domain
+#   zone = "vojtamares.com"
 # }
 #
 # resource "cloudflare_zone_dnssec" "vojtamares_com" {

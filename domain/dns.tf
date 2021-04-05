@@ -78,7 +78,7 @@ resource "cloudflare_record" "txt_dkim_gitlab_mareshq_com" {
   name = format(
     "%s._domainkey.%s",
     element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index),
-    local.mareshq_com_domain,
+    cloudflare_zone.mareshq_com.zone,
   )
   type  = "CNAME"
   value = "${element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index)}.dkim.amazonses.com"
@@ -98,5 +98,5 @@ resource "cloudflare_record" "txt_dmarc_gitlab_mareshq_com" {
   count   = 1
   name    = "_dmarc"
   type    = "TXT"
-  value   = "v=DMARC1; p=none; rua=mailto:postmaster@${local.mareshq_com_domain}; ruf=mailto:postmaster@${local.mareshq_com_domain}; fo=1;"
+  value   = "v=DMARC1; p=none; rua=mailto:postmaster@${cloudflare_zone.mareshq_com.zone}; ruf=mailto:postmaster@${cloudflare_zone.mareshq_com.zone}; fo=1;"
 }
