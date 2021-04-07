@@ -48,6 +48,14 @@ resource "cloudflare_record" "rancher_mareshq_com" {
   proxied = true
 }
 
+resource "cloudflare_record" "sentry_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "sentry"
+  value   = "koala.vxm.cz"
+  type    = "CNAME"
+  proxied = true
+}
+
 resource "cloudflare_record" "gitlab_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "gitlab"
