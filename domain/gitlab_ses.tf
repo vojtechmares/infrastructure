@@ -40,7 +40,7 @@ output "gitlab_ses_smtp_password_v4" {
 
 # Domain indentity & veritification
 resource "aws_ses_domain_identity" "gitlab" {
-  domain = cloudflare_zone.mareshq_com.zone
+  domain = cloudflare_record.gitlab_mareshq_com.hostname
 }
 
 resource "aws_ses_domain_identity_verification" "gitlab" {
@@ -51,5 +51,5 @@ resource "aws_ses_domain_identity_verification" "gitlab" {
 
 # DKIM
 resource "aws_ses_domain_dkim" "gitlab" {
-  domain = aws_ses_domain_identity.gitlab.domain
+  domain = cloudflare_record.gitlab_mareshq_com.hostname
 }
