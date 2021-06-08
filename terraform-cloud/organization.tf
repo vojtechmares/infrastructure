@@ -4,6 +4,6 @@ resource "tfe_organization" "vojtechmares" {
 }
 
 resource "tfe_organization_membership" "ondrejsika2vojtechmares" {
-  organization  = tfe_organization.vojtechmares.id
-  email = "ondrej@ondrejsika.com"
+  organization = tfe_organization.vojtechmares.id
+  email        = "ondrej@ondrejsika.com"
 }
