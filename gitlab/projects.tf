@@ -10,6 +10,13 @@ resource "gitlab_project" "vojtechmares_infra" {
   default_branch = local.default_branch
 }
 
+resource "gitlab_branch_protection" "vojtechmares_infra_main" {
+  project            = "34"
+  branch             = local.default_branch
+  push_access_level  = "maintainer"
+  merge_access_level = "maintainer"
+}
+
 resource "gitlab_project" "mc_server" {
   name           = "Server"
   path           = "server"
