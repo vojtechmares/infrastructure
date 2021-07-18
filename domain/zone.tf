@@ -69,3 +69,37 @@ resource "cloudflare_zone_settings_override" "mareshq_com" {
 # output "vojtamares_com" {
 #   value = cloudflare_zone.vojtamares_com.name_servers
 # }
+
+resource "cloudflare_zone" "vmcr_cz" {
+  zone = "vmcr.cz"
+}
+
+resource "cloudflare_zone_dnssec" "vmcr_cz" {
+  zone_id = cloudflare_zone.vmcr_cz.id
+}
+
+resource "cloudflare_zone_settings_override" "vmcr_cz" {
+  zone_id = cloudflare_zone.vmcr_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "flakame_se" {
+  zone = "flakame.se"
+}
+
+resource "cloudflare_zone_dnssec" "flakame_se" {
+  zone_id = cloudflare_zone.flakame_se.id
+}
+
+resource "cloudflare_zone_settings_override" "flakame_se" {
+  zone_id = cloudflare_zone.flakame_se.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}

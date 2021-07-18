@@ -10,6 +10,18 @@ module "mares_work_no_mail" {
   zone_id = cloudflare_zone.mares_work.id
 }
 
+module "vmcr_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.vmcr_cz.id
+}
+
+module "flakame_se_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.flakame_se.id
+}
+
 ##
 # DNS for vxm.cz
 ##
