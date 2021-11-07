@@ -4,7 +4,7 @@ domains:
   - domain: mareshq.com
     registrar: Cloudflare
   - domain: mares.work
-    registrar: Cloudflare
+    registrar: Vercel
   - domain: vojtamares.com
     registrar: Cloudflare
   - domain: vojtechmares.dev
