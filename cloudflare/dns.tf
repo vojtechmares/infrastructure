@@ -22,6 +22,30 @@ module "flakame_se_no_mail" {
   zone_id = cloudflare_zone.flakame_se.id
 }
 
+module "bf42_gg_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.bf42_gg.zone.id
+}
+
+module "vojtechmares_dev_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.vojtechmares_dev.zone.id
+}
+
+module "statica_cloud_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.statica_cloud.zone.id
+}
+
+module "staticahq_com_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.staticahq_com.zone.id
+}
+
 ##
 # DNS for vxm.cz
 ##
