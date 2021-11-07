@@ -4,7 +4,7 @@
 
 Setup of cloud providers. Might need to be renamed.
 
-## Domain
+## Cloudflare
 
 DNS and domain management.
 
