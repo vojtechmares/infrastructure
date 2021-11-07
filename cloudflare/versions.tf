@@ -3,7 +3,7 @@ terraform {
     organization = "vojtechmares"
 
     workspaces {
-      name = "domain"
+      name = "cloudflare"
     }
   }
 
