@@ -115,3 +115,15 @@ module "bf42_gg" {
 
   zone = "bf42.gg"
 }
+
+module "statica_cloud" {
+  source = "./terraform-modules/cloudflare-zone/v1"
+
+  zone = "statica.cloud"
+}
+
+module "staticahq_com" {
+  source = "./terraform-modules/cloudflare-zone/v1"
+
+  zone = "staticahq.com"
+}
