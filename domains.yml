@@ -9,6 +9,8 @@ domains:
     registrar: Cloudflare
   - domain: vojtechmares.dev
     registrar: GoDaddy
+  - domain: vojtamares.cz
+    registrar: Vercel
   - domain: vxm.cz
     registrar: Forpsi
   - domain: vmcr.cz
