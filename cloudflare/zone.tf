@@ -103,3 +103,9 @@ resource "cloudflare_zone_settings_override" "flakame_se" {
     ssl                      = "full"
   }
 }
+
+module "vojtechmares_dev" {
+  source = "./terraform-modules/cloudflare-zone/v1"
+
+  zone = "vojtechmares.dev"
+}
