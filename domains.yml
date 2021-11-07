@@ -1,0 +1,25 @@
+domains:
+  - domain: vojtechmares.com
+    registrar: Netlify
+  - domain: mareshq.com
+    registrar: Cloudflare
+  - domain: mares.work
+    registrar: Cloudflare
+  - domain: vojtamares.com
+    registrar: Cloudflare
+  - domain: vojtechmares.dev
+    registrar: GoDaddy
+  - domain: vxm.cz
+    registrar: Forpsi
+  - domain: vmcr.cz
+    registrar: Forpsi
+  - domain: spatnyremeslnik.cz
+    registrar: Forpsi
+  - domain: statica.cloud
+    registrar: Cloudflare
+  - domain: staticahq.com
+    registrar: Cloudflare
+  - domain: flakame.se
+    registrar: GoDaddy
+  - domain: bf42.gg
+    registrar: GoDaddy
