@@ -52,14 +52,6 @@ resource "cloudflare_record" "all_mareshq_com" {
   proxied = false
 }
 
-resource "cloudflare_record" "rancher_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "rancher"
-  value   = "koala.vxm.cz"
-  type    = "CNAME"
-  proxied = true
-}
-
 resource "cloudflare_record" "sentry_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "sentry"
