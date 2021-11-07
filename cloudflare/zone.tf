@@ -109,3 +109,9 @@ module "vojtechmares_dev" {
 
   zone = "vojtechmares.dev"
 }
+
+module "bf42_gg" {
+  source = "./terraform-modules/cloudflare-zone/v1"
+
+  zone = "bf42.gg"
+}
