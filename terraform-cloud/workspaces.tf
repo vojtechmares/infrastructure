@@ -13,7 +13,7 @@ resource "tfe_workspace" "core" {
 }
 
 resource "tfe_workspace" "domain" {
-  name              = "domain"
+  name              = "cloudflare"
   organization      = tfe_organization.vojtechmares.id
   execution_mode    = "remote"
   terraform_version = "1.0.0"
