@@ -1,5 +1,3 @@
-data "aws_region" "current" {}
-
 resource "aws_iam_user" "ses_gitlab_user" {
   name = "gitlab-emails"
 }
@@ -19,11 +17,6 @@ resource "aws_iam_user_policy" "ses_gitlab_user_policy" {
 
 resource "aws_iam_access_key" "ses_gitlab_user" {
   user = aws_iam_user.ses_gitlab_user.name
-}
-
-output "aws_ses_smtp_address" {
-  value       = "email-smtp.${data.aws_region.current.name}.amazonaws.com"
-  description = "SMTP Address for SES for GitLab"
 }
 
 output "gitlab_ses_access_key" {

@@ -137,10 +137,38 @@ resource "cloudflare_record" "txt_spf_gitlab_mareshq_com" {
 }
 
 # DMARC TXT Record
-resource "cloudflare_record" "txt_dmarc_gitlab_mareshq_com" {
+resource "cloudflare_record" "txt_dmarc_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   count   = 1
   name    = "_dmarc"
   type    = "TXT"
   value   = "v=DMARC1; p=none; rua=mailto:postmaster@${cloudflare_zone.mareshq_com.zone}; ruf=mailto:postmaster@${cloudflare_zone.mareshq_com.zone}; fo=1;"
+}
+
+# Sentry SES
+resource "cloudflare_record" "ses_verification_sentry_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "_amazonses.${aws_ses_domain_identity.sentry.id}"
+  type    = "TXT"
+  value   = aws_ses_domain_identity.sentry.verification_token
+}
+
+resource "cloudflare_record" "txt_dkim_sentry_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  count   = 3
+  name = format(
+    "%s._domainkey.%s",
+    element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index),
+    cloudflare_zone.mareshq_com.zone,
+  )
+  type  = "CNAME"
+  value = "${element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index)}.dkim.amazonses.com"
+}
+
+resource "cloudflare_record" "txt_spf_sentry_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  count   = 1
+  name    = "sentry"
+  type    = "TXT"
+  value   = "v=spf1 include:amazonses.com -all"
 }
