@@ -2,14 +2,6 @@ locals {
   default_branch = "main"
 }
 
-resource "gitlab_project" "statica_cloud_monorepo" {
-  name           = "Monorepo"
-  path           = "monorepo"
-  description    = "Statica cloud monorepo"
-  namespace_id   = gitlab_group.statica_cloud.id
-  default_branch = local.default_branch
-}
-
 resource "gitlab_project" "mareshq_infra" {
   name           = "Infra"
   path           = "infra"
