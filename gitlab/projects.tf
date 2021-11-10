@@ -2,21 +2,6 @@ locals {
   default_branch = "main"
 }
 
-resource "gitlab_project" "vojtechmares_infra" {
-  name           = "Infra"
-  path           = "infra"
-  description    = "My Infrastructure"
-  namespace_id   = data.gitlab_user.vojtechmares.user_id
-  default_branch = local.default_branch
-}
-
-resource "gitlab_branch_protection" "vojtechmares_infra_main" {
-  project            = "34"
-  branch             = local.default_branch
-  push_access_level  = "maintainer"
-  merge_access_level = "maintainer"
-}
-
 resource "gitlab_project" "mc_server" {
   name           = "Server"
   path           = "server"
