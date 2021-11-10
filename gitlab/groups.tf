@@ -4,4 +4,8 @@ resource "gitlab_group" "mareshq" {
   description = "MaresHQ"
 }
 
+resource "gitlab_group" "staticahq" {
+  name        = "StaticaHQ"
+  path        = "staticahq"
+  description = "StaticaHQ"
 }
