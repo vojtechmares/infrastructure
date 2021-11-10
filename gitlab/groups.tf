@@ -1,3 +1,9 @@
+resource "gitlab_group" "mareshq" {
+  name        = "MaresHQ"
+  path        = "mareshq"
+  description = "MaresHQ"
+}
+
 resource "gitlab_group" "minecraft_server" {
   name        = "Minecraft Server"
   path        = "minercraft-server"
