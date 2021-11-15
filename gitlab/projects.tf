@@ -31,3 +31,18 @@ resource "gitlab_branch_protection" "mareshq_incident_response" {
   push_access_level  = "maintainer"
   merge_access_level = "maintainer"
 }
+
+resource "gitlab_project" "mareshq_static_sites" {
+  name           = "Static Sites"
+  path           = "static-sites"
+  description    = "Static Sites"
+  namespace_id   = gitlab_group.mareshq.id
+  default_branch = local.default_branch
+}
+
+resource "gitlab_branch_protection" "mareshq_static_sites" {
+  project            = gitlab_project.mareshq_static_sites.id
+  branch             = local.default_branch
+  push_access_level  = "maintainer"
+  merge_access_level = "maintainer"
+}
