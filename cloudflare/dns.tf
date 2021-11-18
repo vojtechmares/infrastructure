@@ -100,10 +100,10 @@ resource "cloudflare_record" "gitlab_ip_mareshq_com" {
   proxied = false
 }
 
-resource "cloudflare_record" "registry_mareshq_com" {
+resource "cloudflare_record" "registry_gitlab_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
-  name    = "registry"
-  value   = "koala.vxm.cz"
+  name    = "registry.gitlab"
+  value   = "gitlab.mareshq.com"
   type    = "CNAME"
   proxied = true
 }
