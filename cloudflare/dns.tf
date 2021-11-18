@@ -108,6 +108,14 @@ resource "cloudflare_record" "registry_mareshq_com" {
   proxied = true
 }
 
+resource "cloudflare_record" "uptime_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "uptime"
+  value   = "koala.vxm.cz"
+  type    = "CNAME"
+  proxied = true
+}
+
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
