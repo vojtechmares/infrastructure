@@ -9,3 +9,11 @@ resource "gitlab_group" "staticahq" {
   path        = "staticahq"
   description = "StaticaHQ"
 }
+
+resource "gitlab_group" "mareshq_terraform_modules" {
+  name        = "Terraform Modules"
+  path        = "terraform-modules"
+  description = "Terraform Modules"
+
+  parent_id = gitlab_group.mareshq.id
+}
