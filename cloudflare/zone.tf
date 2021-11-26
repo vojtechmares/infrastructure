@@ -127,3 +127,9 @@ module "staticahq_com" {
 
   zone = "staticahq.com"
 }
+
+module "goplaintext_com" {
+  source = "./terraform-modules/cloudflare-zone/v1"
+
+  zone = "goplaintext.com"
+}
