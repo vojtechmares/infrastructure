@@ -61,3 +61,18 @@ resource "gitlab_branch_protection" "mareshq_ansible" {
   push_access_level  = "maintainer"
   merge_access_level = "maintainer"
 }
+
+resource "gitlab_project" "tfm_gitlab_project" {
+  name           = "GitLab project"
+  path           = "gitlab-project"
+  description    = "GitLab project"
+  namespace_id   = gitlab_group.mareshq_terraform_modules.id
+  default_branch = local.default_branch
+}
+
+resource "gitlab_branch_protection" "tfm_gitlab_project" {
+  project            = gitlab_project.tfm_gitlab_project.id
+  branch             = local.default_branch
+  push_access_level  = "maintainer"
+  merge_access_level = "maintainer"
+}
