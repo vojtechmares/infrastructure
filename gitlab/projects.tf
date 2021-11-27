@@ -79,7 +79,7 @@ resource "gitlab_branch_protection" "tfm_gitlab_project" {
 
 module "ci" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.0.0"
+  version = "1.1.0"
 
   project_name = "CI"
   project_path = "ci"
@@ -90,7 +90,7 @@ module "ci" {
 
 module "tfm_cloudflare_zone" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.0.0"
+  version = "1.1.0"
 
   project_name = "Cloudflare zone"
   project_path = "cloudflare-zone"
@@ -101,7 +101,7 @@ module "tfm_cloudflare_zone" {
 
 module "tfm_gitlab_user" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.0.0"
+  version = "1.1.0"
 
   project_name = "GitLab user"
   project_path = "gitlab-user"
