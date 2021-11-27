@@ -87,3 +87,14 @@ module "ci" {
 
   project_namespace_id = gitlab_group.mareshq.id
 }
+
+module "tfm_cloudflare_zone" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "1.0.0"
+
+  project_name = "Cloudflare zone"
+  project_path = "cloudflare-zone"
+  project_desc = "Cloudflare zone"
+
+  project_namespace_id = gitlab_group.mareshq_terraform_modules.id
+}
