@@ -3,14 +3,18 @@ data "gitlab_user" "vojtechmares" {
 }
 
 module "ondrejsika" {
-  source   = "./terraform-modules/user"
+  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
+  version = "1.0.0"
+
   name     = "Ondřej Šika"
   username = "ondrejsika"
   email    = "ondrejsika@ondrejsika.com"
 }
 
 module "tomasgrim" {
-  source   = "./terraform-modules/user"
+  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
+  version = "1.0.0"
+
   name     = "Tomáš Grim"
   username = "tomasgrim"
   email    = "grimi@volny.cz"
