@@ -76,3 +76,14 @@ resource "gitlab_branch_protection" "tfm_gitlab_project" {
   push_access_level  = "maintainer"
   merge_access_level = "maintainer"
 }
+
+module "ci" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "1.0.0"
+
+  project_name = "CI"
+  project_path = "ci"
+  project_desc = "Monorepo of CI templates"
+
+  project_namespace_id = gitlab_group.mareshq.id
+}
