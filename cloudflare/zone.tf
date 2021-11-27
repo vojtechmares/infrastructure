@@ -105,31 +105,36 @@ resource "cloudflare_zone_settings_override" "flakame_se" {
 }
 
 module "vojtechmares_dev" {
-  source = "./terraform-modules/cloudflare-zone/v1"
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "1.0.0"
 
   zone = "vojtechmares.dev"
 }
 
 module "bf42_gg" {
-  source = "./terraform-modules/cloudflare-zone/v1"
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "1.0.0"
 
   zone = "bf42.gg"
 }
 
 module "statica_cloud" {
-  source = "./terraform-modules/cloudflare-zone/v1"
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "1.0.0"
 
   zone = "statica.cloud"
 }
 
 module "staticahq_com" {
-  source = "./terraform-modules/cloudflare-zone/v1"
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "1.0.0"
 
   zone = "staticahq.com"
 }
 
 module "goplaintext_com" {
-  source = "./terraform-modules/cloudflare-zone/v1"
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "1.0.0"
 
   zone = "goplaintext.com"
 }
