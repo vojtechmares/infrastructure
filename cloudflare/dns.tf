@@ -1,25 +1,25 @@
 module "vxm_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
-  zone_id = cloudflare_zone.vxm_cz.id
+  zone_id = module.vxm_cz.zone.id
 }
 
 module "mares_work_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
-  zone_id = cloudflare_zone.mares_work.id
+  zone_id = module.mares_work.zone.id
 }
 
 module "vmcr_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
-  zone_id = cloudflare_zone.vmcr_cz.id
+  zone_id = module.vmcr_cz.zone.id
 }
 
 module "flakame_se_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
-  zone_id = cloudflare_zone.flakame_se.id
+  zone_id = module.flakame_se.zone.id
 }
 
 module "bf42_gg_no_mail" {
@@ -56,7 +56,7 @@ module "goplaintext_com_no_mail" {
 # DNS for vxm.cz
 ##
 resource "cloudflare_record" "koala_vxm_cz" {
-  zone_id = cloudflare_zone.vxm_cz.id
+  zone_id = module.vxm_cz.zone.id
   name    = "koala"
   value   = "94.130.136.120"
   type    = "A"
@@ -64,7 +64,7 @@ resource "cloudflare_record" "koala_vxm_cz" {
 }
 
 resource "cloudflare_record" "koala_vxm_cz_v6" {
-  zone_id = cloudflare_zone.vxm_cz.id
+  zone_id = module.vxm_cz.zone.id
   name    = "koala"
   value   = "2a01:4f8:13b:3387::2"
   type    = "AAAA"
@@ -75,7 +75,7 @@ resource "cloudflare_record" "koala_vxm_cz_v6" {
 # DNS for mareshq.com
 ##
 resource "cloudflare_record" "all_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "all"
   value   = "panda.k8s.oxs.cz"
   type    = "CNAME"
@@ -83,7 +83,7 @@ resource "cloudflare_record" "all_mareshq_com" {
 }
 
 resource "cloudflare_record" "sentry_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "sentry"
   value   = "koala.vxm.cz"
   type    = "CNAME"
@@ -91,7 +91,7 @@ resource "cloudflare_record" "sentry_mareshq_com" {
 }
 
 resource "cloudflare_record" "gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "gitlab"
   value   = "koala.vxm.cz"
   type    = "CNAME"
@@ -99,7 +99,7 @@ resource "cloudflare_record" "gitlab_mareshq_com" {
 }
 
 resource "cloudflare_record" "gitlab_ip_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "gitlab-ip"
   value   = "koala.vxm.cz"
   type    = "CNAME"
@@ -107,7 +107,7 @@ resource "cloudflare_record" "gitlab_ip_mareshq_com" {
 }
 
 resource "cloudflare_record" "registry_gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "registry.gitlab"
   value   = "gitlab.mareshq.com"
   type    = "CNAME"
@@ -115,7 +115,7 @@ resource "cloudflare_record" "registry_gitlab_mareshq_com" {
 }
 
 resource "cloudflare_record" "uptime_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "uptime"
   value   = "koala.vxm.cz"
   type    = "CNAME"
@@ -124,26 +124,26 @@ resource "cloudflare_record" "uptime_mareshq_com" {
 
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "_amazonses.${aws_ses_domain_identity.gitlab.id}"
   type    = "TXT"
   value   = aws_ses_domain_identity.gitlab.verification_token
 }
 
 resource "cloudflare_record" "txt_dkim_gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   count   = 3
   name = format(
     "%s._domainkey.%s",
     element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index),
-    cloudflare_zone.mareshq_com.zone,
+    module.mareshq_com.zone.zone,
   )
   type  = "CNAME"
   value = "${element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index)}.dkim.amazonses.com"
 }
 
 resource "cloudflare_record" "txt_spf_gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   count   = 1
   name    = "gitlab"
   type    = "TXT"
@@ -152,35 +152,35 @@ resource "cloudflare_record" "txt_spf_gitlab_mareshq_com" {
 
 # DMARC TXT Record
 resource "cloudflare_record" "txt_dmarc_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   count   = 1
   name    = "_dmarc"
   type    = "TXT"
-  value   = "v=DMARC1; p=none; rua=mailto:postmaster@${cloudflare_zone.mareshq_com.zone}; ruf=mailto:postmaster@${cloudflare_zone.mareshq_com.zone}; fo=1;"
+  value   = "v=DMARC1; p=none; rua=mailto:postmaster@${module.mareshq_com.zone.zone}; ruf=mailto:postmaster@${module.mareshq_com.zone.zone}; fo=1;"
 }
 
 # Sentry SES
 resource "cloudflare_record" "ses_verification_sentry_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   name    = "_amazonses.${aws_ses_domain_identity.sentry.id}"
   type    = "TXT"
   value   = aws_ses_domain_identity.sentry.verification_token
 }
 
 resource "cloudflare_record" "txt_dkim_sentry_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   count   = 3
   name = format(
     "%s._domainkey.%s",
     element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index),
-    cloudflare_zone.mareshq_com.zone,
+    module.mareshq_com.zone.zone,
   )
   type  = "CNAME"
   value = "${element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index)}.dkim.amazonses.com"
 }
 
 resource "cloudflare_record" "txt_spf_sentry_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
+  zone_id = module.mareshq_com.zone.id
   count   = 1
   name    = "sentry"
   type    = "TXT"
