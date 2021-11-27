@@ -98,3 +98,14 @@ module "tfm_cloudflare_zone" {
 
   project_namespace_id = gitlab_group.mareshq_terraform_modules.id
 }
+
+module "tfm_gitlab_user" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "1.0.0"
+
+  project_name = "GitLab user"
+  project_path = "gitlab-user"
+  project_desc = "GitLab user"
+
+  project_namespace_id = gitlab_group.mareshq_terraform_modules.id
+}
