@@ -122,6 +122,14 @@ resource "cloudflare_record" "uptime_mareshq_com" {
   proxied = true
 }
 
+resource "cloudflare_record" "survival_flakame_se" {
+  zone_id = module.flakame_se.zone.id
+  name    = "survival"
+  value   = "koala.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
