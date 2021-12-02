@@ -19,3 +19,12 @@ module "tomasgrim" {
   username = "tomasgrim"
   email    = "grimi@volny.cz"
 }
+
+module "annaliebichova" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
+  version = "1.0.0"
+
+  name     = "Anna Liebichova"
+  username = "annaliebichova"
+  email    = "anna.liebichova@seznam.cz"
+}
