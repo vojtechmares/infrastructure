@@ -1,0 +1,12 @@
+default:
+  image:
+    name: hashicorp/terraform:1.0.0
+    entrypoint: [""]
+
+stages:
+  - fmt
+
+fmt:check:
+  stage: fmt
+  script:
+    - terraform fmt -check -recursive -diff .
