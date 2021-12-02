@@ -25,3 +25,10 @@ resource "tfe_workspace" "gitlab" {
   execution_mode    = "remote"
   terraform_version = "1.0.0"
 }
+
+resource "tfe_workspace" "hcloud" {
+  name              = "hcloud"
+  organization      = tfe_organization.vojtechmares.id
+  execution_mode    = "remote"
+  terraform_version = "1.0.0"
+}
