@@ -1,17 +1,22 @@
 # Infra
 
-## Core
+## Terraform / Workspaces
 
-Setup of cloud providers. Might need to be renamed.
-
-## Cloudflare
+### Cloudflare
 
 DNS and domain management.
 
-## GitLab
+
+### GitLab
 
 GitLab management.
 
-## Terraform Cloud
+
+### Terraform Cloud
 
 TF Cloud setup
+
+
+### HCloud (Hetzner Cloud)
+
+Hetzner Cloud infrastructure
