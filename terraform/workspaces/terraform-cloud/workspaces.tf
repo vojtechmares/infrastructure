@@ -5,13 +5,6 @@ resource "tfe_workspace" "terraform_cloud" {
   terraform_version = "1.0.0"
 }
 
-resource "tfe_workspace" "core" {
-  name              = "core"
-  organization      = tfe_organization.vojtechmares.id
-  execution_mode    = "remote"
-  terraform_version = "1.0.0"
-}
-
 resource "tfe_workspace" "cloudflare" {
   name              = "cloudflare"
   organization      = tfe_organization.vojtechmares.id
