@@ -40,12 +40,6 @@ module "statica_cloud_no_mail" {
   zone_id = module.statica_cloud.zone.id
 }
 
-module "staticahq_com_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = module.staticahq_com.zone.id
-}
-
 module "goplaintext_com_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
