@@ -68,20 +68,6 @@ module "bf42_gg" {
   zone = "bf42.gg"
 }
 
-module "statica_cloud" {
-  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
-
-  zone = "statica.cloud"
-}
-
-module "staticahq_com" {
-  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
-
-  zone = "staticahq.com"
-}
-
 module "goplaintext_com" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
   version = "1.0.0"

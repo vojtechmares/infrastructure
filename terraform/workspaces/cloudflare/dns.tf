@@ -34,12 +34,6 @@ module "vojtechmares_dev_no_mail" {
   zone_id = module.vojtechmares_dev.zone.id
 }
 
-module "statica_cloud_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = module.statica_cloud.zone.id
-}
-
 module "goplaintext_com_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
