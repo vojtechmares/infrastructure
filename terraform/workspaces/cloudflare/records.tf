@@ -83,6 +83,22 @@ resource "cloudflare_record" "wombat_vxm_cz" {
   proxied = false
 }
 
+resource "cloudflare_record" "octopus_k8s_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "octopus.k8s"
+  value   = "49.12.19.247"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "octopus_k8s_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "octopus.k8s"
+  value   = "2a01:4f8:c011:50d::1"
+  type    = "AAAA"
+  proxied = false
+}
+
 ##
 # DNS for mareshq.com
 ##
