@@ -3,9 +3,10 @@
 
 provider "registry.terraform.io/cloudflare/cloudflare" {
   version     = "3.4.0"
-  constraints = ">= 2.19.2, >= 2.21.0, 3.4.0"
+  constraints = ">= 2.19.2, >= 3.4.0, 3.4.0"
   hashes = [
     "h1:m8e6PglbTmW+uSRjlJpIlCieYPO5D4AMYq/G/WjlkW0=",
+    "h1:vRHpfj3+XUJWP+Y7a7AlBC68J7ywirIANhhMoCBATaU=",
     "zh:10a8d8fe534dea7d0acf7ee1809ae71cc7fa2dbf2db14ac5816b16a6798a13f0",
     "zh:1d8fbbb65b308c2de4a3c09dfd6edd47f2ac5c53d13f48af5d6a422cd44d8711",
     "zh:273350cfae04322b76d28d8fff8adff8dc307dd945f88c60239f37df6b447022",
@@ -27,6 +28,7 @@ provider "registry.terraform.io/hashicorp/aws" {
   version     = "3.44.0"
   constraints = "3.44.0"
   hashes = [
+    "h1:bVZeYLtGfnGNh/SYJExx/Z0RAk1Q/fvWI+yuPh3M2MY=",
     "h1:hxQ8n9SHHfAIXd/FtfAqxokFYWBedzZf7xqQZWJajUs=",
     "zh:0680315b29a140e9b7e4f5aeed3f2445abdfab31fc9237f34dcad06de4f410df",
     "zh:13811322a205fb4a0ee617f0ae51ec94176befdf569235d0c7064db911f0acc7",
