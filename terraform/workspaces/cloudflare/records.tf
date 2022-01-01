@@ -59,6 +59,30 @@ resource "cloudflare_record" "koala_vxm_cz_v6" {
   proxied = false
 }
 
+resource "cloudflare_record" "platypus_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "platypus"
+  value   = "144.76.183.92"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "kangaroo_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "kangaroo"
+  value   = "144.76.218.5"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "wombat_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "wombat"
+  value   = "138.201.80.22"
+  type    = "A"
+  proxied = false
+}
+
 ##
 # DNS for mareshq.com
 ##
