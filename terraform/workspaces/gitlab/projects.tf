@@ -85,3 +85,14 @@ module "tfm_gitlab_user" {
 
   project_namespace_id = gitlab_group.mareshq_terraform_modules.id
 }
+
+module "mareshq_gitops" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "1.1.0"
+
+  project_name = "GitOps"
+  project_path = "gitops"
+  project_desc = "GitOps"
+
+  project_namespace_id = gitlab_group.mareshq.id
+}
