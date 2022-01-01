@@ -23,35 +23,35 @@ resource "hcloud_load_balancer_target" "wombat" {
 }
 
 resource "hcloud_load_balancer_service" "tcp_80" {
-    load_balancer_id = hcloud_load_balancer.octopus_k8s.id
-    protocol         = "tcp"
-    listen_port      = 80
-    destination_port = 80
-    proxyprotocol    = true
+  load_balancer_id = hcloud_load_balancer.octopus_k8s.id
+  protocol         = "tcp"
+  listen_port      = 80
+  destination_port = 80
+  proxyprotocol    = true
 }
 
 resource "hcloud_load_balancer_service" "tcp_443" {
-    load_balancer_id = hcloud_load_balancer.octopus_k8s.id
-    protocol         = "tcp"
-    listen_port      = 443
-    destination_port = 443
-    proxyprotocol    = true
+  load_balancer_id = hcloud_load_balancer.octopus_k8s.id
+  protocol         = "tcp"
+  listen_port      = 443
+  destination_port = 443
+  proxyprotocol    = true
 }
 
 resource "hcloud_load_balancer_service" "tcp_6443" {
-    load_balancer_id = hcloud_load_balancer.octopus_k8s.id
-    protocol         = "tcp"
-    listen_port      = 6443
-    destination_port = 6443
-    proxyprotocol    = true
+  load_balancer_id = hcloud_load_balancer.octopus_k8s.id
+  protocol         = "tcp"
+  listen_port      = 6443
+  destination_port = 6443
+  proxyprotocol    = true
 }
 
 resource "hcloud_load_balancer_service" "tcp_6022" {
-    load_balancer_id = hcloud_load_balancer.octopus_k8s.id
-    protocol         = "tcp"
-    listen_port      = 6022
-    destination_port = 36022
-    proxyprotocol    = true
+  load_balancer_id = hcloud_load_balancer.octopus_k8s.id
+  protocol         = "tcp"
+  listen_port      = 6022
+  destination_port = 36022
+  proxyprotocol    = true
 }
 
 output "octopus_k8s_lb_ip" {
