@@ -46,14 +46,6 @@ resource "hcloud_load_balancer_service" "tcp_6443" {
   proxyprotocol    = true
 }
 
-resource "hcloud_load_balancer_service" "tcp_6022" {
-  load_balancer_id = hcloud_load_balancer.octopus_k8s.id
-  protocol         = "tcp"
-  listen_port      = 6022
-  destination_port = 36022
-  proxyprotocol    = true
-}
-
 output "octopus_k8s_lb_ip" {
   value = {
     ipv4 = hcloud_load_balancer.octopus_k8s.ipv4,
