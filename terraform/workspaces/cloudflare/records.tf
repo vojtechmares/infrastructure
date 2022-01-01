@@ -91,6 +91,14 @@ resource "cloudflare_record" "octopus_k8s_vxm_cz" {
   proxied = false
 }
 
+resource "cloudflare_record" "wildcard_octopus_k8s_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "*.octopus.k8s"
+  value   = "octopus.k8s.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "octopus_k8s_vxm_cz_v6" {
   zone_id = module.vxm_cz.zone.id
   name    = "octopus.k8s"
