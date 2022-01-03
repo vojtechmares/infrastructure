@@ -83,18 +83,18 @@ resource "cloudflare_record" "wombat_vxm_cz" {
   proxied = false
 }
 
-resource "cloudflare_record" "octopus_k8s_vxm_cz" {
+resource "cloudflare_record" "ant_k8s_vxm_cz" {
   zone_id = module.vxm_cz.zone.id
-  name    = "octopus.k8s"
+  name    = "ant.k8s"
   value   = "49.12.19.247"
   type    = "A"
   proxied = false
 }
 
-resource "cloudflare_record" "wildcard_octopus_k8s_vxm_cz" {
+resource "cloudflare_record" "wildcard_ant_k8s_vxm_cz" {
   zone_id = module.vxm_cz.zone.id
-  name    = "*.octopus.k8s"
-  value   = "octopus.k8s.vxm.cz"
+  name    = "*.ant.k8s"
+  value   = "ant.k8s.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
