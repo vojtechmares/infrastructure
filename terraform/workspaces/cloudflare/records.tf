@@ -230,3 +230,22 @@ resource "cloudflare_record" "txt_spf_sentry_mareshq_com" {
   type    = "TXT"
   value   = "v=spf1 include:amazonses.com -all"
 }
+
+##
+# DNS for vmcr.cz
+##
+resource "cloudflare_record" "vmcr_cz" {
+  zone_id = module.vmcr_cz.zone.id
+  name    = "@"
+  value   = cloudflare_record.ant_k8s_vxm_cz.value
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "vmcr_cz_v6" {
+  zone_id = module.vmcr_cz.zone.id
+  name    = "@"
+  value   = cloudflare_record.ant_k8s_vxm_cz_v6.value
+  type    = "AAAA"
+  proxied = false
+}
