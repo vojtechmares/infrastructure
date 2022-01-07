@@ -5,9 +5,9 @@ resource "gitlab_group" "mareshq" {
 }
 
 resource "gitlab_group" "staticahq" {
-  name        = "StaticaHQ"
+  name        = "staticahq"
   path        = "staticahq"
-  description = "StaticaHQ"
+  description = "staticahq"
 }
 
 resource "gitlab_group" "mareshq_terraform_modules" {
