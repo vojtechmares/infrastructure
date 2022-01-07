@@ -107,6 +107,38 @@ resource "cloudflare_record" "ant_k8s_vxm_cz_v6" {
   proxied = false
 }
 
+resource "cloudflare_record" "buffalo_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "buffalo"
+  value   = "142.132.182.137"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "buffalo_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "buffalo"
+  value   = "2a01:4f8:1c17:fffa::1"
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "cloudflare_record" "opossum_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "opossum"
+  value   = "142.132.182.136"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "opossum_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "opossum"
+  value   = "2a01:4f8:c010:dfa::1"
+  type    = "AAAA"
+  proxied = false
+}
+
 ##
 # DNS for mareshq.com
 ##
@@ -129,7 +161,7 @@ resource "cloudflare_record" "sentry_mareshq_com" {
 resource "cloudflare_record" "gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "gitlab"
-  value   = "koala.vxm.cz"
+  value   = "buffalo.vxm.cz"
   type    = "CNAME"
   proxied = true
 }
@@ -137,15 +169,15 @@ resource "cloudflare_record" "gitlab_mareshq_com" {
 resource "cloudflare_record" "gitlab_ip_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "gitlab-ip"
-  value   = "koala.vxm.cz"
+  value   = "buffalo.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
 
-resource "cloudflare_record" "registry_gitlab_mareshq_com" {
+resource "cloudflare_record" "registry_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
-  name    = "registry.gitlab"
-  value   = "gitlab.mareshq.com"
+  name    = "registry"
+  value   = "buffalo.vxm.cz"
   type    = "CNAME"
   proxied = true
 }
