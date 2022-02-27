@@ -43,69 +43,6 @@ module "goplaintext_com_no_mail" {
 ##
 # DNS for vxm.cz
 ##
-resource "cloudflare_record" "koala_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "koala"
-  value   = "94.130.136.120"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "koala_vxm_cz_v6" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "koala"
-  value   = "2a01:4f8:13b:3387::2"
-  type    = "AAAA"
-  proxied = false
-}
-
-resource "cloudflare_record" "platypus_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "platypus"
-  value   = "144.76.183.92"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "kangaroo_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "kangaroo"
-  value   = "144.76.218.5"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "wombat_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "wombat"
-  value   = "138.201.80.22"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "ant_k8s_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "ant.k8s"
-  value   = "49.12.18.76"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "wildcard_ant_k8s_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "*.ant.k8s"
-  value   = "ant.k8s.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "ant_k8s_vxm_cz_v6" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "ant.k8s"
-  value   = "2a01:4f8:c011:1b9::1"
-  type    = "AAAA"
-  proxied = false
-}
 
 resource "cloudflare_record" "buffalo_vxm_cz" {
   zone_id = module.vxm_cz.zone.id
@@ -123,22 +60,6 @@ resource "cloudflare_record" "buffalo_vxm_cz_v6" {
   proxied = false
 }
 
-resource "cloudflare_record" "opossum_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "opossum"
-  value   = "142.132.182.136"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "opossum_vxm_cz_v6" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "opossum"
-  value   = "2a01:4f8:c010:dfa::1"
-  type    = "AAAA"
-  proxied = false
-}
-
 ##
 # DNS for mareshq.com
 ##
@@ -148,14 +69,6 @@ resource "cloudflare_record" "all_mareshq_com" {
   value   = "panda.k8s.oxs.cz"
   type    = "CNAME"
   proxied = false
-}
-
-resource "cloudflare_record" "sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "sentry"
-  value   = "koala.vxm.cz"
-  type    = "CNAME"
-  proxied = true
 }
 
 resource "cloudflare_record" "gitlab_mareshq_com" {
@@ -180,22 +93,6 @@ resource "cloudflare_record" "registry_mareshq_com" {
   value   = "buffalo.vxm.cz"
   type    = "CNAME"
   proxied = true
-}
-
-resource "cloudflare_record" "uptime_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "uptime"
-  value   = "koala.vxm.cz"
-  type    = "CNAME"
-  proxied = true
-}
-
-resource "cloudflare_record" "survival_flakame_se" {
-  zone_id = module.flakame_se.zone.id
-  name    = "survival"
-  value   = "koala.vxm.cz"
-  type    = "CNAME"
-  proxied = false
 }
 
 # GitLab SES
@@ -233,51 +130,4 @@ resource "cloudflare_record" "txt_dmarc_mareshq_com" {
   name    = "_dmarc"
   type    = "TXT"
   value   = "v=DMARC1; p=none; rua=mailto:postmaster@${module.mareshq_com.zone.zone}; ruf=mailto:postmaster@${module.mareshq_com.zone.zone}; fo=1;"
-}
-
-# Sentry SES
-resource "cloudflare_record" "ses_verification_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "_amazonses.${aws_ses_domain_identity.sentry.id}"
-  type    = "TXT"
-  value   = aws_ses_domain_identity.sentry.verification_token
-}
-
-resource "cloudflare_record" "txt_dkim_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  count   = 3
-  name = format(
-    "%s._domainkey.%s",
-    element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index),
-    module.mareshq_com.zone.zone,
-  )
-  type  = "CNAME"
-  value = "${element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index)}.dkim.amazonses.com"
-}
-
-resource "cloudflare_record" "txt_spf_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  count   = 1
-  name    = "sentry"
-  type    = "TXT"
-  value   = "v=spf1 include:amazonses.com -all"
-}
-
-##
-# DNS for vmcr.cz
-##
-resource "cloudflare_record" "vmcr_cz" {
-  zone_id = module.vmcr_cz.zone.id
-  name    = "@"
-  value   = cloudflare_record.ant_k8s_vxm_cz.value
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "vmcr_cz_v6" {
-  zone_id = module.vmcr_cz.zone.id
-  name    = "@"
-  value   = cloudflare_record.ant_k8s_vxm_cz_v6.value
-  type    = "AAAA"
-  proxied = false
 }
