@@ -60,6 +60,22 @@ resource "cloudflare_record" "buffalo_vxm_cz_v6" {
   proxied = false
 }
 
+resource "cloudflare_record" "opossum_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "opossum"
+  value   = "142.132.231.110"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "opossum_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "opossum"
+  value   = "2a01:4f8:1c17:e71e::1"
+  type    = "AAAA"
+  proxied = false
+}
+
 ##
 # DNS for mareshq.com
 ##
@@ -91,6 +107,14 @@ resource "cloudflare_record" "registry_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "registry"
   value   = "buffalo.vxm.cz"
+  type    = "CNAME"
+  proxied = true
+}
+
+resource "cloudflare_record" "sentry_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "sentry"
+  value   = "opossum.vxm.cz"
   type    = "CNAME"
   proxied = true
 }
