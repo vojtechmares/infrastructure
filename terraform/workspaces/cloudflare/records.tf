@@ -76,6 +76,39 @@ resource "cloudflare_record" "opossum_vxm_cz_v6" {
   proxied = false
 }
 
+
+resource "cloudflare_record" "maple_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "maple"
+  value   = "138.201.254.39"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "maple_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "maple"
+  value   = "2a01:4f8:173:250c::1"
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "cloudflare_record" "alder_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "alder"
+  value   = "188.34.153.130"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "alder_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "alder"
+  value   = "2a01:4f8:c010:ae8a::1"
+  type    = "AAAA"
+  proxied = false
+}
+
 ##
 # DNS for mareshq.com
 ##
@@ -154,4 +187,12 @@ resource "cloudflare_record" "txt_dmarc_mareshq_com" {
   name    = "_dmarc"
   type    = "TXT"
   value   = "v=DMARC1; p=none; rua=mailto:postmaster@${module.mareshq_com.zone.zone}; ruf=mailto:postmaster@${module.mareshq_com.zone.zone}; fo=1;"
+}
+
+resource "cloudflare_record" "panel_flakame_se" {
+  zone_id = module.flakame_se.zone.id
+  name    = "panel"
+  value   = "alder.vxm.cz"
+  type    = "CNAME"
+  proxied = false
 }
