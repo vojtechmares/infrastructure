@@ -74,3 +74,10 @@ module "goplaintext_com" {
 
   zone = "goplaintext.com"
 }
+
+module "acaslab_com" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "acaslab.com"
+}
