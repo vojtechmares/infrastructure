@@ -60,6 +60,54 @@ resource "cloudflare_record" "maple_vxm_cz_v6" {
   proxied = false
 }
 
+resource "cloudflare_record" "kangaroo_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "kangaroo"
+  value   = "138.201.128.55"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "kangaroo_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "kangaroo"
+  value   = "2a01:4f8:172:2b60::1"
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "cloudflare_record" "platypus_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "platypus"
+  value   = "138.201.139.217"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "platypus_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "platypus"
+  value   = "2a01:4f8:172:36ce::1"
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "cloudflare_record" "wombat_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "wombat"
+  value   = "138.201.33.183"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "wombat_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "wombat"
+  value   = "2a01:4f8:171:3524::1"
+  type    = "AAAA"
+  proxied = false
+}
+
 ##
 # DNS for mareshq.com
 ##
