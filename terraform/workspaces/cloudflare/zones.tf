@@ -1,20 +1,20 @@
 module "vxm_cz" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "vxm.cz"
 }
 
 module "mares_work" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "mares.work"
 }
 
 module "mareshq_com" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "mareshq.com"
 }
@@ -42,35 +42,35 @@ module "mareshq_com" {
 
 module "vmcr_cz" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "vmcr.cz"
 }
 
 module "flakame_se" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "flakame.se"
 }
 
 module "vojtechmares_dev" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "vojtechmares.dev"
 }
 
 module "bf42_gg" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "bf42.gg"
 }
 
 module "goplaintext_com" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "1.0.0"
+  version = "2.0.0"
 
   zone = "goplaintext.com"
 }
