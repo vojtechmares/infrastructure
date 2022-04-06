@@ -4,7 +4,7 @@
 
 module "mareshq_infra" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "Infra"
   project_path = "infra"
@@ -15,7 +15,7 @@ module "mareshq_infra" {
 
 module "mareshq_incident_response" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "Incident Response"
   project_path = "incident-response"
@@ -26,18 +26,18 @@ module "mareshq_incident_response" {
 
 module "mareshq_static_sites" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
-  project_name = "Static Sites"
-  project_path = "static-sites"
-  project_desc = "Static Sites"
+  project_name = "Internal Static Sites"
+  project_path = "internal-static-sites"
+  project_desc = "Internal Static Sites"
 
   project_namespace_id = gitlab_group.mareshq.id
 }
 
 module "mareshq_ansible" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "Ansible"
   project_path = "ansible"
@@ -48,7 +48,7 @@ module "mareshq_ansible" {
 
 module "ci" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "CI"
   project_path = "ci"
@@ -59,7 +59,7 @@ module "ci" {
 
 module "tfm_gitlab_project" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "GitLab project"
   project_path = "gitlab-project"
@@ -70,7 +70,7 @@ module "tfm_gitlab_project" {
 
 module "tfm_cloudflare_zone" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "Cloudflare zone"
   project_path = "cloudflare-zone"
@@ -81,7 +81,7 @@ module "tfm_cloudflare_zone" {
 
 module "tfm_gitlab_user" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "GitLab user"
   project_path = "gitlab-user"
@@ -92,7 +92,7 @@ module "tfm_gitlab_user" {
 
 module "mareshq_gitops" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "GitOps"
   project_path = "gitops"
@@ -106,7 +106,7 @@ module "mareshq_gitops" {
 ##
 module "staticahq_infra" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "Infra"
   project_path = "infra"
@@ -117,7 +117,7 @@ module "staticahq_infra" {
 
 module "staticahq_staticahq" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "1.1.0"
+  version = "2.0.0"
 
   project_name = "staticahq monorepo"
   project_path = "staticahq"
