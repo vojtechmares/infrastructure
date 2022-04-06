@@ -15,6 +15,22 @@ resource "hcloud_server" "gitlab" {
   }
 }
 
+resource "cloudflare_record" "buffalo_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "buffalo"
+  value   = hcloud_server.gitlab.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "buffalo_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "buffalo"
+  value   = hcloud_server.gitlab.ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
 output "gitlab_ip" {
   value = {
     ipv4 = hcloud_server.gitlab.ipv4_address,
@@ -55,6 +71,22 @@ resource "hcloud_server" "sentry" {
   }
 }
 
+resource "cloudflare_record" "opossum_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "opossum"
+  value   = hcloud_server.sentry.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "opossum_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "opossum"
+  value   = hcloud_server.sentry.ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
 output "sentry_ip" {
   value = {
     ipv4 = hcloud_server.sentry.ipv4_address,
@@ -70,6 +102,22 @@ resource "hcloud_server" "alder" {
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
   backups     = true
+}
+
+resource "cloudflare_record" "alder_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "alder"
+  value   = hcloud_server.alder.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "alder_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "alder"
+  value   = hcloud_server.alder.ipv6_address
+  type    = "AAAA"
+  proxied = false
 }
 
 output "alder_ip" {
