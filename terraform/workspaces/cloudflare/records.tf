@@ -44,39 +44,6 @@ module "goplaintext_com_no_mail" {
 # DNS for vxm.cz
 ##
 
-resource "cloudflare_record" "buffalo_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "buffalo"
-  value   = "142.132.182.137"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "buffalo_vxm_cz_v6" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "buffalo"
-  value   = "2a01:4f8:1c17:fffa::1"
-  type    = "AAAA"
-  proxied = false
-}
-
-resource "cloudflare_record" "opossum_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "opossum"
-  value   = "142.132.231.110"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "opossum_vxm_cz_v6" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "opossum"
-  value   = "2a01:4f8:1c17:e71e::1"
-  type    = "AAAA"
-  proxied = false
-}
-
-
 resource "cloudflare_record" "maple_vxm_cz" {
   zone_id = module.vxm_cz.zone.id
   name    = "maple"
@@ -89,22 +56,6 @@ resource "cloudflare_record" "maple_vxm_cz_v6" {
   zone_id = module.vxm_cz.zone.id
   name    = "maple"
   value   = "2a01:4f8:173:250c::1"
-  type    = "AAAA"
-  proxied = false
-}
-
-resource "cloudflare_record" "alder_vxm_cz" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "alder"
-  value   = "188.34.153.130"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "alder_vxm_cz_v6" {
-  zone_id = module.vxm_cz.zone.id
-  name    = "alder"
-  value   = "2a01:4f8:c010:ae8a::1"
   type    = "AAAA"
   proxied = false
 }
