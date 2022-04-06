@@ -59,6 +59,22 @@ resource "cloudflare_record" "ant_k8s_vxm_cz_v6" {
   proxied = false
 }
 
+resource "cloudflare_record" "wildcard_ant_k8s_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "*.ant.k8s"
+  value   = hcloud_load_balancer.ant_k8s.ipv4
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "wildcard_ant_k8s_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "*.ant.k8s"
+  value   = hcloud_load_balancer.ant_k8s.ipv6
+  type    = "AAAA"
+  proxied = false
+}
+
 output "ant_k8s_lb_ip" {
   value = {
     ipv4 = hcloud_load_balancer.ant_k8s.ipv4,
