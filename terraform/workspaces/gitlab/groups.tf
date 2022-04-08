@@ -17,3 +17,9 @@ resource "gitlab_group" "mareshq_terraform_modules" {
 
   parent_id = gitlab_group.mareshq.id
 }
+
+resource "gitlab_group" "heavenrp" {
+  name        = "HeavenRP"
+  path        = "heavenrp"
+  description = "HeavenRP"
+}
