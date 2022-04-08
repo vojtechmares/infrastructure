@@ -151,6 +151,14 @@ resource "cloudflare_record" "sentry_mareshq_com" {
   proxied = true
 }
 
+resource "cloudflare_record" "status_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "status"
+  value   = "rowan.vxm.cz"
+  type    = "CNAME"
+  proxied = true
+}
+
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
