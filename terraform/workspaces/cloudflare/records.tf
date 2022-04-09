@@ -159,6 +159,14 @@ resource "cloudflare_record" "status_mareshq_com" {
   proxied = true
 }
 
+resource "cloudflare_record" "mail_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "mail"
+  value   = "aspen.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
