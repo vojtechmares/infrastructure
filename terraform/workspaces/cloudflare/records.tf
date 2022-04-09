@@ -191,6 +191,13 @@ resource "cloudflare_record" "imap_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "dmarc_mareshq_com" {
+  zone_id  = module.mareshq_com.zone.id
+  name     = "_dmarc"
+  value    = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.coml fo=1; ri=86400;"
+  type     = "TXT"
+}
+
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
@@ -217,15 +224,6 @@ resource "cloudflare_record" "txt_spf_gitlab_mareshq_com" {
   name    = "gitlab"
   type    = "TXT"
   value   = "v=spf1 include:amazonses.com -all"
-}
-
-# DMARC TXT Record
-resource "cloudflare_record" "txt_dmarc_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  count   = 1
-  name    = "_dmarc"
-  type    = "TXT"
-  value   = "v=DMARC1; p=none; rua=mailto:postmaster@${module.mareshq_com.zone.zone}; ruf=mailto:postmaster@${module.mareshq_com.zone.zone}; fo=1;"
 }
 
 resource "cloudflare_record" "panel_flakame_se" {
