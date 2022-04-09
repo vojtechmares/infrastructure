@@ -211,3 +211,11 @@ resource "cloudflare_record" "panel_flakame_se" {
   type    = "CNAME"
   proxied = false
 }
+
+resource "cloudflare_record" "panel_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  name    = "panel"
+  value   = "alder.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
