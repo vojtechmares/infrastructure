@@ -167,6 +167,30 @@ resource "cloudflare_record" "mail_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "smtp_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "smtp"
+  value   = cloudflare_record.mail_mareshq_com.hostname
+  type    = "CNAME"
+  proxied = false
+}
+
+resource "cloudflare_record" "pop_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "pop"
+  value   = cloudflare_record.mail_mareshq_com.hostname
+  type    = "CNAME"
+  proxied = false
+}
+
+resource "cloudflare_record" "imap_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "imap"
+  value   = cloudflare_record.mail_mareshq_com.hostname
+  type    = "CNAME"
+  proxied = false
+}
+
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
