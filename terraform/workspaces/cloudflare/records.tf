@@ -192,10 +192,54 @@ resource "cloudflare_record" "imap_mareshq_com" {
 }
 
 resource "cloudflare_record" "dmarc_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "_dmarc"
+  value   = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.coml fo=1; ri=86400;"
+  type    = "TXT"
+}
+
+resource "cloudflare_record" "mx_mareshq_com" {
   zone_id  = module.mareshq_com.zone.id
-  name     = "_dmarc"
-  value    = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.coml fo=1; ri=86400;"
-  type     = "TXT"
+  name     = "@"
+  value    = cloudflare_record.mail_mareshq_com.hostname
+  type     = "MX"
+  priority = 1
+}
+
+resource "cloudflare_record" "dkim_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "s20220409801._domainkey"
+  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1PN3UpMIr05SvqFvJyD42w5s97jeRNoqKCRR2rBIhqULIo42T5yHtqysleXvXFN44nsyKmH3iftom9magfRZ2njd/eaLquzDJC4Ybu+X/WuCathhjhIA4JHavl0ivp8TBa0CJxupmwOnopypPxB4UDp/QLunQthxyPG0zeqyy+MKhVX8sDVPGw7kCdxmwco1rQsN7+FtM5420RNmEbz8U6Ngvn6g/fvXW1T8GN2eV5OzNMbZ+9SCq1TbOKvJ+Qzzzvy2bIuo5+XY0NwWvnz8aCOKVZFlwvzZ9jpSThQ8MvKxU2jWPFnp8J66uj6JpM2KMMGAC+Cq6XfjL1ZSLIZ1rQIDAQAB"
+  type    = "TXT"
+}
+
+resource "cloudflare_record" "spf_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "@"
+  value   = "v=spf1 mx ~all"
+  type    = "TXT"
+}
+
+resource "cloudflare_record" "mx_sentry_mareshq_com" {
+  zone_id  = module.mareshq_com.zone.id
+  name     = "sentry"
+  value    = cloudflare_record.mail_mareshq_com.hostname
+  type     = "MX"
+  priority = 1
+}
+
+resource "cloudflare_record" "dkim_sentry_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "s20220409175._domainkey.sentry"
+  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApttEcf3l6VZ1MQ5rYMMonCWd1uOXmzWNIrQJ31AL92qE48VcCUXOV1XX29BlygWEUg88SJ8L//w62VtgwqkT+j+u2yNRpZ4Q/dgHjEBOGRWo2V2l2Hb/N8alzpVvhAcnKEl8cS81eR8qkeyLUqHKl0oBmHGAQnm9IiQHymRLXZNF6RPkBRXALTBkhiqCp8B0tDzXNLGS3hoxym/py2/0dWSd44LhWpgcypnYROQl6ZP4RWnYCCBAidXmlbrN6DXR/0VE4OPhUXIxKEn5qZGGAL1nlfgaP4Ppwmc5nsuaBxpLWWQQKIffltm6oJlR2P0qzyg0kt5lj2y+QhADzD3qEwIDAQAB"
+  type    = "TXT"
+}
+
+resource "cloudflare_record" "spf_sentry_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "sentry"
+  value   = "v=spf1 mx ~all"
+  type    = "TXT"
 }
 
 # GitLab SES
