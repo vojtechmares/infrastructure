@@ -54,6 +54,22 @@ resource "hcloud_server" "gitlab_micro_runner" {
   }
 }
 
+resource "cloudflare_record" "catalpa_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "catalpa"
+  value   = hcloud_server.gitlab_micro_runner.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "catalpa_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "catalpa"
+  value   = hcloud_server.gitlab_micro_runner.ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
 resource "hcloud_server" "sentry" {
   name        = "sentry"
   image       = "ubuntu-20.04"
