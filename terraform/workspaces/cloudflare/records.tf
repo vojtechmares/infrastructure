@@ -220,28 +220,6 @@ resource "cloudflare_record" "spf_mareshq_com" {
   type    = "TXT"
 }
 
-resource "cloudflare_record" "mx_sentry_mareshq_com" {
-  zone_id  = module.mareshq_com.zone.id
-  name     = "sentry"
-  value    = cloudflare_record.mail_mareshq_com.hostname
-  type     = "MX"
-  priority = 1
-}
-
-resource "cloudflare_record" "dkim_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "s20220409175._domainkey.sentry"
-  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApttEcf3l6VZ1MQ5rYMMonCWd1uOXmzWNIrQJ31AL92qE48VcCUXOV1XX29BlygWEUg88SJ8L//w62VtgwqkT+j+u2yNRpZ4Q/dgHjEBOGRWo2V2l2Hb/N8alzpVvhAcnKEl8cS81eR8qkeyLUqHKl0oBmHGAQnm9IiQHymRLXZNF6RPkBRXALTBkhiqCp8B0tDzXNLGS3hoxym/py2/0dWSd44LhWpgcypnYROQl6ZP4RWnYCCBAidXmlbrN6DXR/0VE4OPhUXIxKEn5qZGGAL1nlfgaP4Ppwmc5nsuaBxpLWWQQKIffltm6oJlR2P0qzyg0kt5lj2y+QhADzD3qEwIDAQAB"
-  type    = "TXT"
-}
-
-resource "cloudflare_record" "spf_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "sentry"
-  value   = "v=spf1 mx ~all"
-  type    = "TXT"
-}
-
 # GitLab SES
 resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
@@ -266,6 +244,33 @@ resource "cloudflare_record" "txt_spf_gitlab_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   count   = 1
   name    = "gitlab"
+  type    = "TXT"
+  value   = "v=spf1 include:amazonses.com -all"
+}
+
+# Sentry SES
+resource "cloudflare_record" "ses_verification_sentry_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "_amazonses.${aws_ses_domain_identity.sentry.id}"
+  type    = "TXT"
+  value   = aws_ses_domain_identity.sentry.verification_token
+}
+
+resource "cloudflare_record" "txt_dkim_sentry_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  count   = 3
+  name = format(
+    "%s._domainkey.%s",
+    element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index),
+    module.mareshq_com.zone.zone,
+  )
+  type  = "CNAME"
+  value = "${element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index)}.dkim.amazonses.com"
+}
+
+resource "cloudflare_record" "txt_spf_sentry_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "sentry"
   type    = "TXT"
   value   = "v=spf1 include:amazonses.com -all"
 }
