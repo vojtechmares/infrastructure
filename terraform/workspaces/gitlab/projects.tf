@@ -125,3 +125,19 @@ module "staticahq_staticahq" {
 
   project_namespace_id = gitlab_group.staticahq.id
 }
+
+##
+# GitOps
+##
+
+## GitOps / SkautDevs
+module "gitops_skautdevs_kissj" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "KISSJ"
+  project_path = "kissj"
+  project_desc = "KISSJ GitOps"
+
+  project_namespace_id = gitlab_group.gitops_skautdevs.id
+}
