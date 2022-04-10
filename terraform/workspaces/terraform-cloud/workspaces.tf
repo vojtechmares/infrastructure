@@ -25,3 +25,10 @@ resource "tfe_workspace" "hcloud" {
   execution_mode    = "remote"
   terraform_version = "1.1.2"
 }
+
+resource "tfe_workspace" "aws" {
+  name              = "aws"
+  organization      = tfe_organization.vojtechmares.id
+  execution_mode    = "remote"
+  terraform_version = "1.1.8"
+}
