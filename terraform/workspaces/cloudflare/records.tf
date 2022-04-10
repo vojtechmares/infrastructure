@@ -194,7 +194,7 @@ resource "cloudflare_record" "imap_mareshq_com" {
 resource "cloudflare_record" "dmarc_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "_dmarc"
-  value   = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.coml fo=1; ri=86400;"
+  value   = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.com fo=1; ri=86400;"
   type    = "TXT"
 }
 
