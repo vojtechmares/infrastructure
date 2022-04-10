@@ -43,7 +43,7 @@ module "mareshq_ansible" {
   project_path = "ansible"
   project_desc = "Ansible playbooks"
 
-  project_namespace_id = gitlab_group.mareshq.id
+  project_namespace_id = gitlab_group.infrastructure_mareshq.id
 }
 
 module "ci" {
