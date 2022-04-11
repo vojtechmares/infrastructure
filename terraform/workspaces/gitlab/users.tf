@@ -28,3 +28,21 @@ module "annaliebichova" {
   username = "annaliebichova"
   email    = "anna.liebichova@seznam.cz"
 }
+
+module "lung" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
+  version = "2.0.0"
+
+  name     = "Lung"
+  username = "lung"
+  email    = "lung@skaut.cz"
+}
+
+module "michaelkaplan" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
+  version = "2.0.0"
+
+  name     = "Michael Kaplan"
+  username = "michaelkaplan"
+  email    = "michael@kaplan.sh"
+}
