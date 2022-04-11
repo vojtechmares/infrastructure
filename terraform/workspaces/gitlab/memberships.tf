@@ -15,3 +15,15 @@ resource "gitlab_group_membership" "tomasgrim_to_mareshq" {
   user_id      = module.tomasgrim.id
   access_level = "developer"
 }
+
+resource "gitlab_group_membership" "lung_to_gitops_skautdevs" {
+  group_id     = gitlab_group.gitops_skautdevs.id
+  user_id      = module.lung.id
+  access_level = "developer"
+}
+
+resource "gitlab_group_membership" "michaelkapan_to_gitops_skautdevs" {
+  group_id     = gitlab_group.gitops_skautdevs.id
+  user_id      = module.michaelkaplan.id
+  access_level = "developer"
+}
