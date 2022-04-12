@@ -153,7 +153,7 @@ module "infra_tfmodules_ci" {
 
   project_name = "CI"
   project_path = "ci"
-  project_desc = "CI"
+  project_desc = "CI Templates shared between modules to prevent code duplication."
 
   project_namespace_id = gitlab_group.infrastructure_tfmodules.id
 }
