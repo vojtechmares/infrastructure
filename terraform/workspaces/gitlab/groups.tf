@@ -24,6 +24,14 @@ resource "gitlab_group" "infrastructure" {
   description = "Infrastructure"
 }
 
+resource "gitlab_group" "infrastructure_tfmodules" {
+  name        = "Terraform Modules"
+  path        = "terraform-modules"
+  description = "Terraform Modules"
+
+  parent_id = gitlab_group.infrastructure.id
+}
+
 resource "gitlab_group" "infrastructure_mareshq" {
   name        = "MaresHQ"
   path        = "mareshq"

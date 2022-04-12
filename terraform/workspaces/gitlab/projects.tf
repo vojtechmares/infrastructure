@@ -141,3 +141,19 @@ module "gitops_skautdevs_kissj" {
 
   project_namespace_id = gitlab_group.gitops_skautdevs.id
 }
+
+##
+# Infrastructure
+##
+
+## Infrastructure / Terraform Modules / CI
+module "infra_tfmodules_ci" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "CI"
+  project_path = "ci"
+  project_desc = "CI"
+
+  project_namespace_id = gitlab_group.infrastructure_tfmodules.id
+}
