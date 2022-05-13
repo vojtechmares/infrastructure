@@ -220,3 +220,42 @@ output "aspen_ip" {
     ipv6 = hcloud_server.aspen.ipv6_address,
   }
 }
+
+resource "hcloud_server" "willow" {
+  name        = "willow"
+  image       = "ubuntu-20.04"
+  server_type = "cx21"
+  location    = "fsn1"
+  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
+  backups     = true
+  user_data   = file("files/docker.cloud-config.yml")
+
+  lifecycle {
+    ignore_changes = [
+      user_data
+    ]
+  }
+}
+
+resource "cloudflare_record" "willow_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "willow"
+  value   = hcloud_server.willow.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "willow_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "willow"
+  value   = hcloud_server.willow.ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
+output "willow_ip" {
+  value = {
+    ipv4 = hcloud_server.willow.ipv4_address,
+    ipv6 = hcloud_server.willow.ipv6_address,
+  }
+}
