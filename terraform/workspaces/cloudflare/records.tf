@@ -290,3 +290,14 @@ resource "cloudflare_record" "panel_acaslab_com" {
   type    = "CNAME"
   proxied = false
 }
+
+##
+# DNS for makejted.cz
+##
+resource "cloudflare_record" "ukolnicek_makejted_cz" {
+  zone_id = module.makejted_cz.zone.id
+  name    = "ukolnicek"
+  value   = "willow.vxm.cz"
+  type    = "CNAME"
+  proxied = true
+}

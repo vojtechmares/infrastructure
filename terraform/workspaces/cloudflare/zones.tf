@@ -81,3 +81,10 @@ module "acaslab_com" {
 
   zone = "acaslab.com"
 }
+
+module "makejted_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "makejted.cz"
+}
