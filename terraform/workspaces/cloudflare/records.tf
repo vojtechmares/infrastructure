@@ -301,3 +301,32 @@ resource "cloudflare_record" "ukolnicek_makejted_cz" {
   type    = "CNAME"
   proxied = true
 }
+
+resource "cloudflare_record" "dmarc_makejted_cz" {
+  zone_id = module.makejted_cz.zone.id
+  name    = "_dmarc"
+  value   = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.com fo=1; ri=86400;"
+  type    = "TXT"
+}
+
+resource "cloudflare_record" "mx_makejted_cz" {
+  zone_id  = module.makejted_cz.zone.id
+  name     = "@"
+  value    = cloudflare_record.mail_mareshq_com.hostname
+  type     = "MX"
+  priority = 1
+}
+
+resource "cloudflare_record" "dkim_makejted_cz" {
+  zone_id = module.makejted_cz.zone.id
+  name    = "s20220513287._domainkey.ukolnicek"
+  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1OVOEZsc5FEcE17P3hLcf4zfeMDETWMravOis9/tmrGKthJEMv7E7NPzWHhHzKMkW/4ZcD6WRDAP0LhvFYR6YYuU3imUPUs/Rc05OUItx7uMeVPcbYQJAANQp96vrYurV07pJCILHiDY6rN75NVsGHVZkbeZ8AtU60AW0HrpDZL9thV7hMd7wlRGbkbEiyKwcEYL09chQk+hcynQxyJf3q+eZ4dU9vrx1WgoGJ3puJewYmczZf6vli38TgmwzmIIjpl9U14W+plHlL3IEojLbbJjhaXibNe7HmRELFbih6/uXccmp6GjtqrnSJbMJiXD337jLJy6e5EdNsD2sRcvdQIDAQAB"
+  type    = "TXT"
+}
+
+resource "cloudflare_record" "spf_makejted_cz" {
+  zone_id = module.makejted_cz.zone.id
+  name    = "@"
+  value   = "v=spf1 mx ~all"
+  type    = "TXT"
+}
