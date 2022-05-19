@@ -157,3 +157,14 @@ module "infra_tfmodules_ci" {
 
   project_namespace_id = gitlab_group.infrastructure_tfmodules.id
 }
+
+module "wsj_standup_discord_notification" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "Standup Discord Notification"
+  project_path = "standup-discord-notification"
+  project_desc = "Standup Discord Notification via Discord Webhooks"
+
+  project_namespace_id = gitlab_group.wsj.id
+}
