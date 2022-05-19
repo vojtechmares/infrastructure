@@ -69,3 +69,9 @@ resource "gitlab_group" "gitops_skautdevs" {
 
   parent_id = gitlab_group.gitops.id
 }
+
+resource "gitlab_group" "wsj" {
+  name        = "WSJ"
+  path        = "wsj"
+  description = "WSJ"
+}
