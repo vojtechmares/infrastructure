@@ -70,8 +70,24 @@ resource "gitlab_group" "gitops_skautdevs" {
   parent_id = gitlab_group.gitops.id
 }
 
+resource "gitlab_group" "skaut" {
+  name        = "Skaut"
+  path        = "skaut"
+  description = "Skaut"
+}
+
 resource "gitlab_group" "wsj" {
   name        = "WSJ"
   path        = "wsj"
   description = "WSJ"
+
+  parent_id = gitlab_group.skaut.id
+}
+
+resource "gitlab_group" "kissj" {
+  name        = "KISSJ"
+  path        = "kissj"
+  description = "KISSJ"
+
+  parent_id = gitlab_group.skaut.id
 }
