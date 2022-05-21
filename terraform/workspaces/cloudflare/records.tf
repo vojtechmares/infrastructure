@@ -297,7 +297,7 @@ resource "cloudflare_record" "panel_acaslab_com" {
 resource "cloudflare_record" "ukolnicek_makejted_cz" {
   zone_id = module.makejted_cz.zone.id
   name    = "ukolnicek"
-  value   = "willow.vxm.cz"
+  value   = "ant.k8s.vxm.cz"
   type    = "CNAME"
   proxied = true
 }
