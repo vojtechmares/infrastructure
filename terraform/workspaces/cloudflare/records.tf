@@ -40,6 +40,12 @@ module "goplaintext_com_no_mail" {
   zone_id = module.goplaintext_com.zone.id
 }
 
+module "makejted_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.makejted_cz.zone.id
+}
+
 ##
 # DNS for vxm.cz
 ##
@@ -159,60 +165,6 @@ resource "cloudflare_record" "status_mareshq_com" {
   proxied = true
 }
 
-resource "cloudflare_record" "mail_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "mail"
-  value   = "aspen.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "smtp_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "smtp"
-  value   = cloudflare_record.mail_mareshq_com.hostname
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "pop_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "pop"
-  value   = cloudflare_record.mail_mareshq_com.hostname
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "imap_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "imap"
-  value   = cloudflare_record.mail_mareshq_com.hostname
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "dmarc_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "_dmarc"
-  value   = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.com fo=1; ri=86400;"
-  type    = "TXT"
-}
-
-resource "cloudflare_record" "mx_mareshq_com" {
-  zone_id  = module.mareshq_com.zone.id
-  name     = "@"
-  value    = cloudflare_record.mail_mareshq_com.hostname
-  type     = "MX"
-  priority = 1
-}
-
-resource "cloudflare_record" "dkim_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "s20220409801._domainkey"
-  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1PN3UpMIr05SvqFvJyD42w5s97jeRNoqKCRR2rBIhqULIo42T5yHtqysleXvXFN44nsyKmH3iftom9magfRZ2njd/eaLquzDJC4Ybu+X/WuCathhjhIA4JHavl0ivp8TBa0CJxupmwOnopypPxB4UDp/QLunQthxyPG0zeqyy+MKhVX8sDVPGw7kCdxmwco1rQsN7+FtM5420RNmEbz8U6Ngvn6g/fvXW1T8GN2eV5OzNMbZ+9SCq1TbOKvJ+Qzzzvy2bIuo5+XY0NwWvnz8aCOKVZFlwvzZ9jpSThQ8MvKxU2jWPFnp8J66uj6JpM2KMMGAC+Cq6XfjL1ZSLIZ1rQIDAQAB"
-  type    = "TXT"
-}
-
 resource "cloudflare_record" "spf_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "@"
@@ -300,33 +252,4 @@ resource "cloudflare_record" "ukolnicek_makejted_cz" {
   value   = "ant.k8s.vxm.cz"
   type    = "CNAME"
   proxied = true
-}
-
-resource "cloudflare_record" "dmarc_makejted_cz" {
-  zone_id = module.makejted_cz.zone.id
-  name    = "_dmarc"
-  value   = "v=DMARC1; p=none; rua=mailto:postmaster@mareshq.com; ruf=mailto:postmaster@mareshq.com fo=1; ri=86400;"
-  type    = "TXT"
-}
-
-resource "cloudflare_record" "mx_makejted_cz" {
-  zone_id  = module.makejted_cz.zone.id
-  name     = "@"
-  value    = cloudflare_record.mail_mareshq_com.hostname
-  type     = "MX"
-  priority = 1
-}
-
-resource "cloudflare_record" "dkim_makejted_cz" {
-  zone_id = module.makejted_cz.zone.id
-  name    = "s20220513287._domainkey.ukolnicek"
-  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1OVOEZsc5FEcE17P3hLcf4zfeMDETWMravOis9/tmrGKthJEMv7E7NPzWHhHzKMkW/4ZcD6WRDAP0LhvFYR6YYuU3imUPUs/Rc05OUItx7uMeVPcbYQJAANQp96vrYurV07pJCILHiDY6rN75NVsGHVZkbeZ8AtU60AW0HrpDZL9thV7hMd7wlRGbkbEiyKwcEYL09chQk+hcynQxyJf3q+eZ4dU9vrx1WgoGJ3puJewYmczZf6vli38TgmwzmIIjpl9U14W+plHlL3IEojLbbJjhaXibNe7HmRELFbih6/uXccmp6GjtqrnSJbMJiXD337jLJy6e5EdNsD2sRcvdQIDAQAB"
-  type    = "TXT"
-}
-
-resource "cloudflare_record" "spf_makejted_cz" {
-  zone_id = module.makejted_cz.zone.id
-  name    = "@"
-  value   = "v=spf1 mx ~all"
-  type    = "TXT"
 }
