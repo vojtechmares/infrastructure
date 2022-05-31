@@ -138,7 +138,7 @@ resource "cloudflare_record" "txt_dkim_gitlab_mareshq_com" {
   name = format(
     "%s._domainkey.%s",
     element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index),
-    module.mareshq_com.zone.zone,
+    cloudflare_record.gitlab_mareshq_com.hostname,
   )
   type  = "CNAME"
   value = "${element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index)}.dkim.amazonses.com"
@@ -166,7 +166,7 @@ resource "cloudflare_record" "txt_dkim_sentry_mareshq_com" {
   name = format(
     "%s._domainkey.%s",
     element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index),
-    module.mareshq_com.zone.zone,
+    cloudflare_record.sentry_mareshq_com.hostname,
   )
   type  = "CNAME"
   value = "${element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index)}.dkim.amazonses.com"
