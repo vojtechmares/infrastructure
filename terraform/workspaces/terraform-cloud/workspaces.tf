@@ -32,3 +32,10 @@ resource "tfe_workspace" "aws" {
   execution_mode    = "remote"
   terraform_version = "1.1.8"
 }
+
+resource "tfe_workspace" "do" {
+  name              = "do"
+  organization      = tfe_organization.vojtechmares.id
+  execution_mode    = "remote"
+  terraform_version = "1.2.2"
+}
