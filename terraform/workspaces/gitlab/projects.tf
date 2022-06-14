@@ -101,6 +101,17 @@ module "mareshq_gitops" {
   project_namespace_id = gitlab_group.gitops_mareshq.id
 }
 
+module "gitops_mareshq_fox" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "Fox"
+  project_path = "fox"
+  project_desc = "Fox Kubernetes Cluster manifests for GitOps"
+
+  project_namespace_id = gitlab_group.gitops_mareshq.id
+}
+
 ##
 # staticahq
 ##
