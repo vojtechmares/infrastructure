@@ -10,7 +10,7 @@ module "mareshq_infra" {
   project_path = "infra"
   project_desc = "MaresHQ Infra"
 
-  project_namespace_id = gitlab_group.mareshq.id
+  project_namespace_id = gitlab_group.infrastructure_mareshq.id
 }
 
 module "mareshq_incident_response" {
