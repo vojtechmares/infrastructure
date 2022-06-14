@@ -94,11 +94,11 @@ module "mareshq_gitops" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
   version = "2.0.0"
 
-  project_name = "GitOps"
-  project_path = "gitops"
-  project_desc = "GitOps"
+  project_name = "Ant"
+  project_path = "ant"
+  project_desc = "Ant Kubernetes Cluster manifests for GitOps"
 
-  project_namespace_id = gitlab_group.mareshq.id
+  project_namespace_id = gitlab_group.gitops_mareshq.id
 }
 
 ##
