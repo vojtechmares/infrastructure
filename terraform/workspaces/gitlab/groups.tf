@@ -91,3 +91,17 @@ resource "gitlab_group" "kissj" {
 
   parent_id = gitlab_group.skaut.id
 }
+
+resource "gitlab_group" "stepanka" {
+  name        = "Stepanka"
+  path        = "stepanka"
+  description = "stepanka.net"
+}
+
+resource "gitlab_group" "gitops_stepanka" {
+  name        = "Stepanka"
+  path        = "stepanka"
+  description = "Stepanka GitOps"
+
+  parent_id = gitlab_group.gitops.id
+}

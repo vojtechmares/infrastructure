@@ -179,3 +179,18 @@ module "wsj_standup_discord_notification" {
 
   project_namespace_id = gitlab_group.wsj.id
 }
+
+##
+# Stepanka
+##
+
+module "stepanka_website" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "Website"
+  project_path = "website"
+  project_desc = "Website: https://www.stepanka.net"
+
+  project_namespace_id = gitlab_group.stepanka.id
+}
