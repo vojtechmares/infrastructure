@@ -81,3 +81,31 @@ module "makejted_cz" {
 
   zone = "makejted.cz"
 }
+
+module "vojtechmares_blog" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "vojtechmares.blog"
+}
+
+module "maresdemo_com" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "maresdemo.com"
+}
+
+module "planette_io" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "planette.io"
+}
+
+module "stepanka_net" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "stepanka.net"
+}
