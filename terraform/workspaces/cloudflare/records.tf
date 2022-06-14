@@ -10,12 +10,6 @@ module "mares_work_no_mail" {
   zone_id = module.mares_work.zone.id
 }
 
-module "vmcr_cz_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = module.vmcr_cz.zone.id
-}
-
 module "flakame_se_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"

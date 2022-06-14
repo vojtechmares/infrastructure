@@ -40,13 +40,6 @@ module "mareshq_com" {
 #   value = cloudflare_zone.vojtamares_com.name_servers
 # }
 
-module "vmcr_cz" {
-  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "2.0.0"
-
-  zone = "vmcr.cz"
-}
-
 module "flakame_se" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
   version = "2.0.0"
