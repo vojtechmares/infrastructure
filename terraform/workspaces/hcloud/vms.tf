@@ -143,45 +143,6 @@ output "alder_ip" {
   }
 }
 
-resource "hcloud_server" "rowan" {
-  name        = "rowan"
-  image       = "ubuntu-20.04"
-  server_type = "cx11"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
-  user_data   = file("files/docker.cloud-config.yml")
-
-  lifecycle {
-    ignore_changes = [
-      user_data
-    ]
-  }
-}
-
-resource "cloudflare_record" "rowan_vxm_cz" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "rowan"
-  value   = hcloud_server.rowan.ipv4_address
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "rowan_vxm_cz_v6" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "rowan"
-  value   = hcloud_server.rowan.ipv6_address
-  type    = "AAAA"
-  proxied = false
-}
-
-output "rowan_ip" {
-  value = {
-    ipv4 = hcloud_server.rowan.ipv4_address,
-    ipv6 = hcloud_server.rowan.ipv6_address,
-  }
-}
-
 resource "hcloud_server" "willow" {
   name        = "willow"
   image       = "ubuntu-20.04"
