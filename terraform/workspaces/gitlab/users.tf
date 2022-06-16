@@ -46,3 +46,12 @@ module "michaelkaplan" {
   username = "michaelkaplan"
   email    = "michael@kaplan.sh"
 }
+
+module "tasartir" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
+  version = "2.0.0"
+
+  name     = "Ondřej Korba"
+  username = "tasartir"
+  email    = "tasartir@tasartir.cz"
+}
