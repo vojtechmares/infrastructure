@@ -238,7 +238,7 @@ resource "cloudflare_record" "ukolnicek_makejted_cz" {
   name    = "ukolnicek"
   value   = "willow.vxm.cz"
   type    = "CNAME"
-  proxied = true
+  proxied = false
 }
 
 resource "cloudflare_record" "ses_verification_ukolnicek_makejted_cz" {
