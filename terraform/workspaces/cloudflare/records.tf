@@ -183,6 +183,9 @@ resource "cloudflare_record" "txt_spf_sentry_mareshq_com" {
   value   = "v=spf1 include:amazonses.com -all"
 }
 
+##
+# acaslab.com
+##
 resource "cloudflare_record" "panel_flakame_se" {
   zone_id = module.flakame_se.zone.id
   name    = "panel"
@@ -197,6 +200,34 @@ resource "cloudflare_record" "panel_acaslab_com" {
   value   = "alder.vxm.cz"
   type    = "CNAME"
   proxied = false
+}
+
+# panel.acaslab.com SES
+resource "cloudflare_record" "ses_verification_panel_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  name    = "_amazonses.${aws_ses_domain_identity.panel_acaslab.id}"
+  type    = "TXT"
+  value   = aws_ses_domain_identity.panel_acaslab.verification_token
+}
+
+resource "cloudflare_record" "txt_dkim_panel_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  count   = 3
+  name = format(
+    "%s._domainkey.%s",
+    element(aws_ses_domain_dkim.panel_acaslab.dkim_tokens, count.index),
+    cloudflare_record.panel_acaslab_com.hostname,
+  )
+  type  = "CNAME"
+  value = "${element(aws_ses_domain_dkim.panel_acaslab.dkim_tokens, count.index)}.dkim.amazonses.com"
+}
+
+resource "cloudflare_record" "txt_spf_panel_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  count   = 1
+  name    = "panel"
+  type    = "TXT"
+  value   = "v=spf1 include:amazonses.com -all"
 }
 
 ##
