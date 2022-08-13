@@ -1,5 +1,5 @@
 data "digitalocean_kubernetes_versions" "this" {
-  version_prefix = "1.22."
+  version_prefix = "1.23."
 }
 
 resource "digitalocean_kubernetes_cluster" "fox" {
