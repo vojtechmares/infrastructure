@@ -57,6 +57,17 @@ module "ci" {
   project_namespace_id = gitlab_group.mareshq.id
 }
 
+module "ci_toolkit" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "CI Toolkit"
+  project_path = "ci-toolkit"
+  project_desc = "CI Toolkit: a docker image with all the things"
+
+  project_namespace_id = gitlab_group.mareshq.id
+}
+
 module "tfm_gitlab_project" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
   version = "2.0.0"
