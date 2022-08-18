@@ -134,6 +134,17 @@ module "gitops_mareshq_fox" {
   project_namespace_id = gitlab_group.gitops_mareshq.id
 }
 
+module "gitops_mareshq_bee" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "Bee"
+  project_path = "bee"
+  project_desc = "Bee Kubernetes Cluster manifests for GitOps"
+
+  project_namespace_id = gitlab_group.gitops_mareshq.id
+}
+
 ##
 # staticahq
 ##
