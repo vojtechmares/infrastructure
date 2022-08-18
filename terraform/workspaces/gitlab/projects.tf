@@ -46,6 +46,17 @@ module "mareshq_ansible" {
   project_namespace_id = gitlab_group.infrastructure_mareshq.id
 }
 
+module "mareshq_k3s_ansible" {
+  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
+  version = "2.0.0"
+
+  project_name = "k3s Ansible"
+  project_path = "k3s-ansible"
+  project_desc = "k3s Ansible. Upstream: https://github.com/k3s-io/k3s-ansible"
+
+  project_namespace_id = gitlab_group.infrastructure_mareshq.id
+}
+
 module "ci" {
   source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
   version = "2.0.0"
