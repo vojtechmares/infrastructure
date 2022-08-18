@@ -78,6 +78,54 @@ resource "cloudflare_record" "maple_vxm_cz_v6" {
   proxied = false
 }
 
+resource "cloudflare_record" "loris_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "loris"
+  value   = "142.132.144.165"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "loris_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "loris"
+  value   = "2a01:4f8:261:16af::1"
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "cloudflare_record" "otary_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "otary"
+  value   = "167.235.7.102"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "otary_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "otary"
+  value   = "2a01:4f8:262:165e::1"
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "cloudflare_record" "rhino_vxm_cz" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "rhino"
+  value   = "167.235.7.101"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "rhino_vxm_cz_v6" {
+  zone_id = module.vxm_cz.zone.id
+  name    = "rhino"
+  value   = "2a01:4f8:262:165f::1"
+  type    = "AAAA"
+  proxied = false
+}
+
 ##
 # DNS for mareshq.com
 ##
