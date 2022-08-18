@@ -44,7 +44,7 @@ resource "hcloud_server" "gitlab_micro_runner" {
   server_type = "cpx11"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
+  backups     = false
   user_data   = file("files/docker.cloud-config.yml")
 
   lifecycle {
@@ -179,5 +179,45 @@ output "willow_ip" {
   value = {
     ipv4 = hcloud_server.willow.ipv4_address,
     ipv6 = hcloud_server.willow.ipv6_address,
+  }
+}
+
+resource "hcloud_server" "controlplane_bee" {
+  name        = "controlplane-bee-k8s"
+  image       = "ubuntu-22.04"
+  server_type = "cx21"
+  location    = "fsn1"
+  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
+  backups     = true
+}
+
+resource "cloudflare_record" "controlplane_bee" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "bee"
+  value   = hcloud_server.controlplane_bee.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "controlplane_bee_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "bee"
+  value   = hcloud_server.controlplane_bee.ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "cloudflare_record" "controlplane_bee_k8s" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "controlplane.bee.k8s"
+  value   = cloudflare_record.controlplane_bee.hostname
+  type    = "CNAME"
+  proxied = false
+}
+
+output "controlplane_bee_ip" {
+  value = {
+    ipv4 = hcloud_server.controlplane_bee.ipv4_address,
+    ipv6 = hcloud_server.controlplane_bee.ipv6_address,
   }
 }
