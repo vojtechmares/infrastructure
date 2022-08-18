@@ -146,31 +146,6 @@ module "gitops_mareshq_bee" {
 }
 
 ##
-# staticahq
-##
-module "staticahq_infra" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
-
-  project_name = "Infra"
-  project_path = "infra"
-  project_desc = "staticahq infrastructure"
-
-  project_namespace_id = gitlab_group.staticahq.id
-}
-
-module "staticahq_staticahq" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
-
-  project_name = "staticahq monorepo"
-  project_path = "staticahq"
-  project_desc = "staticahq monorepo"
-
-  project_namespace_id = gitlab_group.staticahq.id
-}
-
-##
 # GitOps
 ##
 

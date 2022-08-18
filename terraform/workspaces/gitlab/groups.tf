@@ -4,12 +4,6 @@ resource "gitlab_group" "mareshq" {
   description = "MaresHQ"
 }
 
-resource "gitlab_group" "staticahq" {
-  name        = "staticahq"
-  path        = "staticahq"
-  description = "staticahq"
-}
-
 resource "gitlab_group" "mareshq_terraform_modules" {
   name        = "Terraform Modules"
   path        = "terraform-modules"
@@ -36,14 +30,6 @@ resource "gitlab_group" "infrastructure_mareshq" {
   name        = "MaresHQ"
   path        = "mareshq"
   description = "MaresHQ Infrastructure"
-
-  parent_id = gitlab_group.infrastructure.id
-}
-
-resource "gitlab_group" "infrastructure_staticahq" {
-  name        = "StaticaHQ"
-  path        = "staticahq"
-  description = "StaticaHQ Infrastructure"
 
   parent_id = gitlab_group.infrastructure.id
 }
