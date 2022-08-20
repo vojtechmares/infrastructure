@@ -155,7 +155,7 @@ resource "cloudflare_record" "all_mareshq_com" {
 
 resource "cloudflare_record" "signpost_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
-  name    = "cloud"
+  name    = "signpost"
   value   = cloudflare_record.cloud_mareshq_com.hostname
   type    = "CNAME"
   proxied = false
@@ -163,7 +163,7 @@ resource "cloudflare_record" "signpost_mareshq_com" {
 
 resource "cloudflare_record" "infra_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
-  name    = "cloud"
+  name    = "infra"
   value   = cloudflare_record.cloud_mareshq_com.hostname
   type    = "CNAME"
   proxied = false
