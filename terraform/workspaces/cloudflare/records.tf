@@ -282,6 +282,14 @@ resource "cloudflare_record" "panel_acaslab_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "map_together_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  name    = "map.together"
+  value   = "acas-minecraft-server-worldmap.s3-website.eu-central-1.amazonaws.com"
+  type    = "CNAME"
+  proxied = true
+}
+
 # panel.acaslab.com SES
 resource "cloudflare_record" "ses_verification_panel_acaslab_com" {
   zone_id = module.acaslab_com.zone.id
