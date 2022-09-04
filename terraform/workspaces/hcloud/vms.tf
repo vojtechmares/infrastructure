@@ -15,6 +15,19 @@ resource "hcloud_server" "gitlab" {
   }
 }
 
+resource "hcloud_volume" "gitlab_registry" {
+  name     = "gitlab-registry"
+  location = "fsn1"
+  size     = 100
+  format   = "ext4"
+}
+
+resource "hcloud_volume_attachment" "gitlab_registry" {
+  volume_id = hcloud_volume.gitlab_registry.id
+  server_id = hcloud_server.gitlab.id
+  automount = true
+}
+
 resource "cloudflare_record" "buffalo_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
   name    = "buffalo"
