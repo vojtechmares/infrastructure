@@ -321,36 +321,3 @@ resource "cloudflare_record" "txt_spf_panel_acaslab_com" {
 ##
 # DNS for makejted.cz
 ##
-resource "cloudflare_record" "ukolnicek_makejted_cz" {
-  zone_id = module.makejted_cz.zone.id
-  name    = "ukolnicek"
-  value   = "willow.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "ses_verification_ukolnicek_makejted_cz" {
-  zone_id = module.makejted_cz.zone.id
-  name    = "_amazonses.${aws_ses_domain_identity.ukolnicek_jamboree.id}"
-  type    = "TXT"
-  value   = aws_ses_domain_identity.ukolnicek_jamboree.verification_token
-}
-
-resource "cloudflare_record" "txt_dkim_ukolnicek_makejted_cz" {
-  zone_id = module.makejted_cz.zone.id
-  count   = 3
-  name = format(
-    "%s._domainkey.%s",
-    element(aws_ses_domain_dkim.ukolnicek_jamboree.dkim_tokens, count.index),
-    cloudflare_record.ukolnicek_makejted_cz.hostname,
-  )
-  type  = "CNAME"
-  value = "${element(aws_ses_domain_dkim.ukolnicek_jamboree.dkim_tokens, count.index)}.dkim.amazonses.com"
-}
-
-resource "cloudflare_record" "txt_spf_ukolnicek_makejted_cz" {
-  zone_id = module.makejted_cz.zone.id
-  name    = "ukolnicek"
-  type    = "TXT"
-  value   = "v=spf1 include:amazonses.com -all"
-}
