@@ -6,4 +6,4 @@ MODULE_NAME=$1
 ZONE_ID=$2
 
 terraform import module.${MODULE_NAME}.cloudflare_zone.zone ${ZONE_ID}
-terrafrom import module.${MODULE_NAME}.cloudflare_zone_dnssec.dnssec ${ZONE_ID}
+terraform import module.${MODULE_NAME}.cloudflare_zone_dnssec.dnssec ${ZONE_ID}
