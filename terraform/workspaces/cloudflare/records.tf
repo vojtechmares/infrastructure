@@ -321,3 +321,13 @@ resource "cloudflare_record" "txt_spf_panel_acaslab_com" {
 ##
 # DNS for makejted.cz
 ##
+
+##
+# DNS for vmpkg.com
+##
+resource "cloudflare_record" "helm_vmpkg_com" {
+  zone_id = module.vmpkg_com.zone.id
+  name    = "helm"
+  type    = "CNAME"
+  value   = "mareshq-helm-repository.s3-website.eu-central-1.amazonaws.com"
+}

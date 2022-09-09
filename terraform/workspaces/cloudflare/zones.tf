@@ -109,3 +109,10 @@ module "stepanka_net" {
 
   zone = "stepanka.net"
 }
+
+module "vmpkg_com" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "vmpkg.com"
+}
