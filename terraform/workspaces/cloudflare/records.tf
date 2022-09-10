@@ -325,11 +325,25 @@ resource "cloudflare_record" "github_pages_verification_docs_acaslab_com" {
   type    = "TXT"
 }
 
+resource "cloudflare_record" "github_pages_cname_docs_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  name    = "docs"
+  value   = "acaslab.github.io"
+  type    = "CNAME"
+}
+
 resource "cloudflare_record" "github_pages_verification_helm_acaslab_com" {
   zone_id = module.acaslab_com.zone.id
   name    = "_github-pages-challenge-acaslab.helm"
   value   = "68effa9228fb636650ad72187bfdba"
   type    = "TXT"
+}
+
+resource "cloudflare_record" "github_pages_cname_helm_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  name    = "helm"
+  value   = "acaslab.github.io"
+  type    = "CNAME"
 }
 
 ##
