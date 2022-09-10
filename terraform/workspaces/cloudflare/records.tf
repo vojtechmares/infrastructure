@@ -318,6 +318,13 @@ resource "cloudflare_record" "txt_spf_panel_acaslab_com" {
   value   = "v=spf1 include:amazonses.com -all"
 }
 
+resource "cloudflare_record" "github_pages_verification_docs_acaslab_com" {
+  zone_id = module.acaslab_com.zone.id
+  name    = "_github-pages-challenge-acaslab.docs"
+  value   = "0f6908ad28827680f8bef3ee774f8f"
+  type    = "TXT"
+}
+
 ##
 # DNS for makejted.cz
 ##
