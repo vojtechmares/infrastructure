@@ -4,12 +4,6 @@ module "vxm_cz_no_mail" {
   zone_id = module.vxm_cz.zone.id
 }
 
-module "mares_work_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = module.mares_work.zone.id
-}
-
 module "flakame_se_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"

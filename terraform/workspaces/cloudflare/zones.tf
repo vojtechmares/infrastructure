@@ -5,13 +5,6 @@ module "vxm_cz" {
   zone = "vxm.cz"
 }
 
-module "mares_work" {
-  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
-  version = "2.0.0"
-
-  zone = "mares.work"
-}
-
 module "mareshq_com" {
   source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
   version = "2.0.0"
