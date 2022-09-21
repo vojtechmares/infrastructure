@@ -91,3 +91,17 @@ resource "gitlab_group" "gitops_stepanka" {
 
   parent_id = gitlab_group.gitops.id
 }
+
+resource "gitlab_group" "work" {
+  name        = "Work"
+  path        = "work"
+  description = ""
+}
+
+resource "gitlab_group" "work_clients" {
+  name        = "Clients"
+  path        = "clients"
+  description = ""
+
+  parent_id = gitlab_group.work.id
+}
