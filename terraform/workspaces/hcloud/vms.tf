@@ -155,3 +155,41 @@ output "controlplane_bee_ip" {
     ipv6 = hcloud_server.controlplane_bee.ipv6_address,
   }
 }
+
+resource "hcloud_server" "nodes_bee_k8s" {
+  count = 3
+
+  name        = "node-${count.index}-bee-k8s"
+  image       = "ubuntu-22.04"
+  server_type = "cx41"
+  location    = "fsn1"
+  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
+  backups     = true
+}
+
+resource "cloudflare_record" "nodes_bee_k8s" {
+  count = length(hcloud_server.nodes_bee_k8s)
+
+  zone_id = local.vxm_cz_zone_id
+  name    = "node${count.index}.bee"
+  value   = hcloud_server.nodes_bee_k8s[count.index].ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "nodes_bee_k8s_v6" {
+  count = length(hcloud_server.nodes_bee_k8s)
+
+  zone_id = local.vxm_cz_zone_id
+  name    = "node${count.index}.bee"
+  value   = hcloud_server.nodes_bee_k8s[count.index].ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
+output "nodes_bee_k8s_ip" {
+  value = { for idx, node in hcloud_server.nodes_bee_k8s : idx => {
+    ipv4 = node.ipv4_address,
+    ipv6 = node.ipv6_address,
+  } }
+}
