@@ -4,18 +4,6 @@ module "vxm_cz_no_mail" {
   zone_id = module.vxm_cz.zone.id
 }
 
-module "flakame_se_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = module.flakame_se.zone.id
-}
-
-module "bf42_gg_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = module.bf42_gg.zone.id
-}
-
 module "vojtechmares_dev_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
@@ -187,14 +175,6 @@ resource "cloudflare_record" "registry_mareshq_com" {
   proxied = true
 }
 
-resource "cloudflare_record" "sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "sentry"
-  value   = "opossum.vxm.cz"
-  type    = "CNAME"
-  proxied = true
-}
-
 resource "cloudflare_record" "spf_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "@"
@@ -230,44 +210,9 @@ resource "cloudflare_record" "txt_spf_gitlab_mareshq_com" {
   value   = "v=spf1 include:amazonses.com -all"
 }
 
-# Sentry SES
-resource "cloudflare_record" "ses_verification_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "_amazonses.${aws_ses_domain_identity.sentry.id}"
-  type    = "TXT"
-  value   = aws_ses_domain_identity.sentry.verification_token
-}
-
-resource "cloudflare_record" "txt_dkim_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  count   = 3
-  name = format(
-    "%s._domainkey.%s",
-    element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index),
-    cloudflare_record.sentry_mareshq_com.hostname,
-  )
-  type  = "CNAME"
-  value = "${element(aws_ses_domain_dkim.sentry.dkim_tokens, count.index)}.dkim.amazonses.com"
-}
-
-resource "cloudflare_record" "txt_spf_sentry_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "sentry"
-  type    = "TXT"
-  value   = "v=spf1 include:amazonses.com -all"
-}
-
 ##
 # acaslab.com
 ##
-resource "cloudflare_record" "panel_flakame_se" {
-  zone_id = module.flakame_se.zone.id
-  name    = "panel"
-  value   = "alder.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
 resource "cloudflare_record" "panel_acaslab_com" {
   zone_id = module.acaslab_com.zone.id
   name    = "panel"
