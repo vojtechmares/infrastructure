@@ -83,46 +83,6 @@ resource "cloudflare_record" "catalpa_vxm_cz_v6" {
   proxied = false
 }
 
-resource "hcloud_server" "sentry" {
-  name        = "sentry"
-  image       = "ubuntu-20.04"
-  server_type = "cpx31"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
-  user_data   = file("files/docker.cloud-config.yml")
-
-  lifecycle {
-    prevent_destroy = true
-    ignore_changes = [
-      user_data
-    ]
-  }
-}
-
-resource "cloudflare_record" "opossum_vxm_cz" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "opossum"
-  value   = hcloud_server.sentry.ipv4_address
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "opossum_vxm_cz_v6" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "opossum"
-  value   = hcloud_server.sentry.ipv6_address
-  type    = "AAAA"
-  proxied = false
-}
-
-output "sentry_ip" {
-  value = {
-    ipv4 = hcloud_server.sentry.ipv4_address,
-    ipv6 = hcloud_server.sentry.ipv6_address,
-  }
-}
-
 # panel.flakame.se
 resource "hcloud_server" "alder" {
   name        = "alder"
