@@ -4,24 +4,6 @@ resource "hcloud_load_balancer" "bee_k8s" {
   location           = "fsn1"
 }
 
-resource "hcloud_load_balancer_target" "loris" {
-  type             = "ip"
-  load_balancer_id = hcloud_load_balancer.bee_k8s.id
-  ip               = "142.132.144.165"
-}
-
-resource "hcloud_load_balancer_target" "otary" {
-  type             = "ip"
-  load_balancer_id = hcloud_load_balancer.bee_k8s.id
-  ip               = "167.235.7.102"
-}
-
-resource "hcloud_load_balancer_target" "rhino" {
-  type             = "ip"
-  load_balancer_id = hcloud_load_balancer.bee_k8s.id
-  ip               = "167.235.7.101"
-}
-
 resource "hcloud_load_balancer_target" "nodes_bee_k8s" {
   count = length(hcloud_server.nodes_bee_k8s)
 
