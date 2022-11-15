@@ -22,6 +22,14 @@ resource "hcloud_load_balancer_target" "rhino" {
   ip               = "167.235.7.101"
 }
 
+resource "hcloud_load_balancer_target" "nodes_bee_k8s" {
+  count = length(hcloud_server.nodes_bee_k8s)
+
+  type             = "server"
+  server_id        = hcloud_server.nodes_bee_k8s[count.index].id
+  load_balancer_id = hcloud_load_balancer.bee_k8s.id
+}
+
 resource "hcloud_load_balancer_service" "tcp_80" {
   load_balancer_id = hcloud_load_balancer.bee_k8s.id
   protocol         = "tcp"
