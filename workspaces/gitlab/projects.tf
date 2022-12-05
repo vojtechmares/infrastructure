@@ -3,8 +3,7 @@
 ##
 
 module "mareshq_infra" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Infra"
   project_path = "infra"
@@ -14,8 +13,7 @@ module "mareshq_infra" {
 }
 
 module "mareshq_incident_response" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Incident Response"
   project_path = "incident-response"
@@ -25,8 +23,7 @@ module "mareshq_incident_response" {
 }
 
 module "mareshq_static_sites" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Internal Static Sites"
   project_path = "internal-static-sites"
@@ -36,8 +33,7 @@ module "mareshq_static_sites" {
 }
 
 module "mareshq_ansible" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Ansible"
   project_path = "ansible"
@@ -47,8 +43,7 @@ module "mareshq_ansible" {
 }
 
 module "mareshq_k3s_ansible" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "k3s Ansible"
   project_path = "k3s-ansible"
@@ -58,8 +53,7 @@ module "mareshq_k3s_ansible" {
 }
 
 module "ci" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "CI"
   project_path = "ci"
@@ -69,8 +63,7 @@ module "ci" {
 }
 
 module "ci_toolkit" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "CI Toolkit"
   project_path = "ci-toolkit"
@@ -80,8 +73,7 @@ module "ci_toolkit" {
 }
 
 module "tfm_gitlab_project" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "GitLab project"
   project_path = "gitlab-project"
@@ -91,8 +83,7 @@ module "tfm_gitlab_project" {
 }
 
 module "tfm_cloudflare_zone" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Cloudflare zone"
   project_path = "cloudflare-zone"
@@ -102,8 +93,7 @@ module "tfm_cloudflare_zone" {
 }
 
 module "tfm_gitlab_user" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "GitLab user"
   project_path = "gitlab-user"
@@ -113,8 +103,7 @@ module "tfm_gitlab_user" {
 }
 
 module "mareshq_gitops" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Ant"
   project_path = "ant"
@@ -124,8 +113,7 @@ module "mareshq_gitops" {
 }
 
 module "gitops_mareshq_fox" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Fox"
   project_path = "fox"
@@ -135,8 +123,7 @@ module "gitops_mareshq_fox" {
 }
 
 module "gitops_mareshq_bee" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Bee"
   project_path = "bee"
@@ -151,8 +138,7 @@ module "gitops_mareshq_bee" {
 
 ## GitOps / SkautDevs
 module "gitops_skautdevs_kissj" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "KISSJ"
   project_path = "kissj"
@@ -167,8 +153,7 @@ module "gitops_skautdevs_kissj" {
 
 ## Infrastructure / Terraform Modules / CI
 module "infra_tfmodules_ci" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "CI"
   project_path = "ci"
@@ -178,8 +163,7 @@ module "infra_tfmodules_ci" {
 }
 
 module "wsj_standup_discord_notification" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Standup Discord Notification"
   project_path = "standup-discord-notification"
@@ -193,8 +177,7 @@ module "wsj_standup_discord_notification" {
 ##
 
 module "stepanka_website" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-project/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-project/v1"
 
   project_name = "Website"
   project_path = "website"
