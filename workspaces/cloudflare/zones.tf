@@ -188,3 +188,21 @@ module "rancher_skoleni_cz" {
 
   zone = "rancher-skoleni.cz"
 }
+
+module "argorollouts_skoleni_cz" {
+  source = "./../../modules/cloudflare-zone/v1"
+
+  zone = "argorollouts-skoleni.cz"
+}
+
+module "argoworkflows_skoleni_cz" {
+  source = "./../../modules/cloudflare-zone/v1"
+
+  zone = "argoworkflows-skoleni.cz"
+}
+
+module "kubeflow_skoleni_cz" {
+  source = "./../../modules/cloudflare-zone/v1"
+
+  zone = "kubeflow-skoleni.cz"
+}

@@ -147,3 +147,21 @@ module "rancher_skoleni_cz_no_mail" {
   version = "1.0.0"
   zone_id = module.rancher_skoleni_cz.zone.id
 }
+
+module "kubeflow_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.kubeflow_skoleni_cz.zone.id
+}
+
+module "argorollouts_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.argorollouts_skoleni_cz.zone.id
+}
+
+module "argoworkflows_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.argoworkflows_skoleni_cz.zone.id
+}
