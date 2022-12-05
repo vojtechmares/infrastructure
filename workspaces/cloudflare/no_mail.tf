@@ -39,3 +39,111 @@ module "stepanka_net_no_mail" {
   version = "1.0.0"
   zone_id = module.stepanka_net.zone.id
 }
+
+module "devops_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.devops_skoleni_cz.zone.id
+}
+
+module "argocd_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.argocd_skoleni_cz.zone.id
+}
+
+module "terraform_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.terraform_skoleni_cz.zone.id
+}
+
+module "git_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.git_skoleni_cz.zone.id
+}
+
+module "gitlab_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.gitlab_skoleni_cz.zone.id
+}
+
+module "prometheus_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.prometheus_skoleni_cz.zone.id
+}
+
+module "kafka_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.kafka_skoleni_cz.zone.id
+}
+
+module "golang_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.golang_skoleni_cz.zone.id
+}
+
+module "go_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.go_skoleni_cz.zone.id
+}
+
+module "rust_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.rust_skoleni_cz.zone.id
+}
+
+module "dockerskoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.dockerskoleni_cz.zone.id
+}
+
+module "kubernetes_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.kubernetes_skoleni_cz.zone.id
+}
+
+module "k3s_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.k3s_skoleni_cz.zone.id
+}
+
+module "rke2_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.rke2_skoleni_cz.zone.id
+}
+
+module "eks_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.eks_skoleni_cz.zone.id
+}
+
+module "aks_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.aks_skoleni_cz.zone.id
+}
+
+module "gke_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.gke_skoleni_cz.zone.id
+}
+
+module "rancher_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = module.rancher_skoleni_cz.zone.id
+}
