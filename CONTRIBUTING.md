@@ -21,19 +21,11 @@ a.k.a how to contribute :)
 - Use pre-commit hooks so you don't commit non formatted code (`make setup-git-hooks && make tf-fmt`)
 - If you have committed and pushed misformatted code. Use commit type `style` to fix it
 
-### Modules
+## Modules
 
-Modules should not be created as a part of this repository since modules are inside GitLab subgroup ([MaresHQ / Terraform Modules](https://gitlab.mareshq.com/mareshq/terraform-modules)) with each module having it's own repository.
+Modules are located within `modules/` directory. Since the code base in monorepo, use directories to separate major versions like `v1`, `v2` etc. Example: `modules/cloudflare-zone/v1` with a breaking changes or just big changes, moves to `modules/cloudflare-zone/v2`.
 
-#### Why
-
-Modules are not stored as a part of this repository, because when using Terraform Cloud and modules are sourced with `../` path (they would be in `terraform/modules`) is not working.
-I am using [GitLab's Infrastructure Registry (Terraform Module Registry)](https://gitlab.mareshq.com/help/user/packages/terraform_module_registry/index.md).
-
-
-Yes, this makes this GitLab instance a single point of failure, I may migrate it in the future back to monorepo. But I wanted to try the module registry and [`semantic-release`](https://semantic-release.gitbook.io/semantic-release/) tool.
-
-### Workspaces
+## Workspaces
 
 Workspaces contain environment (app) specific code and acts as a "glue" to modules.
 
