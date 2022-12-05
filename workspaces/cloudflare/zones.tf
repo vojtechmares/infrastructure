@@ -182,3 +182,9 @@ module "gke_skoleni_cz" {
 
   zone = "gke-skoleni.cz"
 }
+
+module "rancher_skoleni_cz" {
+  source = "./../../modules/cloudflare-zone/v1"
+
+  zone = "rancher-skoleni.cz"
+}
