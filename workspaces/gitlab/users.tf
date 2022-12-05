@@ -3,8 +3,7 @@ data "gitlab_user" "vojtechmares" {
 }
 
 module "ondrejsika" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
-  version = "1.0.0"
+  source = "./../../modules/gitlab-user/v1"
 
   name     = "Ondřej Šika"
   username = "ondrejsika"
@@ -12,8 +11,7 @@ module "ondrejsika" {
 }
 
 module "tomasgrim" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
-  version = "1.0.0"
+  source = "./../../modules/gitlab-user/v1"
 
   name     = "Tomáš Grim"
   username = "tomasgrim"
@@ -21,8 +19,7 @@ module "tomasgrim" {
 }
 
 module "annaliebichova" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
-  version = "1.0.0"
+  source = "./../../modules/gitlab-user/v1"
 
   name     = "Anna Liebichova"
   username = "annaliebichova"
@@ -30,8 +27,7 @@ module "annaliebichova" {
 }
 
 module "lung" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-user/v1"
 
   name     = "Lung"
   username = "lung"
@@ -39,8 +35,7 @@ module "lung" {
 }
 
 module "michaelkaplan" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-user/v1"
 
   name     = "Michael Kaplan"
   username = "michaelkaplan"
@@ -48,8 +43,7 @@ module "michaelkaplan" {
 }
 
 module "tasartir" {
-  source  = "gitlab.mareshq.com/mareshq/gitlab-user/gitlab"
-  version = "2.0.0"
+  source = "./../../modules/gitlab-user/v1"
 
   name     = "Ondřej Korba"
   username = "tasartir"
