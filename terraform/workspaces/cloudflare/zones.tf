@@ -88,3 +88,124 @@ module "vmpkg_com" {
 
   zone = "vmpkg.com"
 }
+
+# Training microsites
+
+module "devops_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "devops-skoleni.cz"
+}
+
+module "argocd_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "argocd-skoleni.cz"
+}
+
+module "terraform_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "terraform-skoleni.cz"
+}
+
+module "git_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "git-skoleni.cz"
+}
+
+module "gitlab_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "gitlab-skoleni.cz"
+}
+
+module "prometheus_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "prometheus-skoleni.cz"
+}
+
+module "kafka_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "kafka-skoleni.cz"
+}
+
+module "golang_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "golang-skoleni.cz"
+}
+
+module "go_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "go-skoleni.cz"
+}
+
+module "rust_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "rust-skoleni.cz"
+}
+
+module "dockerskoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "dockerskoleni.cz"
+}
+
+module "kubernetes_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "kubernetes-skoleni.cz"
+}
+
+module "k3s_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "k3s-skoleni.cz"
+}
+
+module "rke2_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "rke2-skoleni.cz"
+}
+
+module "eks_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "eks-skoleni.cz"
+}
+
+module "aks_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "aks-skoleni.cz"
+}
+
+module "gke_skoleni_cz" {
+  source  = "gitlab.mareshq.com/mareshq/cloudflare-zone/cloudflare"
+  version = "2.0.0"
+
+  zone = "gke-skoleni.cz"
+}
