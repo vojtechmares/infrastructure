@@ -105,3 +105,9 @@ resource "gitlab_group" "work_clients" {
 
   parent_id = gitlab_group.work.id
 }
+
+resource "gitlab_group" "renovate" {
+  name        = "Renovate"
+  path        = "renovate"
+  description = "Renovate"
+}

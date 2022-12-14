@@ -195,3 +195,13 @@ module "stepanka_website" {
 
   project_namespace_id = gitlab_group.stepanka.id
 }
+
+module "renovate_runner" {
+  source = "./../../modules/gitlab-project/v1"
+
+  project_name = "Renovate Runner"
+  project_path = "renovate-runner"
+  project_desc = "Docs: https://docs.renovatebot.com"
+
+  project_namespace_id = gitlab_group.renovate.id
+}
