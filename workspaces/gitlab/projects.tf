@@ -72,6 +72,16 @@ module "ci_toolkit" {
   project_namespace_id = gitlab_group.mareshq.id
 }
 
+module "training_hub" {
+  source = "./../../modules/gitlab-project/v1"
+
+  project_name = "Training Hub"
+  project_path = "training-hub"
+  project_desc = "Training Hub"
+
+  project_namespace_id = gitlab_group.mareshq.id
+}
+
 module "tfm_gitlab_project" {
   source = "./../../modules/gitlab-project/v1"
 
