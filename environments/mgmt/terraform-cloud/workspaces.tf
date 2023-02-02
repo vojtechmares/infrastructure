@@ -5,8 +5,8 @@ resource "tfe_workspace" "terraform_cloud" {
   terraform_version = "~>1.3.4"
 }
 
-resource "tfe_workspace" "cloudflare" {
-  name              = "cloudflare"
+resource "tfe_workspace" "dns" {
+  name              = "dns"
   organization      = tfe_organization.vojtechmares.id
   execution_mode    = "local"
   terraform_version = "~>1.3.4"
