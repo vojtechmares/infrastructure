@@ -32,10 +32,3 @@ resource "tfe_workspace" "aws" {
   execution_mode    = "local"
   terraform_version = "~>1.3.4"
 }
-
-resource "tfe_workspace" "do" {
-  name              = "do"
-  organization      = tfe_organization.vojtechmares.id
-  execution_mode    = "local"
-  terraform_version = "~>1.3.4"
-}
