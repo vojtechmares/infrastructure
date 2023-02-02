@@ -1,12 +1,4 @@
 terraform {
-  backend "remote" {
-    organization = "vojtechmares"
-
-    workspaces {
-      name = "hcloud"
-    }
-  }
-
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"

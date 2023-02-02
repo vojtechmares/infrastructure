@@ -19,8 +19,8 @@ resource "tfe_workspace" "gitlab" {
   terraform_version = "~>1.3.4"
 }
 
-resource "tfe_workspace" "hcloud" {
-  name              = "hcloud"
+resource "tfe_workspace" "vm" {
+  name              = "vm"
   organization      = tfe_organization.vojtechmares.id
   execution_mode    = "local"
   terraform_version = "~>1.3.4"
