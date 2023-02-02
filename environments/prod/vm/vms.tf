@@ -123,6 +123,10 @@ resource "hcloud_server" "controlplane_bee" {
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
   backups     = true
+  labels = {
+    "k8s/cluster" = "bee"
+    "k8s/role"    = "master"
+  }
 }
 
 resource "cloudflare_record" "controlplane_bee" {
@@ -165,6 +169,10 @@ resource "hcloud_server" "nodes_bee_k8s" {
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
   backups     = true
+  labels = {
+    "k8s/cluster" = "bee"
+    "k8s/role"    = "worker"
+  }
 }
 
 resource "cloudflare_record" "nodes_bee_k8s" {
