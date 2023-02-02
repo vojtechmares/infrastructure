@@ -26,8 +26,8 @@ resource "tfe_workspace" "vm" {
   terraform_version = "~>1.3.4"
 }
 
-resource "tfe_workspace" "aws" {
-  name              = "aws"
+resource "tfe_workspace" "backup_storage" {
+  name              = "backup-storage"
   organization      = tfe_organization.vojtechmares.id
   execution_mode    = "local"
   terraform_version = "~>1.3.4"
