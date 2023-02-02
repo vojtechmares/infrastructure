@@ -1,9 +1,8 @@
-resource "tfe_organization" "vojtechmares" {
-  name  = "vojtechmares"
-  email = "iam@vojtechmares.com"
+data "tfe_organization" "vojtechmares" {
+  name = "vojtechmares"
 }
 
 resource "tfe_organization_membership" "ondrejsika2vojtechmares" {
-  organization = tfe_organization.vojtechmares.id
+  organization = data.tfe_organization.vojtechmares.name
   email        = "ondrej@ondrejsika.com"
 }
