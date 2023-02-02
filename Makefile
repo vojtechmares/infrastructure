@@ -1,7 +1,7 @@
 .PHONY: setup-git-hooks
 setup-git-hooks:
 	rm -rf .git/hooks
-	(cd .git && ln -s ../.git-hooks hooks)
+	(cd .git && ln -s ../scripts/git-hooks hooks)
 
 .PHONY: tf-fmt-check
 tf-fmt-check:
