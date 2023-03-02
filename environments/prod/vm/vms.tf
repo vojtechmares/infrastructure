@@ -161,7 +161,7 @@ output "controlplane_bee_ip" {
 }
 
 resource "hcloud_server" "nodes_bee_k8s" {
-  count = 3
+  count = 2
 
   name        = "node-${count.index}-bee-k8s"
   image       = "ubuntu-22.04"
