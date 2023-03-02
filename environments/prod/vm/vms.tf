@@ -168,7 +168,6 @@ resource "hcloud_server" "nodes_bee_k8s" {
   server_type = "cx41"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
   labels = {
     "k8s/cluster" = "bee"
     "k8s/role"    = "worker"
