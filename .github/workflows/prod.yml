@@ -4,9 +4,68 @@ on:
   push:
 
 jobs:
-  prod:
-    name: "Terraform"
+  prod-vm:
+    name: "Terraform: PROD VM"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: environments/prod/vm
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.3.6
+
+      - name: Terraform Format Check
+        id: fmt
+        run: terraform fmt -check -diff
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+  prod-dns:
+    name: "Terraform: PROD DNS"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: environments/prod/dns
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.3.6
+
+      - name: Terraform Format Check
+        id: fmt
+        run: terraform fmt -check -diff
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+  prod-backup:
+    name: "Terraform: PROD BACKUP STORAGE"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: environments/prod/backup-storage
 
     steps:
       - name: Checkout
