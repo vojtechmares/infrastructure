@@ -115,3 +115,90 @@ output "alder_ip" {
     ipv6 = hcloud_server.alder.ipv6_address,
   }
 }
+
+resource "hcloud_server" "db" {
+  name        = "db"
+  image       = "67794396" // Ubuntu 22.04 for x86
+  server_type = "cx11"
+  location    = "fsn1"
+  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
+  backups     = true
+
+  labels = {
+    "db" = "true"
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "cloudflare_record" "db_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "db"
+  value   = hcloud_server.db.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "db_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "db"
+  value   = hcloud_server.db.ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
+output "db_ip" {
+  value = {
+    ipv4 = hcloud_server.db.ipv4_address,
+    ipv6 = hcloud_server.db.ipv6_address,
+  }
+}
+
+resource "hcloud_server" "kiwi_k8s_nodes" {
+  count = 1
+
+  name        = "kiwi-k8s-node-${count.index}"
+  image       = "67794396" // Ubuntu 22.04 for x86
+  server_type = "cpx31"
+  location    = "fsn1"
+  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
+  backups     = true
+
+  labels = {
+    "k8s"         = "true"
+    "k8s/cluster" = "kiwi"
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "cloudflare_record" "kiwi_k8s_vxm_cz" {
+  count = length(hcloud_server.kiwi_k8s_nodes)
+
+  zone_id = local.vxm_cz_zone_id
+  name    = "node-${count.index}.kiwi.k8s"
+  value   = hcloud_server.kiwi_k8s_nodes[count.index].ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "kiwi_k8s_vxm_cz_v6" {
+  count = length(hcloud_server.kiwi_k8s_nodes)
+
+  zone_id = local.vxm_cz_zone_id
+  name    = "node-${count.index}.kiwi.k8s"
+  value   = hcloud_server.kiwi_k8s_nodes[count.index].ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
+output "kiwi_k8s_node_ip" {
+  value = {
+    ipv4 = hcloud_server.kiwi_k8s_nodes.*.ipv4_address,
+    ipv6 = hcloud_server.kiwi_k8s_nodes.*.ipv6_address,
+  }
+}
