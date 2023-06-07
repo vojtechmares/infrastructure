@@ -4,12 +4,12 @@ on:
   push:
 
 jobs:
-  prod-vm:
-    name: "Terraform: PROD VM"
+  prod-compute:
+    name: "Terraform: PROD COMPUTE"
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: environments/prod/vm
+        working-directory: environments/prod/compute
 
     steps:
       - name: Checkout
