@@ -118,7 +118,7 @@ output "alder_ip" {
 
 resource "hcloud_server" "db" {
   name        = "db"
-  image       = "76766499" // Rocky Linux 9 for x86
+  image       = "rocky-9"
   server_type = "cx11"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
