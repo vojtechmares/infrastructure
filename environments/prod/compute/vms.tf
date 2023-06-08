@@ -44,13 +44,6 @@ resource "cloudflare_record" "buffalo_vxm_cz_v6" {
   proxied = false
 }
 
-output "gitlab_ip" {
-  value = {
-    ipv4 = hcloud_server.gitlab.ipv4_address,
-    ipv6 = hcloud_server.gitlab.ipv6_address,
-  }
-}
-
 resource "hcloud_server" "gitlab_micro_runner" {
   name        = "gitlab-runner-micro"
   image       = "ubuntu-20.04"
@@ -107,13 +100,6 @@ resource "cloudflare_record" "alder_vxm_cz_v6" {
   value   = hcloud_server.alder.ipv6_address
   type    = "AAAA"
   proxied = false
-}
-
-output "alder_ip" {
-  value = {
-    ipv4 = hcloud_server.alder.ipv4_address,
-    ipv6 = hcloud_server.alder.ipv6_address,
-  }
 }
 
 resource "hcloud_server" "db" {
@@ -187,11 +173,4 @@ resource "cloudflare_record" "kiwi_k8s_vxm_cz_v6" {
   value   = hcloud_server.kiwi_k8s_nodes[count.index].ipv6_address
   type    = "AAAA"
   proxied = false
-}
-
-output "kiwi_k8s_node_ip" {
-  value = {
-    ipv4 = hcloud_server.kiwi_k8s_nodes.*.ipv4_address,
-    ipv6 = hcloud_server.kiwi_k8s_nodes.*.ipv6_address,
-  }
 }
