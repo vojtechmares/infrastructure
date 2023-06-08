@@ -149,18 +149,11 @@ resource "cloudflare_record" "db_vxm_cz_v6" {
   proxied = false
 }
 
-output "db_ip" {
-  value = {
-    ipv4 = hcloud_server.db.ipv4_address,
-    ipv6 = hcloud_server.db.ipv6_address,
-  }
-}
-
 resource "hcloud_server" "kiwi_k8s_nodes" {
   count = 1
 
   name        = "kiwi-k8s-node-${count.index}"
-  image       = "67794396" // Ubuntu 22.04 for x86
+  image       = "rocky-9"
   server_type = "cpx31"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
