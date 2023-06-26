@@ -102,35 +102,35 @@ resource "cloudflare_record" "alder_vxm_cz_v6" {
   proxied = false
 }
 
-resource "hcloud_server" "db" {
-  name        = "db"
+resource "hcloud_server" "postgres" {
+  name        = "postgres"
   image       = "rocky-9"
-  server_type = "cx11"
+  server_type = "cax11"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
   backups     = true
 
   labels = {
-    "db" = "true"
+    "arch" = "arm64"
   }
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 }
 
-resource "cloudflare_record" "db_vxm_cz" {
+resource "cloudflare_record" "postgres_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
-  name    = "db"
-  value   = hcloud_server.db.ipv4_address
+  name    = "postgres"
+  value   = hcloud_server.postgres.ipv4_address
   type    = "A"
   proxied = false
 }
 
-resource "cloudflare_record" "db_vxm_cz_v6" {
+resource "cloudflare_record" "postgres_vxm_cz_v6" {
   zone_id = local.vxm_cz_zone_id
-  name    = "db"
-  value   = hcloud_server.db.ipv6_address
+  name    = "postgres"
+  value   = hcloud_server.postgres.ipv6_address
   type    = "AAAA"
   proxied = false
 }
