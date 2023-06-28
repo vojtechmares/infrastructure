@@ -70,6 +70,22 @@ resource "cloudflare_record" "rhino_vxm_cz_v6" {
 # DNS for mareshq.com
 ##
 
+resource "cloudflare_record" "prometheus_ops_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "prometheus.ops"
+  value   = "prometheus.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
+resource "cloudflare_record" "alertmanager_ops_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "alertmanager.ops"
+  value   = "prometheus.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "all_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "all"
