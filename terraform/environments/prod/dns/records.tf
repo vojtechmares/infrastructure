@@ -69,42 +69,11 @@ resource "cloudflare_record" "rhino_vxm_cz_v6" {
 ##
 # DNS for mareshq.com
 ##
-resource "cloudflare_record" "cloud_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "cloud"
-  value   = "bee.k8s.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "wildcard_cloud_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "*.cloud"
-  value   = cloudflare_record.cloud_mareshq_com.hostname
-  type    = "CNAME"
-  proxied = false
-}
 
 resource "cloudflare_record" "all_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "all"
   value   = "panda.k8s.oxs.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "signpost_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "signpost"
-  value   = cloudflare_record.cloud_mareshq_com.hostname
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "infra_mareshq_com" {
-  zone_id = module.mareshq_com.zone.id
-  name    = "infra"
-  value   = cloudflare_record.cloud_mareshq_com.hostname
   type    = "CNAME"
   proxied = false
 }
