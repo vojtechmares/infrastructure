@@ -1,0 +1,36 @@
+---
+# yamllint disable rule:line-length
+argument_specs:
+  main:
+    short_description: "Deploy and manage Prometheus blackbox exporter"
+    description:
+      - "Deploy and manage Prometheus blackbox exporter which allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP."
+    author:
+      - "Prometheus Community"
+    options:
+      blackbox_exporter_version:
+        description: "Blackbox exporter package version"
+        default: "0.24.0"
+      blackbox_exporter_skip_install:
+        description: "Blackbox exporter installation tasks gets skipped when set to true."
+        type: bool
+        default: false
+      blackbox_exporter_binary_url:
+        description: "URL of the blackbox_exporter binaries .tar.gz file"
+        default: "https://github.com/{{ _blackbox_exporter_repo }}/releases/download/v{{ blackbox_exporter_version }}/blackbox_exporter-{{ blackbox_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+      blackbox_exporter_web_listen_address:
+        description: "Address on which blackbox exporter will be listening"
+        default: "0.0.0.0:9115"
+      blackbox_exporter_cli_flags:
+        description: "Additional configuration flags passed to blackbox exporter binary at startup"
+        type: "dict"
+      blackbox_exporter_configuration_modules:
+        description: "Endpoints configuration"
+        type: "dict"
+        default:
+          http_2xx:
+            prober: http
+            timeout: 5s
+            http:
+              method: GET
+              valid_status_codes: []

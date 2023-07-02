@@ -1,0 +1,40 @@
+prometheus:
+  hosts:
+    prom0:
+      ansible_host: prometheus.vxm.cz
+      ansible_user: root
+
+postgres:
+  hosts:
+    pg0:
+      ansible_host: postgres.vxm.cz
+      ansible_user: root
+
+bastion:
+  hosts:
+    bastion0:
+      ansible_host: bastion.vxm.cz
+      ansible_user: root
+
+arm64:
+  children:
+    postgres:
+    prometheus:
+
+db:
+  children:
+    postgres:
+
+pterodactyl:
+  children:
+    pterodactyl_panel:
+      hosts:
+        alder:
+          ansible_host: alder.vxm.cz
+          ansible_user: root
+
+    pterodactyl_wings:
+      hosts:
+        maple:
+          ansible_host: maple.vxm.cz
+          ansible_user: root

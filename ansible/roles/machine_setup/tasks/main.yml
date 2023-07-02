@@ -1,0 +1,45 @@
+---
+- name: Install packages (RedHat)
+  dnf:
+    pkg:
+      - vim
+      - zsh
+      - git
+      - curl
+      # - firewalld
+    state: latest
+    update_cache: yes
+  when: ansible_os_family == "RedHat"
+
+- name: Install epel-release (RedHat)
+  dnf:
+    name: epel-release
+    state: latest
+    update_cache: yes
+  when: ansible_os_family == "RedHat"
+  register: epel_release
+
+- name: Install htop (RedHat)
+  dnf:
+    name: htop
+    state: latest
+    update_cache: yes
+  when: ansible_os_family == "RedHat" and epel_release is successful
+
+- name: Install packages (Debian)
+  apt:
+    pkg:
+      - vim
+      - zsh
+      - git
+      - curl
+      - htop
+    state: latest
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: Set zsh as default shell for root
+  ansible.builtin.user:
+    name: root
+    shell: /bin/zsh
+  when: change_shell_to_zsh == True

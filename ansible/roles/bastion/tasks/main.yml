@@ -1,0 +1,9 @@
+---
+# TODO:
+## Security hardening
+# - create new user
+# - create new group
+# - add ssh key to user to authorized_keys
+# - give user sudo access
+# - disable root login
+# - disable password login
