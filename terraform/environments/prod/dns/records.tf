@@ -86,6 +86,14 @@ resource "cloudflare_record" "alertmanager_ops_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "grafana_ops_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "grafana.ops"
+  value   = "prometheus.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "all_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "all"

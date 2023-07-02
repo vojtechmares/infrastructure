@@ -113,7 +113,49 @@
             alertname: Watchdog
           receiver: null
 
-- name: Caddy for Prometheus, Alertmanager
+- name: Grafana
+  hosts: prometheus
+  become: true
+  roles:
+    - grafana.grafana.grafana
+  vars:
+    # grafana_use_provisioning: false
+    grafana_address: 172.16.1.3
+    grafana_port: 3000
+    grafana_url: "https://grafana.ops.mareshq.com/"
+    grafana_server:
+      enable_gzip: true
+    grafana_database:
+      type: sqlite3
+    grafana_security:
+      admin_user: admin
+      admin_password: admin
+    grafana_users:
+      allow_sign_up: false
+      # allow_org_create: true
+      # auto_assign_org: true
+      auto_assign_org_role: Viewer
+      # login_hint: "email or username"
+      default_theme: dark
+    grafana_alerting:
+      execute_alerts: false
+    grafana_datasources:
+      - name: "Prometheus"
+        type: "prometheus"
+        access: "proxy"
+        url: "http://172.16.1.3:9090"
+        isDefault: true
+        manageAlerts: false
+      - name: "Alertmanager"
+        type: "alertmanager"
+        access: "proxy"
+        url: "http://172.16.1.3:9093"
+        isDefault: false
+        jsonData:
+          implementation: prometheus
+          handleGrafanaManagedAlerts: true
+
+- name: Caddy for Prometheus, Alertmanager and Grafana
   hosts: prometheus
   become: true
   roles:
@@ -144,6 +186,14 @@
 
       alertmanager.ops.mareshq.com {
           reverse_proxy 172.16.1.3:9093
+
+          tls {
+              dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+          }
+      }
+
+      grafana.ops.mareshq.com {
+          reverse_proxy 172.16.1.3:3000
 
           tls {
               dns cloudflare {env.CLOUDFLARE_API_TOKEN}
