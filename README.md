@@ -11,3 +11,15 @@ Modules contain Terraform modules with a simple versioning scheme based on sub d
 #### Environments
 
 Environments contain general overview, like `mgmt` or `prod`. There is a one more directory level that separates resources for easier manipulation and keeping the state small for fast refreshes.
+
+### Ansible
+
+All of the Ansible magic lives here.
+
+#### Roles
+
+Ansible roles
+
+#### Files
+
+Files to be copied over to machines.
