@@ -121,6 +121,8 @@
   vars:
     caddy_version: 2.6.4
     caddy_systemd_capabilities_enabled: true
+    caddy_environment_files:
+      - /etc/caddy/.secrets.env
     caddy_packages:
       - github.com/caddy-dns/cloudflare
       - github.com/greenpau/caddy-security
@@ -134,10 +136,18 @@
 
       prometheus.ops.mareshq.com {
           reverse_proxy 172.16.1.3:9090
+
+          tls {
+              dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+          }
       }
 
       alertmanager.ops.mareshq.com {
           reverse_proxy 172.16.1.3:9093
+
+          tls {
+              dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+          }
       }
 
 # - name: Caddy for Pterodactyl Panel
