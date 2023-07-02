@@ -94,6 +94,14 @@ resource "cloudflare_record" "grafana_ops_mareshq_com" {
   proxied = true
 }
 
+resource "cloudflare_record" "signpost_mareshq_com" {
+  zone_id = module.mareshq_com.zone.id
+  name    = "signpost"
+  value   = "cname.vercel-dns.com."
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "all_mareshq_com" {
   zone_id = module.mareshq_com.zone.id
   name    = "all"
