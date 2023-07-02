@@ -1,4 +1,4 @@
-# Infra
+# Infrastructure
 
 ## Directory structure
 
