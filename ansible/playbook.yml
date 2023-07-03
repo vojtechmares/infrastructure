@@ -176,28 +176,26 @@
           }
       }
 
-      prometheus.ops.mareshq.com {
-          reverse_proxy 172.16.1.3:9090
-
+      (cloudflare_tls) {
           tls {
               dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+              resolvers 1.1.1.1
           }
+      }
+
+      prometheus.ops.mareshq.com {
+          reverse_proxy 172.16.1.3:9090
+          import cloudflare_tls
       }
 
       alertmanager.ops.mareshq.com {
           reverse_proxy 172.16.1.3:9093
-
-          tls {
-              dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-          }
+          import cloudflare_tls
       }
 
       grafana.ops.mareshq.com {
           reverse_proxy 172.16.1.3:3000
-
-          tls {
-              dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-          }
+          import cloudflare_tls
       }
 
 # - name: Caddy for Pterodactyl Panel
