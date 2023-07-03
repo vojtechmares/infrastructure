@@ -75,7 +75,7 @@ resource "cloudflare_record" "prometheus_ops_mareshq_com" {
   name    = "prometheus.ops"
   value   = "prometheus.vxm.cz"
   type    = "CNAME"
-  proxied = true
+  proxied = false
 }
 
 resource "cloudflare_record" "alertmanager_ops_mareshq_com" {
@@ -83,7 +83,7 @@ resource "cloudflare_record" "alertmanager_ops_mareshq_com" {
   name    = "alertmanager.ops"
   value   = "prometheus.vxm.cz"
   type    = "CNAME"
-  proxied = true
+  proxied = false
 }
 
 resource "cloudflare_record" "grafana_ops_mareshq_com" {
@@ -91,7 +91,7 @@ resource "cloudflare_record" "grafana_ops_mareshq_com" {
   name    = "grafana.ops"
   value   = "prometheus.vxm.cz"
   type    = "CNAME"
-  proxied = true
+  proxied = false
 }
 
 resource "cloudflare_record" "signpost_mareshq_com" {
