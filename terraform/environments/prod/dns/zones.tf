@@ -37,11 +37,6 @@ module "vojtechmares_dev" {
   zone = "vojtechmares.dev"
 }
 
-module "goplaintext_com" {
-  source = "./../../../modules/cloudflare-zone/v1"
-
-  zone = "goplaintext.com"
-}
 
 module "acaslab_com" {
   source = "./../../../modules/cloudflare-zone/v1"
