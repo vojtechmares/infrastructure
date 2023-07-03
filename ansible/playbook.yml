@@ -229,7 +229,13 @@
   roles:
     - postgres
   vars:
-    postgres_version: 15
+    postgresql_version: 15
+    postgresql_conf:
+      - listen_addresses: "'172.16.1.2, localhost'"
+      - port: 5432
+    postgresql_pg_hba_conf:
+      - host  all  all 172.16.0.0/12 scram-sha-256
+
 
 # - name: posgres exporter
 #   hosts: postgres
