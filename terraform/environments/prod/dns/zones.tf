@@ -61,12 +61,6 @@ module "maresdemo_com" {
   zone = "maresdemo.com"
 }
 
-module "planette_io" {
-  source = "./../../../modules/cloudflare-zone/v1"
-
-  zone = "planette.io"
-}
-
 module "stepanka_net" {
   source = "./../../../modules/cloudflare-zone/v1"
 

@@ -16,12 +16,6 @@ module "goplaintext_com_no_mail" {
   zone_id = module.goplaintext_com.zone.id
 }
 
-module "planette_io_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = module.planette_io.zone.id
-}
-
 module "maresdemo_com_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
