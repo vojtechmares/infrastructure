@@ -213,10 +213,6 @@ resource "cloudflare_record" "github_pages_cname_helm_acaslab_com" {
 }
 
 ##
-# DNS for makejted.cz
-##
-
-##
 # DNS for vmpkg.com
 ##
 resource "cloudflare_record" "helm_vmpkg_com" {
