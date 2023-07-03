@@ -1,5 +1,6 @@
 resource "cloudflare_zone" "vxm_cz" {
-  zone = "vxm.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "vxm.cz"
 }
 
 resource "cloudflare_zone_dnssec" "vxm_cz" {
@@ -16,7 +17,8 @@ resource "cloudflare_zone_settings_override" "vxm_cz" {
 }
 
 resource "cloudflare_zone" "mareshq_com" {
-  zone = "mareshq.com"
+  account_id = local.cloudflare_account_id
+  zone       = "mareshq.com"
 }
 
 resource "cloudflare_zone_dnssec" "mareshq_com" {
@@ -33,6 +35,7 @@ resource "cloudflare_zone_settings_override" "mareshq_com" {
 }
 
 # resource "cloudflare_zone" "vojtamares_com" {
+#   account_id = local.cloudflare_account_id
 #   zone = "vojtamares.com"
 # }
 #
@@ -54,7 +57,8 @@ resource "cloudflare_zone_settings_override" "mareshq_com" {
 # }
 
 resource "cloudflare_zone" "vojtechmares_dev" {
-  zone = "vojtechmares.dev"
+  account_id = local.cloudflare_account_id
+  zone       = "vojtechmares.dev"
 }
 
 resource "cloudflare_zone_dnssec" "vojtechmares_dev" {
@@ -71,7 +75,8 @@ resource "cloudflare_zone_settings_override" "vojtechmares_dev" {
 }
 
 resource "cloudflare_zone" "acaslab_com" {
-  zone = "acaslab.com"
+  account_id = local.cloudflare_account_id
+  zone       = "acaslab.com"
 }
 
 resource "cloudflare_zone_dnssec" "acaslab_com" {
@@ -88,7 +93,8 @@ resource "cloudflare_zone_settings_override" "acaslab_com" {
 }
 
 resource "cloudflare_zone" "vojtechmares_blog" {
-  zone = "vojtechmares.blog"
+  account_id = local.cloudflare_account_id
+  zone       = "vojtechmares.blog"
 }
 
 resource "cloudflare_zone_dnssec" "vojtechmares_blog" {
@@ -105,7 +111,8 @@ resource "cloudflare_zone_settings_override" "vojtechmares_blog" {
 }
 
 resource "cloudflare_zone" "maresdemo_com" {
-  zone = "maresdemo.com"
+  account_id = local.cloudflare_account_id
+  zone       = "maresdemo.com"
 }
 
 resource "cloudflare_zone_dnssec" "maresdemo_com" {
@@ -122,7 +129,8 @@ resource "cloudflare_zone_settings_override" "maresdemo_com" {
 }
 
 resource "cloudflare_zone" "stepanka_net" {
-  zone = "stepanka.net"
+  account_id = local.cloudflare_account_id
+  zone       = "stepanka.net"
 }
 
 resource "cloudflare_zone_dnssec" "stepanka_net" {
@@ -139,7 +147,8 @@ resource "cloudflare_zone_settings_override" "stepanka_net" {
 }
 
 resource "cloudflare_zone" "vmpkg_com" {
-  zone = "vmpkg.com"
+  account_id = local.cloudflare_account_id
+  zone       = "vmpkg.com"
 }
 
 resource "cloudflare_zone_dnssec" "vmpkg_com" {
@@ -158,7 +167,8 @@ resource "cloudflare_zone_settings_override" "vmpkg_com" {
 # Training microsites
 
 resource "cloudflare_zone" "devops_skoleni_cz" {
-  zone = "devops-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "devops-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "devops_skoleni_cz" {
@@ -175,7 +185,8 @@ resource "cloudflare_zone_settings_override" "devops_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "argocd_skoleni_cz" {
-  zone = "argocd-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "argocd-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "argocd_skoleni_cz" {
@@ -192,7 +203,8 @@ resource "cloudflare_zone_settings_override" "argocd_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "terraform_skoleni_cz" {
-  zone = "terraform-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "terraform-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "terraform_skoleni_cz" {
@@ -209,7 +221,8 @@ resource "cloudflare_zone_settings_override" "terraform_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "git_skoleni_cz" {
-  zone = "git-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "git-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "git_skoleni_cz" {
@@ -226,7 +239,8 @@ resource "cloudflare_zone_settings_override" "git_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "gitlab_skoleni_cz" {
-  zone = "gitlab-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "gitlab-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "gitlab_skoleni_cz" {
@@ -243,7 +257,8 @@ resource "cloudflare_zone_settings_override" "gitlab_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "prometheus_skoleni_cz" {
-  zone = "prometheus-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "prometheus-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "prometheus_skoleni_cz" {
@@ -261,7 +276,8 @@ resource "cloudflare_zone_settings_override" "prometheus_skoleni_cz" {
 
 
 resource "cloudflare_zone" "kafka_skoleni_cz" {
-  zone = "kafka-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "kafka-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "kafka_skoleni_cz" {
@@ -278,7 +294,8 @@ resource "cloudflare_zone_settings_override" "kafka_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "golang_skoleni_cz" {
-  zone = "golang-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "golang-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "golang_skoleni_cz" {
@@ -295,7 +312,8 @@ resource "cloudflare_zone_settings_override" "golang_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "go_skoleni_cz" {
-  zone = "go-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "go-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "go_skoleni_cz" {
@@ -312,7 +330,8 @@ resource "cloudflare_zone_settings_override" "go_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "rust_skoleni_cz" {
-  zone = "rust-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "rust-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "rust_skoleni_cz" {
@@ -329,7 +348,8 @@ resource "cloudflare_zone_settings_override" "rust_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "dockerskoleni_cz" {
-  zone = "dockerskoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "dockerskoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "dockerskoleni_cz" {
@@ -346,7 +366,8 @@ resource "cloudflare_zone_settings_override" "dockerskoleni_cz" {
 }
 
 resource "cloudflare_zone" "kubernetes_skoleni_cz" {
-  zone = "kubernetes-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "kubernetes-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "kubernetes_skoleni_cz" {
@@ -363,7 +384,8 @@ resource "cloudflare_zone_settings_override" "kubernetes_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "k3s_skoleni_cz" {
-  zone = "k3s-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "k3s-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "k3s_skoleni_cz" {
@@ -380,7 +402,8 @@ resource "cloudflare_zone_settings_override" "k3s_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "rke2_skoleni_cz" {
-  zone = "rke2-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "rke2-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "rke2_skoleni_cz" {
@@ -397,7 +420,8 @@ resource "cloudflare_zone_settings_override" "rke2_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "eks_skoleni_cz" {
-  zone = "eks-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "eks-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "eks_skoleni_cz" {
@@ -414,7 +438,8 @@ resource "cloudflare_zone_settings_override" "eks_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "aks_skoleni_cz" {
-  zone = "aks-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "aks-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "aks_skoleni_cz" {
@@ -431,7 +456,8 @@ resource "cloudflare_zone_settings_override" "aks_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "gke_skoleni_cz" {
-  zone = "gke-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "gke-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "gke_skoleni_cz" {
@@ -448,7 +474,8 @@ resource "cloudflare_zone_settings_override" "gke_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "rancher_skoleni_cz" {
-  zone = "rancher-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "rancher-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "rancher_skoleni_cz" {
@@ -465,7 +492,8 @@ resource "cloudflare_zone_settings_override" "rancher_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "argorollouts_skoleni_cz" {
-  zone = "argorollouts-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "argorollouts-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "argorollouts_skoleni_cz" {
@@ -482,7 +510,8 @@ resource "cloudflare_zone_settings_override" "argorollouts_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "argoworkflows_skoleni_cz" {
-  zone = "argoworkflows-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "argoworkflows-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "argoworkflows_skoleni_cz" {
@@ -499,7 +528,8 @@ resource "cloudflare_zone_settings_override" "argoworkflows_skoleni_cz" {
 }
 
 resource "cloudflare_zone" "kubeflow_skoleni_cz" {
-  zone = "kubeflow-skoleni.cz"
+  account_id = local.cloudflare_account_id
+  zone       = "kubeflow-skoleni.cz"
 }
 
 resource "cloudflare_zone_dnssec" "kubeflow_skoleni_cz" {
