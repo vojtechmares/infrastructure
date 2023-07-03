@@ -12,13 +12,6 @@ resource "tfe_workspace" "dns" {
   terraform_version = "~>1.3.4"
 }
 
-resource "tfe_workspace" "gitlab" {
-  name              = "gitlab"
-  organization      = data.tfe_organization.vojtechmares.name
-  execution_mode    = "local"
-  terraform_version = "~>1.3.4"
-}
-
 resource "tfe_workspace" "vm" {
   name              = "vm"
   organization      = data.tfe_organization.vojtechmares.name
