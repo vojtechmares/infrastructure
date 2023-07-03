@@ -215,23 +215,3 @@ resource "cloudflare_record" "github_pages_cname_helm_acaslab_com" {
 ##
 # DNS for vmpkg.com
 ##
-resource "cloudflare_record" "helm_vmpkg_com" {
-  zone_id = module.vmpkg_com.zone.id
-  name    = "helm"
-  type    = "CNAME"
-  value   = "mareshq-helm-repository.s3-website.eu-central-1.amazonaws.com"
-}
-
-resource "cloudflare_record" "docker_vmpkg_com" {
-  zone_id = module.vmpkg_com.zone.id
-  name    = "docker"
-  type    = "CNAME"
-  value   = "bee.k8s.vxm.cz"
-}
-
-resource "cloudflare_record" "private_docker_vmpkg_com" {
-  zone_id = module.vmpkg_com.zone.id
-  name    = "private.docker"
-  type    = "CNAME"
-  value   = "bee.k8s.vxm.cz"
-}
