@@ -1,13 +1,35 @@
-module "vxm_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
-
+resource "cloudflare_zone" "vxm_cz" {
   zone = "vxm.cz"
 }
 
-module "mareshq_com" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "vxm_cz" {
+  zone_id = cloudflare_zone.vxm_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "vxm_cz" {
+  zone_id = cloudflare_zone.vxm_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "mareshq_com" {
   zone = "mareshq.com"
+}
+
+resource "cloudflare_zone_dnssec" "mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+}
+
+resource "cloudflare_zone_settings_override" "mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
 }
 
 # resource "cloudflare_zone" "vojtamares_com" {
@@ -31,167 +53,464 @@ module "mareshq_com" {
 #   value = cloudflare_zone.vojtamares_com.name_servers
 # }
 
-module "vojtechmares_dev" {
-  source = "./../../../modules/cloudflare-zone/v1"
-
+resource "cloudflare_zone" "vojtechmares_dev" {
   zone = "vojtechmares.dev"
 }
 
+resource "cloudflare_zone_dnssec" "vojtechmares_dev" {
+  zone_id = cloudflare_zone.vojtechmares_dev.id
+}
 
-module "acaslab_com" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_settings_override" "vojtechmares_dev" {
+  zone_id = cloudflare_zone.vojtechmares_dev.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
 
+resource "cloudflare_zone" "acaslab_com" {
   zone = "acaslab.com"
 }
 
-module "vojtechmares_blog" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "acaslab_com" {
+  zone_id = cloudflare_zone.acaslab_com.id
+}
 
+resource "cloudflare_zone_settings_override" "acaslab_com" {
+  zone_id = cloudflare_zone.acaslab_com.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "vojtechmares_blog" {
   zone = "vojtechmares.blog"
 }
 
-module "maresdemo_com" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "vojtechmares_blog" {
+  zone_id = cloudflare_zone.vojtechmares_blog.id
+}
 
+resource "cloudflare_zone_settings_override" "vojtechmares_blog" {
+  zone_id = cloudflare_zone.vojtechmares_blog.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "maresdemo_com" {
   zone = "maresdemo.com"
 }
 
-module "stepanka_net" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "maresdemo_com" {
+  zone_id = cloudflare_zone.maresdemo_com.id
+}
 
+resource "cloudflare_zone_settings_override" "maresdemo_com" {
+  zone_id = cloudflare_zone.maresdemo_com.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "stepanka_net" {
   zone = "stepanka.net"
 }
 
-module "vmpkg_com" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "stepanka_net" {
+  zone_id = cloudflare_zone.stepanka_net.id
+}
 
+resource "cloudflare_zone_settings_override" "stepanka_net" {
+  zone_id = cloudflare_zone.stepanka_net.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "vmpkg_com" {
   zone = "vmpkg.com"
+}
+
+resource "cloudflare_zone_dnssec" "vmpkg_com" {
+  zone_id = cloudflare_zone.vmpkg_com.id
+}
+
+resource "cloudflare_zone_settings_override" "vmpkg_com" {
+  zone_id = cloudflare_zone.vmpkg_com.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
 }
 
 # Training microsites
 
-module "devops_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
-
+resource "cloudflare_zone" "devops_skoleni_cz" {
   zone = "devops-skoleni.cz"
 }
 
-module "argocd_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "devops_skoleni_cz" {
+  zone_id = cloudflare_zone.devops_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "devops_skoleni_cz" {
+  zone_id = cloudflare_zone.devops_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "argocd_skoleni_cz" {
   zone = "argocd-skoleni.cz"
 }
 
-module "terraform_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "argocd_skoleni_cz" {
+  zone_id = cloudflare_zone.argocd_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "argocd_skoleni_cz" {
+  zone_id = cloudflare_zone.argocd_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "terraform_skoleni_cz" {
   zone = "terraform-skoleni.cz"
 }
 
-module "git_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "terraform_skoleni_cz" {
+  zone_id = cloudflare_zone.terraform_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "terraform_skoleni_cz" {
+  zone_id = cloudflare_zone.terraform_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "git_skoleni_cz" {
   zone = "git-skoleni.cz"
 }
 
-module "gitlab_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "git_skoleni_cz" {
+  zone_id = cloudflare_zone.git_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "git_skoleni_cz" {
+  zone_id = cloudflare_zone.git_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "gitlab_skoleni_cz" {
   zone = "gitlab-skoleni.cz"
 }
 
-module "prometheus_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "gitlab_skoleni_cz" {
+  zone_id = cloudflare_zone.gitlab_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "gitlab_skoleni_cz" {
+  zone_id = cloudflare_zone.gitlab_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "prometheus_skoleni_cz" {
   zone = "prometheus-skoleni.cz"
 }
 
-module "kafka_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "prometheus_skoleni_cz" {
+  zone_id = cloudflare_zone.prometheus_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "prometheus_skoleni_cz" {
+  zone_id = cloudflare_zone.prometheus_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+
+resource "cloudflare_zone" "kafka_skoleni_cz" {
   zone = "kafka-skoleni.cz"
 }
 
-module "golang_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "kafka_skoleni_cz" {
+  zone_id = cloudflare_zone.kafka_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "kafka_skoleni_cz" {
+  zone_id = cloudflare_zone.kafka_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "golang_skoleni_cz" {
   zone = "golang-skoleni.cz"
 }
 
-module "go_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "golang_skoleni_cz" {
+  zone_id = cloudflare_zone.golang_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "golang_skoleni_cz" {
+  zone_id = cloudflare_zone.golang_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "go_skoleni_cz" {
   zone = "go-skoleni.cz"
 }
 
-module "rust_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "go_skoleni_cz" {
+  zone_id = cloudflare_zone.go_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "go_skoleni_cz" {
+  zone_id = cloudflare_zone.go_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "rust_skoleni_cz" {
   zone = "rust-skoleni.cz"
 }
 
-module "dockerskoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "rust_skoleni_cz" {
+  zone_id = cloudflare_zone.rust_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "rust_skoleni_cz" {
+  zone_id = cloudflare_zone.rust_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "dockerskoleni_cz" {
   zone = "dockerskoleni.cz"
 }
 
-module "kubernetes_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "dockerskoleni_cz" {
+  zone_id = cloudflare_zone.dockerskoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "dockerskoleni_cz" {
+  zone_id = cloudflare_zone.dockerskoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "kubernetes_skoleni_cz" {
   zone = "kubernetes-skoleni.cz"
 }
 
-module "k3s_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "kubernetes_skoleni_cz" {
+  zone_id = cloudflare_zone.kubernetes_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "kubernetes_skoleni_cz" {
+  zone_id = cloudflare_zone.kubernetes_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "k3s_skoleni_cz" {
   zone = "k3s-skoleni.cz"
 }
 
-module "rke2_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "k3s_skoleni_cz" {
+  zone_id = cloudflare_zone.k3s_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "k3s_skoleni_cz" {
+  zone_id = cloudflare_zone.k3s_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "rke2_skoleni_cz" {
   zone = "rke2-skoleni.cz"
 }
 
-module "eks_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "rke2_skoleni_cz" {
+  zone_id = cloudflare_zone.rke2_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "rke2_skoleni_cz" {
+  zone_id = cloudflare_zone.rke2_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "eks_skoleni_cz" {
   zone = "eks-skoleni.cz"
 }
 
-module "aks_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "eks_skoleni_cz" {
+  zone_id = cloudflare_zone.eks_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "eks_skoleni_cz" {
+  zone_id = cloudflare_zone.eks_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "aks_skoleni_cz" {
   zone = "aks-skoleni.cz"
 }
 
-module "gke_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "aks_skoleni_cz" {
+  zone_id = cloudflare_zone.aks_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "aks_skoleni_cz" {
+  zone_id = cloudflare_zone.aks_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "gke_skoleni_cz" {
   zone = "gke-skoleni.cz"
 }
 
-module "rancher_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "gke_skoleni_cz" {
+  zone_id = cloudflare_zone.gke_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "gke_skoleni_cz" {
+  zone_id = cloudflare_zone.gke_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "rancher_skoleni_cz" {
   zone = "rancher-skoleni.cz"
 }
 
-module "argorollouts_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "rancher_skoleni_cz" {
+  zone_id = cloudflare_zone.rancher_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "rancher_skoleni_cz" {
+  zone_id = cloudflare_zone.rancher_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "argorollouts_skoleni_cz" {
   zone = "argorollouts-skoleni.cz"
 }
 
-module "argoworkflows_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "argorollouts_skoleni_cz" {
+  zone_id = cloudflare_zone.argorollouts_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "argorollouts_skoleni_cz" {
+  zone_id = cloudflare_zone.argorollouts_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "argoworkflows_skoleni_cz" {
   zone = "argoworkflows-skoleni.cz"
 }
 
-module "kubeflow_skoleni_cz" {
-  source = "./../../../modules/cloudflare-zone/v1"
+resource "cloudflare_zone_dnssec" "argoworkflows_skoleni_cz" {
+  zone_id = cloudflare_zone.argoworkflows_skoleni_cz.id
+}
 
+resource "cloudflare_zone_settings_override" "argoworkflows_skoleni_cz" {
+  zone_id = cloudflare_zone.argoworkflows_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
+resource "cloudflare_zone" "kubeflow_skoleni_cz" {
   zone = "kubeflow-skoleni.cz"
+}
+
+resource "cloudflare_zone_dnssec" "kubeflow_skoleni_cz" {
+  zone_id = cloudflare_zone.kubeflow_skoleni_cz.id
+}
+
+resource "cloudflare_zone_settings_override" "kubeflow_skoleni_cz" {
+  zone_id = cloudflare_zone.kubeflow_skoleni_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
 }
