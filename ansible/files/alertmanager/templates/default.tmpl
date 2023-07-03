@@ -2,7 +2,8 @@
 {{ range .Alerts -}}
   *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
   *Description:* {{ .Annotations.description }}
-  *Details:*{{ range .Labels.SortedPairs }}\n    • *{{ .Name }}:* `{{ .Value }}`{{ end }}
+  *Details:*
+    {{ range .Labels.SortedPairs }}• *{{ .Name }}:* `{{ .Value }}`{{ end }}
 {{ end }}
 {{ end }}
 
