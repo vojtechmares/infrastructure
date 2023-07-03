@@ -164,6 +164,24 @@ resource "cloudflare_zone_settings_override" "vmpkg_com" {
   }
 }
 
+resource "cloudflare_zone" "planette_io" {
+  account_id = local.cloudflare_account_id
+  zone       = "planette.io"
+}
+
+resource "cloudflare_zone_dnssec" "planette_io" {
+  zone_id = cloudflare_zone.planette_io.id
+}
+
+resource "cloudflare_zone_settings_override" "planette_io" {
+  zone_id = cloudflare_zone.planette_io.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
 # Training microsites
 
 resource "cloudflare_zone" "devops_skoleni_cz" {

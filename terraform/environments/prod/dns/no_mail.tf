@@ -28,6 +28,12 @@ module "stepanka_net_no_mail" {
   zone_id = cloudflare_zone.stepanka_net.id
 }
 
+module "planette_io_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.planette_io.id
+}
+
 module "devops_skoleni_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
