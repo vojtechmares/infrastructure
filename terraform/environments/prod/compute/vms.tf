@@ -155,13 +155,21 @@ resource "hcloud_server" "kiwi_k8s_nodes" {
   }
 }
 
-resource "cloudflare_record" "kiwi_k8s_vxm_cz" {
+resource "cloudflare_record" "nodes_kiwi_k8s_vxm_cz" {
   count = length(hcloud_server.kiwi_k8s_nodes)
 
   zone_id = local.vxm_cz_zone_id
   name    = "node-${count.index}.kiwi.k8s"
   value   = hcloud_server.kiwi_k8s_nodes[count.index].ipv4_address
   type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "kiwi_k8s_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "kiwi.k8s"
+  value   = cloudflare_record.nodes_kiwi_k8s_vxm_cz[0].hostname
+  type    = "CNAME"
   proxied = false
 }
 
