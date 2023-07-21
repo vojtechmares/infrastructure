@@ -102,6 +102,14 @@ resource "cloudflare_record" "registry_mareshq_com" {
   proxied = true
 }
 
+resource "cloudflare_record" "rancher_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "rancher"
+  value   = "rancher.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "spf_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "@"
