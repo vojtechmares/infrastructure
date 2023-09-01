@@ -136,7 +136,7 @@ resource "cloudflare_record" "postgres_vxm_cz_v6" {
 }
 
 resource "hcloud_server" "kiwi_k8s_nodes" {
-  count = 1
+  count = 2
 
   name        = "kiwi-k8s-node-${count.index}"
   image       = "rocky-9"
@@ -162,24 +162,6 @@ resource "cloudflare_record" "nodes_kiwi_k8s_vxm_cz" {
   name    = "node-${count.index}.kiwi.k8s"
   value   = hcloud_server.kiwi_k8s_nodes[count.index].ipv4_address
   type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "kiwi_k8s_vxm_cz" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "kiwi.k8s"
-  value   = cloudflare_record.nodes_kiwi_k8s_vxm_cz[0].hostname
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "kiwi_k8s_vxm_cz_v6" {
-  count = length(hcloud_server.kiwi_k8s_nodes)
-
-  zone_id = local.vxm_cz_zone_id
-  name    = "node-${count.index}.kiwi.k8s"
-  value   = hcloud_server.kiwi_k8s_nodes[count.index].ipv6_address
-  type    = "AAAA"
   proxied = false
 }
 
