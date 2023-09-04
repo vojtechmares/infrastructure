@@ -118,6 +118,14 @@ resource "cloudflare_record" "rancher_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "cdn_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "cdn"
+  value   = "vojtechmares.github.io"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "spf_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "@"
