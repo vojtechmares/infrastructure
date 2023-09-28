@@ -118,6 +118,14 @@ resource "cloudflare_record" "cdn_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "argocd_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "argocd"
+  value   = "shrike.lb.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "spf_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "@"
