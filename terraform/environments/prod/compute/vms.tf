@@ -229,36 +229,3 @@ resource "cloudflare_record" "bastion_vxm_cz_v6" {
   type    = "AAAA"
   proxied = false
 }
-
-resource "hcloud_server" "rancher" {
-  name        = "rancher"
-  image       = "debian-12"
-  server_type = "cax21"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
-
-  labels = {
-    "arch" = "arm64"
-  }
-
-  # lifecycle {
-  #   prevent_destroy = true
-  # }
-}
-
-resource "cloudflare_record" "rancher_vxm_cz" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "rancher"
-  value   = hcloud_server.rancher.ipv4_address
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "rancher_vxm_cz_v6" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "rancher"
-  value   = hcloud_server.rancher.ipv6_address
-  type    = "AAAA"
-  proxied = false
-}

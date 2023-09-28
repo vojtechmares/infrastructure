@@ -42,9 +42,3 @@ resource "hcloud_server_network" "kiwi_k8s_nodes_to_private" {
   subnet_id = hcloud_network_subnet.kiwi_k8s_nodes.id
   ip        = cidrhost(hcloud_network_subnet.kiwi_k8s_nodes.ip_range, count.index + 1)
 }
-
-resource "hcloud_server_network" "rancher_to_private" {
-  server_id = hcloud_server.rancher.id
-  subnet_id = hcloud_network_subnet.standalone_machines.id
-  ip        = cidrhost(hcloud_network_subnet.standalone_machines.ip_range, 4)
-}
