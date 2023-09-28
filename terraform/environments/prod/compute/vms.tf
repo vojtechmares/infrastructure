@@ -229,3 +229,40 @@ resource "cloudflare_record" "bastion_vxm_cz_v6" {
   type    = "AAAA"
   proxied = false
 }
+
+resource "hcloud_server" "k8s_cherry_nodes" {
+  count = 3
+
+  name        = "k8s-cherry-${count.index}"
+  image       = "rocky-9"
+  server_type = "cax21"
+  location    = "fsn1"
+  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
+
+  labels = {
+    "arch"        = "arm64"
+    "k8s"         = "true"
+    "k8s/cluster" = "cherry"
+    "env"         = "production"
+  }
+}
+
+resource "cloudflare_record" "cherry_nodes_k8s_vxm_cz" {
+  count = length(hcloud_server.k8s_cherry_nodes)
+
+  zone_id = local.vxm_cz_zone_id
+  name    = "cherry-${count.index}.k8s"
+  value   = hcloud_server.k8s_cherry_nodes[count.index].ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "cherry_nodes_k8s_vxm_cz_v6" {
+  count = length(hcloud_server.k8s_cherry_nodes)
+
+  zone_id = local.vxm_cz_zone_id
+  name    = "cherry-${count.index}.k8s"
+  value   = hcloud_server.k8s_cherry_nodes[count.index].ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
