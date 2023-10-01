@@ -134,6 +134,14 @@ resource "cloudflare_record" "status_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "vault_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "vault"
+  value   = "shrike.lb.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "spf_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "@"
