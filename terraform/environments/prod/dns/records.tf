@@ -118,9 +118,9 @@ resource "cloudflare_record" "cdn_mareshq_com" {
   proxied = false
 }
 
-resource "cloudflare_record" "argocd_mareshq_com" {
+resource "cloudflare_record" "argocd_ops_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
-  name    = "argocd"
+  name    = "argocd.ops"
   value   = "shrike.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
