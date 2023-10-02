@@ -137,27 +137,27 @@ resource "hcloud_load_balancer" "magpie" {
   }
 }
 
-resource "hcloud_load_balancer_target" "k8s_olive_nodes" {
-  count = length(hcloud_server.k8s_olive_nodes)
+resource "hcloud_load_balancer_target" "k8s_lychee_nodes" {
+  count = length(hcloud_server.k8s_lychee_nodes)
 
   type             = "server"
-  server_id        = hcloud_server.k8s_olive_nodes[count.index].id
+  server_id        = hcloud_server.k8s_lychee_nodes[count.index].id
   load_balancer_id = hcloud_load_balancer.magpie.id
 }
 
-resource "hcloud_load_balancer_service" "k8s_olive_nodes_tcp_80" {
+resource "hcloud_load_balancer_service" "k8s_lychee_nodes_tcp_80" {
   load_balancer_id = hcloud_load_balancer.magpie.id
   protocol         = "tcp"
   listen_port      = 80
-  destination_port = 80
+  destination_port = 32080
   proxyprotocol    = true
 }
 
-resource "hcloud_load_balancer_service" "k8s_olive_nodes_tcp_443" {
+resource "hcloud_load_balancer_service" "k8s_lychee_nodes_tcp_443" {
   load_balancer_id = hcloud_load_balancer.magpie.id
   protocol         = "tcp"
   listen_port      = 443
-  destination_port = 443
+  destination_port = 32443
   proxyprotocol    = true
 }
 
@@ -177,9 +177,9 @@ resource "cloudflare_record" "magpie_lb_vxm_cz_v6" {
   proxied = false
 }
 
-resource "cloudflare_record" "wildcard_olive_k8s_vxm_cz" {
+resource "cloudflare_record" "wildcard_lychee_k8s_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
-  name    = "*.olive.k8s"
+  name    = "*.lychee.k8s"
   value   = cloudflare_record.magpie_lb_vxm_cz.hostname
   type    = "CNAME"
   proxied = false

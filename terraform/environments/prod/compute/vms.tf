@@ -267,10 +267,10 @@ resource "cloudflare_record" "cherry_nodes_k8s_vxm_cz_v6" {
   proxied = false
 }
 
-resource "hcloud_server" "k8s_olive_nodes" {
+resource "hcloud_server" "k8s_lychee_nodes" {
   count = 2
 
-  name        = "olive-${count.index}"
+  name        = "lychee-${count.index}"
   image       = "rocky-9"
   server_type = "cpx31"
   location    = "fsn1"
@@ -279,27 +279,27 @@ resource "hcloud_server" "k8s_olive_nodes" {
   labels = {
     "arch"        = "amd64"
     "k8s"         = "true"
-    "k8s/cluster" = "olive"
+    "k8s/cluster" = "lychee"
     "env"         = "production"
   }
 }
 
-resource "cloudflare_record" "olive_nodes_k8s_vxm_cz" {
-  count = length(hcloud_server.k8s_olive_nodes)
+resource "cloudflare_record" "lychee_nodes_k8s_vxm_cz" {
+  count = length(hcloud_server.k8s_lychee_nodes)
 
   zone_id = local.vxm_cz_zone_id
-  name    = "olive-${count.index}.k8s"
-  value   = hcloud_server.k8s_olive_nodes[count.index].ipv4_address
+  name    = "lychee-${count.index}.k8s"
+  value   = hcloud_server.k8s_lychee_nodes[count.index].ipv4_address
   type    = "A"
   proxied = false
 }
 
-resource "cloudflare_record" "olive_nodes_k8s_vxm_cz_v6" {
-  count = length(hcloud_server.k8s_olive_nodes)
+resource "cloudflare_record" "lychee_nodes_k8s_vxm_cz_v6" {
+  count = length(hcloud_server.k8s_lychee_nodes)
 
   zone_id = local.vxm_cz_zone_id
-  name    = "olive-${count.index}.k8s"
-  value   = hcloud_server.k8s_olive_nodes[count.index].ipv6_address
+  name    = "lychee-${count.index}.k8s"
+  value   = hcloud_server.k8s_lychee_nodes[count.index].ipv6_address
   type    = "AAAA"
   proxied = false
 }

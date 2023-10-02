@@ -64,19 +64,19 @@ resource "hcloud_load_balancer_network" "shrike_to_private" {
   ip               = cidrhost(hcloud_network_subnet.k8s_cherry.ip_range, 250)
 }
 
-resource "hcloud_network_subnet" "k8s_olive" {
+resource "hcloud_network_subnet" "k8s_lychee" {
   network_id   = hcloud_network.private.id
   type         = "cloud"
   network_zone = "eu-central"
   ip_range     = cidrsubnet(hcloud_network.private.ip_range, 12, 152)
 }
 
-resource "hcloud_server_network" "k8s_olive_to_private" {
-  count = length(hcloud_server.k8s_olive_nodes)
+resource "hcloud_server_network" "k8s_lychee_to_private" {
+  count = length(hcloud_server.k8s_lychee_nodes)
 
-  server_id = hcloud_server.k8s_olive_nodes[count.index].id
-  subnet_id = hcloud_network_subnet.k8s_olive.id
-  ip        = cidrhost(hcloud_network_subnet.k8s_olive.ip_range, count.index + 1)
+  server_id = hcloud_server.k8s_lychee_nodes[count.index].id
+  subnet_id = hcloud_network_subnet.k8s_lychee.id
+  ip        = cidrhost(hcloud_network_subnet.k8s_lychee.ip_range, count.index + 1)
 }
 
 resource "hcloud_load_balancer_network" "magpie_to_private" {
