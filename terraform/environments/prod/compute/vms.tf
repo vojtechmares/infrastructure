@@ -203,7 +203,7 @@ resource "cloudflare_record" "bastion_vxm_cz_v6" {
 resource "hcloud_server" "k8s_cherry_nodes" {
   count = 3
 
-  name        = "k8s-cherry-${count.index}"
+  name        = "cherry-${count.index}"
   image       = "rocky-9"
   server_type = "cax21"
   location    = "fsn1"
