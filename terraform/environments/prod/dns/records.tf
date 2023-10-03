@@ -57,7 +57,7 @@ resource "cloudflare_record" "signpost_mareshq_com" {
 resource "cloudflare_record" "backoffice_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "backoffice"
-  value   = "kiwi.k8s.vxm.cz"
+  value   = "magpie.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
@@ -65,7 +65,7 @@ resource "cloudflare_record" "backoffice_mareshq_com" {
 resource "cloudflare_record" "staging_backoffice_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "staging.backoffice"
-  value   = "kiwi.k8s.vxm.cz"
+  value   = "magpie.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
