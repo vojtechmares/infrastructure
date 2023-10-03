@@ -25,7 +25,7 @@ resource "cloudflare_record" "maple_vxm_cz_v6" {
 resource "cloudflare_record" "prometheus_ops_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "prometheus.ops"
-  value   = "prometheus.vxm.cz"
+  value   = "shrike.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
@@ -33,7 +33,7 @@ resource "cloudflare_record" "prometheus_ops_mareshq_com" {
 resource "cloudflare_record" "alertmanager_ops_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "alertmanager.ops"
-  value   = "prometheus.vxm.cz"
+  value   = "shrike.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
@@ -41,7 +41,7 @@ resource "cloudflare_record" "alertmanager_ops_mareshq_com" {
 resource "cloudflare_record" "grafana_ops_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "grafana.ops"
-  value   = "prometheus.vxm.cz"
+  value   = "shrike.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
