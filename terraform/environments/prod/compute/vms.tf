@@ -135,36 +135,6 @@ resource "cloudflare_record" "postgres_vxm_cz_v6" {
   proxied = false
 }
 
-resource "hcloud_server" "kiwi_k8s_nodes" {
-  count = 2
-
-  name        = "kiwi-k8s-node-${count.index}"
-  image       = "rocky-9"
-  server_type = "cpx31"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
-
-  labels = {
-    "k8s"         = "true"
-    "k8s/cluster" = "kiwi"
-  }
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
-resource "cloudflare_record" "nodes_kiwi_k8s_vxm_cz" {
-  count = length(hcloud_server.kiwi_k8s_nodes)
-
-  zone_id = local.vxm_cz_zone_id
-  name    = "node-${count.index}.kiwi.k8s"
-  value   = hcloud_server.kiwi_k8s_nodes[count.index].ipv4_address
-  type    = "A"
-  proxied = false
-}
-
 resource "hcloud_server" "prometheus" {
   name        = "prometheus"
   image       = "rocky-9"
