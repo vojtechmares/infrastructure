@@ -22,12 +22,6 @@ resource "hcloud_server_network" "postgres_to_private" {
   ip        = cidrhost(hcloud_network_subnet.standalone_machines.ip_range, 2)
 }
 
-resource "hcloud_server_network" "prometheus_to_private" {
-  server_id = hcloud_server.prometheus.id
-  subnet_id = hcloud_network_subnet.standalone_machines.id
-  ip        = cidrhost(hcloud_network_subnet.standalone_machines.ip_range, 3)
-}
-
 resource "hcloud_network_subnet" "k8s_cherry" {
   network_id   = hcloud_network.private.id
   type         = "cloud"

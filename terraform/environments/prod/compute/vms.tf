@@ -135,39 +135,6 @@ resource "cloudflare_record" "postgres_vxm_cz_v6" {
   proxied = false
 }
 
-resource "hcloud_server" "prometheus" {
-  name        = "prometheus"
-  image       = "rocky-9"
-  server_type = "cax21"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
-
-  labels = {
-    "arch" = "arm64"
-  }
-
-  # lifecycle {
-  #   prevent_destroy = true
-  # }
-}
-
-resource "cloudflare_record" "prometheus_vxm_cz" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "prometheus"
-  value   = hcloud_server.prometheus.ipv4_address
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "prometheus_vxm_cz_v6" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "prometheus"
-  value   = hcloud_server.prometheus.ipv6_address
-  type    = "AAAA"
-  proxied = false
-}
-
 resource "hcloud_server" "bastion" {
   name        = "bastion"
   image       = "rocky-9"
