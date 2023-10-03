@@ -1,9 +1,3 @@
-prometheus:
-  hosts:
-    prom0:
-      ansible_host: prometheus.vxm.cz
-      ansible_user: root
-
 postgres:
   hosts:
     pg0:
@@ -19,7 +13,6 @@ bastion:
 arm64:
   children:
     postgres:
-    prometheus:
 
 db:
   children:
