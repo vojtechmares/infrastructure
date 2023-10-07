@@ -54,6 +54,14 @@ resource "cloudflare_record" "signpost_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "og_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "og"
+  value   = "cname.vercel-dns.com."
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "backoffice_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "backoffice"
