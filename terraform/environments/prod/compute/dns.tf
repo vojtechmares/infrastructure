@@ -10,7 +10,7 @@ resource "cloudflare_record" "cthulhu_k8s_vxm_cz" {
 resource "cloudflare_record" "zebra_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
   name    = "zebra"
-  value   = "116.202.114.83"
+  value   = "23.88.73.182"
   type    = "A"
   proxied = false
 }
