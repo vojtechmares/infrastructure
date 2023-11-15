@@ -86,14 +86,6 @@ resource "cloudflare_record" "sso_mareshq_com" {
   proxied = false
 }
 
-resource "cloudflare_record" "all_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "all"
-  value   = "panda.k8s.oxs.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
 resource "cloudflare_record" "gitlab_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "gitlab"
