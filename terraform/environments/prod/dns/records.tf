@@ -81,7 +81,7 @@ resource "cloudflare_record" "staging_backoffice_mareshq_com" {
 resource "cloudflare_record" "sso_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "sso"
-  value   = "magpie.lb.vxm.cz"
+  value   = "chamois.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
