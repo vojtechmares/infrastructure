@@ -126,6 +126,14 @@ resource "cloudflare_record" "argocd_ops_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "longhorn_ops_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "longhorn.ops"
+  value   = "chamois.lb.vxm.cz"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "status_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "status"
