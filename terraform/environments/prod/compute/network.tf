@@ -15,9 +15,3 @@ resource "hcloud_server_network" "bastion_to_private" {
   subnet_id = hcloud_network_subnet.standalone_machines.id
   ip        = cidrhost(hcloud_network_subnet.standalone_machines.ip_range, 1)
 }
-
-resource "hcloud_server_network" "postgres_to_private" {
-  server_id = hcloud_server.postgres.id
-  subnet_id = hcloud_network_subnet.standalone_machines.id
-  ip        = cidrhost(hcloud_network_subnet.standalone_machines.ip_range, 2)
-}
