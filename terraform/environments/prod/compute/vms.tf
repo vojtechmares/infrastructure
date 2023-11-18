@@ -101,35 +101,3 @@ resource "cloudflare_record" "alder_vxm_cz_v6" {
   type    = "AAAA"
   proxied = false
 }
-
-resource "hcloud_server" "bastion" {
-  name        = "bastion"
-  image       = "rocky-9"
-  server_type = "cax11"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-
-  labels = {
-    "arch" = "arm64"
-  }
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
-resource "cloudflare_record" "bastion_vxm_cz" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "bastion"
-  value   = hcloud_server.bastion.ipv4_address
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "bastion_vxm_cz_v6" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "bastion"
-  value   = hcloud_server.bastion.ipv6_address
-  type    = "AAAA"
-  proxied = false
-}

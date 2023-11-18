@@ -21,8 +21,3 @@ resource "hcloud_firewall" "bastion" {
     ]
   }
 }
-
-resource "hcloud_firewall_attachment" "bastion_ssh_to_bastion" {
-  firewall_id = hcloud_firewall.bastion.id
-  server_ids  = [hcloud_server.bastion.id]
-}
