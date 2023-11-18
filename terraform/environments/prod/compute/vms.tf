@@ -78,9 +78,9 @@ resource "cloudflare_record" "catalpa_vxm_cz_v6" {
 
 # panel.flakame.se
 resource "hcloud_server" "alder" {
-  name        = "alder"
+  name        = "pterodactyl"
   image       = "ubuntu-20.04"
-  server_type = "cx11"
+  server_type = "cx41"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
   backups     = true
