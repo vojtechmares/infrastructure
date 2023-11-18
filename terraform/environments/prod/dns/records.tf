@@ -22,30 +22,6 @@ resource "cloudflare_record" "maple_vxm_cz_v6" {
 # DNS for mareshq.com
 ##
 
-resource "cloudflare_record" "prometheus_ops_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "prometheus.ops"
-  value   = "shrike.lb.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "alertmanager_ops_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "alertmanager.ops"
-  value   = "shrike.lb.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "grafana_ops_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "grafana.ops"
-  value   = "shrike.lb.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
 resource "cloudflare_record" "signpost_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "signpost"
@@ -114,30 +90,6 @@ resource "cloudflare_record" "cdn_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "cdn"
   value   = "vojtechmares.github.io"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "argocd_ops_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "argocd.ops"
-  value   = "chamois.lb.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "longhorn_ops_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "longhorn.ops"
-  value   = "chamois.lb.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "console_minio_ops_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "console.minio.ops"
-  value   = "chamois.lb.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
