@@ -9,6 +9,21 @@ resource "aws_s3_bucket" "gitlab_backup" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "gitlab_backup_glacier_storage_class" {
+  bucket = aws_s3_bucket.gitlab_backup.bucket
+
+  // Move objects older than 7 days to Glacier storage class
+  rule {
+    id     = "Glacier"
+    status = "Enabled"
+
+    transition {
+      days          = 7
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "gitlab_backup" {
   bucket = aws_s3_bucket.gitlab_backup.bucket
 
