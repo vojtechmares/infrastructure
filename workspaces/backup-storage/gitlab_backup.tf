@@ -38,21 +38,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "gitlab_backup_auto_delete" {
   }
 }
 
-resource "aws_s3_bucket_lifecycle_configuration" "gitlab_backup_move_to_glacier_storage_class" {
-  bucket = aws_s3_bucket.gitlab_backup.bucket
-
-  // Move objects created before 2023-12-09, to Glacier storage class
-  rule {
-    id     = "Glacier"
-    status = "Enabled"
-
-    transition {
-      date          = "2023-12-09T00:00:00Z" // 2023-12-09
-      storage_class = "GLACIER"
-    }
-  }
-}
-
 resource "aws_s3_bucket_server_side_encryption_configuration" "gitlab_backup" {
   bucket = aws_s3_bucket.gitlab_backup.bucket
 
