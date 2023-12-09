@@ -24,6 +24,20 @@ resource "aws_s3_bucket_lifecycle_configuration" "gitlab_backup_glacier_storage_
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "gitlab_backup_auto_delete" {
+  bucket = aws_s3_bucket.gitlab_backup.bucket
+
+  // Delete objects older than 180 days
+  rule {
+    id     = "auto_delete"
+    status = "Enabled"
+
+    expiration {
+      days = 180
+    }
+  }
+}
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "gitlab_backup" {
   bucket = aws_s3_bucket.gitlab_backup.bucket
 
