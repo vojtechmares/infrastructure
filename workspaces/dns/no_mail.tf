@@ -28,12 +28,6 @@ module "stepanka_net_no_mail" {
   zone_id = cloudflare_zone.stepanka_net.id
 }
 
-module "planette_io_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = cloudflare_zone.planette_io.id
-}
-
 module "devops_skoleni_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
@@ -94,12 +88,6 @@ module "rust_skoleni_cz_no_mail" {
   zone_id = cloudflare_zone.rust_skoleni_cz.id
 }
 
-module "dockerskoleni_cz_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = cloudflare_zone.dockerskoleni_cz.id
-}
-
 module "kubernetes_skoleni_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
@@ -136,26 +124,8 @@ module "gke_skoleni_cz_no_mail" {
   zone_id = cloudflare_zone.gke_skoleni_cz.id
 }
 
-module "rancher_skoleni_cz_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = cloudflare_zone.rancher_skoleni_cz.id
-}
-
 module "kubeflow_skoleni_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
   zone_id = cloudflare_zone.kubeflow_skoleni_cz.id
-}
-
-module "argorollouts_skoleni_cz_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = cloudflare_zone.argorollouts_skoleni_cz.id
-}
-
-module "argoworkflows_skoleni_cz_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = cloudflare_zone.argoworkflows_skoleni_cz.id
 }
