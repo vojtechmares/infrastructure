@@ -39,14 +39,6 @@ resource "cloudflare_record" "gitlab_mareshq_com" {
   name    = "gitlab"
   value   = "buffalo.vxm.cz"
   type    = "CNAME"
-  proxied = true
-}
-
-resource "cloudflare_record" "gitlab_ip_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "gitlab-ip"
-  value   = "buffalo.vxm.cz"
-  type    = "CNAME"
   proxied = false
 }
 
