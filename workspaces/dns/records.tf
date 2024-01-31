@@ -1,38 +1,10 @@
 ##
-# DNS for vxm.cz
-##
-
-resource "cloudflare_record" "maple_vxm_cz" {
-  zone_id = cloudflare_zone.vxm_cz.id
-  name    = "maple"
-  value   = "138.201.254.39"
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "maple_vxm_cz_v6" {
-  zone_id = cloudflare_zone.vxm_cz.id
-  name    = "maple"
-  value   = "2a01:4f8:173:250c::1"
-  type    = "AAAA"
-  proxied = false
-}
-
-##
 # DNS for mareshq.com
 ##
 
 resource "cloudflare_record" "signpost_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "signpost"
-  value   = "cname.vercel-dns.com."
-  type    = "CNAME"
-  proxied = false
-}
-
-resource "cloudflare_record" "og_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "og"
   value   = "cname.vercel-dns.com."
   type    = "CNAME"
   proxied = false
@@ -86,14 +58,6 @@ resource "cloudflare_record" "registry_mareshq_com" {
   proxied = true
 }
 
-resource "cloudflare_record" "harbor_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "harbor"
-  value   = "chamois.lb.vxm.cz"
-  type    = "CNAME"
-  proxied = false
-}
-
 resource "cloudflare_record" "cdn_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "cdn"
@@ -126,14 +90,6 @@ resource "cloudflare_record" "panel_acaslab_com" {
   value   = "alder.vxm.cz"
   type    = "CNAME"
   proxied = false
-}
-
-resource "cloudflare_record" "map_together_acaslab_com" {
-  zone_id = cloudflare_zone.acaslab_com.id
-  name    = "map.together"
-  value   = "acas-minecraft-server-worldmap.s3-website.eu-central-1.amazonaws.com"
-  type    = "CNAME"
-  proxied = true
 }
 
 # panel.acaslab.com SES
