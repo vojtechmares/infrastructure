@@ -117,62 +117,6 @@ resource "cloudflare_record" "spf_mareshq_com" {
   type    = "TXT"
 }
 
-# GitLab SES
-resource "cloudflare_record" "ses_verification_gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "_amazonses.${aws_ses_domain_identity.gitlab.id}"
-  type    = "TXT"
-  value   = aws_ses_domain_identity.gitlab.verification_token
-}
-
-resource "cloudflare_record" "txt_dkim_gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  count   = 3
-  name = format(
-    "%s._domainkey.%s",
-    element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index),
-    cloudflare_record.gitlab_mareshq_com.hostname,
-  )
-  type  = "CNAME"
-  value = "${element(aws_ses_domain_dkim.gitlab.dkim_tokens, count.index)}.dkim.amazonses.com"
-}
-
-resource "cloudflare_record" "txt_spf_gitlab_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  count   = 1
-  name    = "gitlab"
-  type    = "TXT"
-  value   = "v=spf1 include:amazonses.com -all"
-}
-
-# Keycloak SES (MaresHQ SSO)
-resource "cloudflare_record" "ses_verification_keycloak_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  name    = "_amazonses.${aws_ses_domain_identity.keycloak.id}"
-  type    = "TXT"
-  value   = aws_ses_domain_identity.keycloak.verification_token
-}
-
-resource "cloudflare_record" "txt_dkim_keycloak_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  count   = 3
-  name = format(
-    "%s._domainkey.%s",
-    element(aws_ses_domain_dkim.keycloak.dkim_tokens, count.index),
-    cloudflare_record.sso_mareshq_com.hostname,
-  )
-  type  = "CNAME"
-  value = "${element(aws_ses_domain_dkim.keycloak.dkim_tokens, count.index)}.dkim.amazonses.com"
-}
-
-resource "cloudflare_record" "txt_spf_keycloak_mareshq_com" {
-  zone_id = cloudflare_zone.mareshq_com.id
-  count   = 1
-  name    = cloudflare_record.sso_mareshq_com.hostname
-  type    = "TXT"
-  value   = "v=spf1 include:amazonses.com -all"
-}
-
 ##
 # acaslab.com
 ##
