@@ -472,3 +472,28 @@ resource "cloudflare_zone_settings_override" "kubeflow_skoleni_cz" {
     ssl                      = "full"
   }
 }
+
+resource "cloudflare_zone" "cloudflare_skoleni_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "cloudflare-skoleni.cz"
+}
+
+resource "cloudflare_zone" "zig_skoleni_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "zig-skoleni.cz"
+}
+
+resource "cloudflare_zone" "docker_skoleni_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "docker-skoleni.cz"
+}
+
+resource "cloudflare_zone" "devops_akademie_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "devops-akademie.cz"
+}
+
+resource "cloudflare_zone" "devopsakademie_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "devopsakademie.cz"
+}
