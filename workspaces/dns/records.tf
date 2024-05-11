@@ -10,6 +10,14 @@ resource "cloudflare_record" "signpost_mareshq_com" {
   proxied = false
 }
 
+resource "cloudflare_record" "sso_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "sso"
+  value   = "ingress.cthulhu.k8s.vxm.cz."
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "gitlab_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "gitlab"
