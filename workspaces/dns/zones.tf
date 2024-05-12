@@ -497,3 +497,18 @@ resource "cloudflare_zone" "devopsakademie_cz" {
   account_id = local.cloudflare_account_id
   zone       = "devopsakademie.cz"
 }
+
+resource "cloudflare_zone" "devopsvkapse_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "devopsvkapse.cz"
+}
+
+resource "cloudflare_zone" "maresmail_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "maresmail.cz"
+}
+
+resource "cloudflare_zone" "vmdevel_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "vmdevel.cz"
+}
