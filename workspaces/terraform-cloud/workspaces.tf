@@ -23,7 +23,7 @@ resource "tfe_workspace_settings" "dns" {
 resource "tfe_workspace" "vm" {
   name              = "vm"
   organization      = data.tfe_organization.vojtechmares.name
-  terraform_version = "~>1.3.4"
+  terraform_version = "~>1.8.3"
 }
 
 resource "tfe_workspace_settings" "vm" {
@@ -34,7 +34,7 @@ resource "tfe_workspace_settings" "vm" {
 resource "tfe_workspace" "backup_storage" {
   name              = "backup-storage"
   organization      = data.tfe_organization.vojtechmares.name
-  terraform_version = "~>1.3.4"
+  terraform_version = "~>1.8.3"
 }
 
 resource "tfe_workspace_settings" "backup_storage" {
