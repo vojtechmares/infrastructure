@@ -47,7 +47,7 @@ resource "cloudflare_record" "buffalo_vxm_cz_v6" {
 resource "hcloud_server" "gitlab_micro_runner" {
   name        = "gitlab-runner-micro"
   image       = "ubuntu-20.04"
-  server_type = "cpx11"
+  server_type = "cx22"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
   backups     = false
