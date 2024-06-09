@@ -75,29 +75,3 @@ resource "cloudflare_record" "catalpa_vxm_cz_v6" {
   type    = "AAAA"
   proxied = false
 }
-
-# panel.flakame.se
-resource "hcloud_server" "alder" {
-  name        = "pterodactyl"
-  image       = "ubuntu-20.04"
-  server_type = "cx41"
-  location    = "fsn1"
-  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = true
-}
-
-resource "cloudflare_record" "alder_vxm_cz" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "alder"
-  value   = hcloud_server.alder.ipv4_address
-  type    = "A"
-  proxied = false
-}
-
-resource "cloudflare_record" "alder_vxm_cz_v6" {
-  zone_id = local.vxm_cz_zone_id
-  name    = "alder"
-  value   = hcloud_server.alder.ipv6_address
-  type    = "AAAA"
-  proxied = false
-}
