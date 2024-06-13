@@ -111,3 +111,23 @@ resource "cloudflare_record" "github_pages_cname_helm_acaslab_com" {
 ##
 # DNS for vmpkg.com
 ##
+
+##
+# DNS for devopsvkapse.cz
+##
+
+resource "cloudflare_record" "devopsvkapse_cz" {
+  zone_id = cloudflare_zone.devopsvkapse_cz.id
+  name    = "@"
+  value   = "178.128.137.126"
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "www_devopsvkapse_cz" {
+  zone_id = cloudflare_zone.devopsvkapse_cz.id
+  name    = "www"
+  value   = "devops-v-kapse.ghost.io"
+  type    = "CNAME"
+  proxied = false
+}
