@@ -128,24 +128,6 @@ resource "cloudflare_zone_settings_override" "maresdemo_com" {
   }
 }
 
-resource "cloudflare_zone" "stepanka_net" {
-  account_id = local.cloudflare_account_id
-  zone       = "stepanka.net"
-}
-
-resource "cloudflare_zone_dnssec" "stepanka_net" {
-  zone_id = cloudflare_zone.stepanka_net.id
-}
-
-resource "cloudflare_zone_settings_override" "stepanka_net" {
-  zone_id = cloudflare_zone.stepanka_net.id
-  settings {
-    always_use_https         = "on"
-    automatic_https_rewrites = "on"
-    ssl                      = "full"
-  }
-}
-
 resource "cloudflare_zone" "vmpkg_com" {
   account_id = local.cloudflare_account_id
   zone       = "vmpkg.com"
