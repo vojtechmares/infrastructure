@@ -112,6 +112,9 @@ resource "cloudflare_record" "github_pages_cname_helm_acaslab_com" {
 # DNS for vmpkg.com
 ##
 
+# TODO: go.vmpkg.com
+# TODO: registry.vmpkg.com
+
 ##
 # DNS for devopsvkapse.cz
 ##
@@ -128,6 +131,23 @@ resource "cloudflare_record" "www_devopsvkapse_cz" {
   zone_id = cloudflare_zone.devopsvkapse_cz.id
   name    = "www"
   value   = "devops-v-kapse.ghost.io"
+  type    = "CNAME"
+  proxied = false
+}
+
+##
+# DNS for vmdevel.cz
+##
+
+data "cloudflare_record" "ingress_cthulhu_k8s_vxm_cz" {
+  zone_id  = cloudflare_zone.vxm_cz.id
+  hostname = "ingress.cthulhu.k8s.vxm.cz"
+}
+
+resource "cloudflare_record" "staging_yggdrasil_vmdevel_cz" {
+  zone_id = cloudflare_zone.vmdevel_cz.id
+  name    = "staging.yggdrasil"
+  value   = data.cloudflare_record.ingress_cthulhu_k8s_vxm_cz.hostname
   type    = "CNAME"
   proxied = false
 }
