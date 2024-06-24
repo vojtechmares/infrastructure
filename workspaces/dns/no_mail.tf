@@ -129,3 +129,51 @@ module "kubeflow_skoleni_cz_no_mail" {
   version = "1.0.0"
   zone_id = cloudflare_zone.kubeflow_skoleni_cz.id
 }
+
+module "vmpkg_com_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.vmpkg_com.id
+}
+
+module "cloudflare_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.cloudflare_skoleni_cz.id
+}
+
+module "zig_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.zig_skoleni_cz.id
+}
+
+module "docker_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.docker_skoleni_cz.id
+}
+
+module "devops_akademi_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.devops_akademie_cz.id
+}
+
+module "devopsakademi_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.devopsakademie_cz.id
+}
+
+module "maresmail_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.maresmail_cz.id
+}
+
+module "vmdevel_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "1.0.0"
+  zone_id = cloudflare_zone.vmdevel_cz.id
+}
