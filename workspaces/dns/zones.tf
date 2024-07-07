@@ -1,3 +1,21 @@
+resource "cloudflare_zone" "mares_cz" {
+  account_id = local.cloudflare_account_id
+  zone       = "mares.cz"
+}
+
+resource "cloudflare_zone_dnssec" "mares_cz" {
+  zone_id = cloudflare_zone.mares_cz.id
+}
+
+resource "cloudflare_zone_settings_override" "mares_cz" {
+  zone_id = cloudflare_zone.mares_cz.id
+  settings {
+    always_use_https         = "on"
+    automatic_https_rewrites = "on"
+    ssl                      = "full"
+  }
+}
+
 resource "cloudflare_zone" "vxm_cz" {
   account_id = local.cloudflare_account_id
   zone       = "vxm.cz"
