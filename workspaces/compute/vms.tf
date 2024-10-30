@@ -31,7 +31,7 @@ resource "hcloud_volume_attachment" "gitlab_registry" {
 resource "cloudflare_record" "buffalo_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
   name    = "buffalo"
-  value   = hcloud_server.gitlab.ipv4_address
+  content = hcloud_server.gitlab.ipv4_address
   type    = "A"
   proxied = false
 }
@@ -39,15 +39,15 @@ resource "cloudflare_record" "buffalo_vxm_cz" {
 resource "cloudflare_record" "buffalo_vxm_cz_v6" {
   zone_id = local.vxm_cz_zone_id
   name    = "buffalo"
-  value   = hcloud_server.gitlab.ipv6_address
+  content = hcloud_server.gitlab.ipv6_address
   type    = "AAAA"
   proxied = false
 }
 
-resource "hcloud_server" "gitlab_micro_runner" {
-  name        = "gitlab-runner-micro"
+resource "hcloud_server" "gitlab_runner_amd64" {
+  name        = "gitlab-runner-amd64"
   image       = "ubuntu-20.04"
-  server_type = "cx22"
+  server_type = "cx32"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
   backups     = false
@@ -60,18 +60,50 @@ resource "hcloud_server" "gitlab_micro_runner" {
   }
 }
 
-resource "cloudflare_record" "catalpa_vxm_cz" {
+resource "cloudflare_record" "gitlab_runner_amd64_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
-  name    = "catalpa"
-  value   = hcloud_server.gitlab_micro_runner.ipv4_address
+  name    = "gitlab-runner-amd64"
+  content = hcloud_server.gitlab_runner_amd64.ipv4_address
   type    = "A"
   proxied = false
 }
 
-resource "cloudflare_record" "catalpa_vxm_cz_v6" {
+resource "cloudflare_record" "gitlab_runner_amd64_vxm_cz_v6" {
   zone_id = local.vxm_cz_zone_id
   name    = "catalpa"
-  value   = hcloud_server.gitlab_micro_runner.ipv6_address
+  content = hcloud_server.gitlab_runner_amd64.ipv6_address
+  type    = "AAAA"
+  proxied = false
+}
+
+resource "hcloud_server" "gitlab_runner_arm64" {
+  name        = "gitlab-runner-arm64"
+  image       = "ubuntu-24.04"
+  server_type = "cax21"
+  location    = "fsn1"
+  ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
+  backups     = false
+  user_data   = file("files/docker.cloud-config.yml")
+
+  lifecycle {
+    ignore_changes = [
+      user_data
+    ]
+  }
+}
+
+resource "cloudflare_record" "gitlab_runner_arm64_vxm_cz" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "gitlab-runner-arm64"
+  content = hcloud_server.gitlab_runner_arm64.ipv4_address
+  type    = "A"
+  proxied = false
+}
+
+resource "cloudflare_record" "gitlab_runner_arm64_vxm_cz_v6" {
+  zone_id = local.vxm_cz_zone_id
+  name    = "gitlab-runner-arm64"
+  content = hcloud_server.gitlab_runner_arm64.ipv6_address
   type    = "AAAA"
   proxied = false
 }
