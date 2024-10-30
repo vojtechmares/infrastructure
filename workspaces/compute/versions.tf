@@ -1,4 +1,12 @@
 terraform {
+  backend "remote" {
+    organization = "vojtechmares"
+
+    workspaces {
+      name = "vm"
+    }
+  }
+
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
@@ -11,3 +19,20 @@ terraform {
   }
 }
 
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
+}
+
+provider "hcloud" {
+  token = var.hcloud_token
+}
+
+variable "cloudflare_api_token" {
+  type      = string
+  sensitive = true
+}
+
+variable "hcloud_token" {
+  type      = string
+  sensitive = true
+}
