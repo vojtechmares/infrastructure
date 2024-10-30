@@ -1,10 +1,6 @@
-variable "email" {
-  type    = string
-  default = "iam@vojtechmares.com"
-}
-
-variable "cloudflare_api_key" {
-  type = string
+variable "cloudflare_api_token" {
+  type      = string
+  sensitive = true
 }
 
 variable "hcloud_token" {
