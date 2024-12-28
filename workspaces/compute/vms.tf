@@ -45,7 +45,7 @@ resource "cloudflare_record" "buffalo_vxm_cz_v6" {
 }
 
 resource "hcloud_server" "gitlab_runner_amd64" {
-  name        = "gitlab-runner-amd64"
+  name        = "gitlab-runner"
   image       = "ubuntu-20.04"
   server_type = "cx32"
   location    = "fsn1"
@@ -62,7 +62,7 @@ resource "hcloud_server" "gitlab_runner_amd64" {
 
 resource "cloudflare_record" "gitlab_runner_amd64_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
-  name    = "gitlab-runner-amd64"
+  name    = "gitlab-runner"
   content = hcloud_server.gitlab_runner_amd64.ipv4_address
   type    = "A"
   proxied = false
@@ -70,40 +70,33 @@ resource "cloudflare_record" "gitlab_runner_amd64_vxm_cz" {
 
 resource "cloudflare_record" "gitlab_runner_amd64_vxm_cz_v6" {
   zone_id = local.vxm_cz_zone_id
-  name    = "catalpa"
+  name    = "gitlab-runner"
   content = hcloud_server.gitlab_runner_amd64.ipv6_address
   type    = "AAAA"
   proxied = false
 }
 
-resource "hcloud_server" "gitlab_runner_arm64" {
-  name        = "gitlab-runner-arm64"
-  image       = "ubuntu-24.04"
-  server_type = "cax21"
+resource "hcloud_server" "valhalla" {
+  name        = "valhalla"
+  image       = "rocky-9"
+  server_type = "cx32"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
-  backups     = false
-  user_data   = file("files/docker.cloud-config.yml")
-
-  lifecycle {
-    ignore_changes = [
-      user_data
-    ]
-  }
+  backups     = true
 }
 
-resource "cloudflare_record" "gitlab_runner_arm64_vxm_cz" {
+resource "cloudflare_record" "valhalla_vxm_cz" {
   zone_id = local.vxm_cz_zone_id
-  name    = "gitlab-runner-arm64"
-  content = hcloud_server.gitlab_runner_arm64.ipv4_address
+  name    = "valhalla"
+  content = hcloud_server.valhalla.ipv4_address
   type    = "A"
   proxied = false
 }
 
-resource "cloudflare_record" "gitlab_runner_arm64_vxm_cz_v6" {
+resource "cloudflare_record" "valhalla_vxm_cz_v6" {
   zone_id = local.vxm_cz_zone_id
-  name    = "gitlab-runner-arm64"
-  content = hcloud_server.gitlab_runner_arm64.ipv6_address
+  name    = "valhalla"
+  content = hcloud_server.valhalla.ipv6_address
   type    = "AAAA"
   proxied = false
 }
