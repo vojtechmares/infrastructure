@@ -59,20 +59,3 @@ resource "cloudflare_record" "www_devopsvkapse_cz" {
   type    = "CNAME"
   proxied = false
 }
-
-##
-# DNS for vmdevel.cz
-##
-
-data "cloudflare_record" "ingress_cthulhu_k8s_vxm_cz" {
-  zone_id  = cloudflare_zone.vxm_cz.id
-  hostname = "ingress.cthulhu.k8s.vxm.cz"
-}
-
-resource "cloudflare_record" "staging_yggdrasil_vmdevel_cz" {
-  zone_id = cloudflare_zone.vmdevel_cz.id
-  name    = "staging.yggdrasil"
-  content = data.cloudflare_record.ingress_cthulhu_k8s_vxm_cz.hostname
-  type    = "CNAME"
-  proxied = false
-}
