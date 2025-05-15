@@ -5,7 +5,7 @@
 resource "cloudflare_record" "signpost_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "signpost"
-  value   = "cname.vercel-dns.com."
+  content = "cname.vercel-dns.com."
   type    = "CNAME"
   proxied = false
 }
@@ -13,7 +13,7 @@ resource "cloudflare_record" "signpost_mareshq_com" {
 resource "cloudflare_record" "sso_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "sso"
-  value   = "ingress.cthulhu.k8s.vxm.cz."
+  content = "ingress.cthulhu.k8s.vxm.cz."
   type    = "CNAME"
   proxied = false
 }
@@ -21,7 +21,7 @@ resource "cloudflare_record" "sso_mareshq_com" {
 resource "cloudflare_record" "gitlab_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "gitlab"
-  value   = "buffalo.vxm.cz"
+  content = "buffalo.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
@@ -29,7 +29,7 @@ resource "cloudflare_record" "gitlab_mareshq_com" {
 resource "cloudflare_record" "registry_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "registry"
-  value   = "buffalo.vxm.cz"
+  content = "buffalo.vxm.cz"
   type    = "CNAME"
   proxied = true
 }
@@ -37,7 +37,7 @@ resource "cloudflare_record" "registry_mareshq_com" {
 resource "cloudflare_record" "spf_mareshq_com" {
   zone_id = cloudflare_zone.mareshq_com.id
   name    = "@"
-  value   = "v=spf1 mx ~all"
+  content = "v=spf1 mx ~all"
   type    = "TXT"
 }
 
@@ -47,7 +47,7 @@ resource "cloudflare_record" "spf_mareshq_com" {
 resource "cloudflare_record" "panel_acaslab_com" {
   zone_id = cloudflare_zone.acaslab_com.id
   name    = "panel"
-  value   = "alder.vxm.cz"
+  content = "alder.vxm.cz"
   type    = "CNAME"
   proxied = false
 }
@@ -57,7 +57,7 @@ resource "cloudflare_record" "ses_verification_panel_acaslab_com" {
   zone_id = cloudflare_zone.acaslab_com.id
   name    = "_amazonses.${aws_ses_domain_identity.panel_acaslab.id}"
   type    = "TXT"
-  value   = aws_ses_domain_identity.panel_acaslab.verification_token
+  content = aws_ses_domain_identity.panel_acaslab.verification_token
 }
 
 resource "cloudflare_record" "txt_dkim_panel_acaslab_com" {
@@ -68,8 +68,8 @@ resource "cloudflare_record" "txt_dkim_panel_acaslab_com" {
     element(aws_ses_domain_dkim.panel_acaslab.dkim_tokens, count.index),
     cloudflare_record.panel_acaslab_com.hostname,
   )
-  type  = "CNAME"
-  value = "${element(aws_ses_domain_dkim.panel_acaslab.dkim_tokens, count.index)}.dkim.amazonses.com"
+  type    = "CNAME"
+  content = "${element(aws_ses_domain_dkim.panel_acaslab.dkim_tokens, count.index)}.dkim.amazonses.com"
 }
 
 resource "cloudflare_record" "txt_spf_panel_acaslab_com" {
@@ -77,34 +77,34 @@ resource "cloudflare_record" "txt_spf_panel_acaslab_com" {
   count   = 1
   name    = "panel"
   type    = "TXT"
-  value   = "v=spf1 include:amazonses.com -all"
+  content = "v=spf1 include:amazonses.com -all"
 }
 
 resource "cloudflare_record" "github_pages_verification_docs_acaslab_com" {
   zone_id = cloudflare_zone.acaslab_com.id
   name    = "_github-pages-challenge-acaslab.docs"
-  value   = "0f6908ad28827680f8bef3ee774f8f"
+  content = "0f6908ad28827680f8bef3ee774f8f"
   type    = "TXT"
 }
 
 resource "cloudflare_record" "github_pages_cname_docs_acaslab_com" {
   zone_id = cloudflare_zone.acaslab_com.id
   name    = "docs"
-  value   = "acaslab.github.io"
+  content = "acaslab.github.io"
   type    = "CNAME"
 }
 
 resource "cloudflare_record" "github_pages_verification_helm_acaslab_com" {
   zone_id = cloudflare_zone.acaslab_com.id
   name    = "_github-pages-challenge-acaslab.helm"
-  value   = "68effa9228fb636650ad72187bfdba"
+  content = "68effa9228fb636650ad72187bfdba"
   type    = "TXT"
 }
 
 resource "cloudflare_record" "github_pages_cname_helm_acaslab_com" {
   zone_id = cloudflare_zone.acaslab_com.id
   name    = "helm"
-  value   = "acaslab.github.io"
+  content = "acaslab.github.io"
   type    = "CNAME"
 }
 
@@ -122,7 +122,7 @@ resource "cloudflare_record" "github_pages_cname_helm_acaslab_com" {
 resource "cloudflare_record" "devopsvkapse_cz" {
   zone_id = cloudflare_zone.devopsvkapse_cz.id
   name    = "@"
-  value   = "178.128.137.126"
+  content = "178.128.137.126"
   type    = "A"
   proxied = false
 }
@@ -130,7 +130,7 @@ resource "cloudflare_record" "devopsvkapse_cz" {
 resource "cloudflare_record" "www_devopsvkapse_cz" {
   zone_id = cloudflare_zone.devopsvkapse_cz.id
   name    = "www"
-  value   = "devops-v-kapse.ghost.io"
+  content = "devops-v-kapse.ghost.io"
   type    = "CNAME"
   proxied = false
 }
@@ -147,7 +147,7 @@ data "cloudflare_record" "ingress_cthulhu_k8s_vxm_cz" {
 resource "cloudflare_record" "staging_yggdrasil_vmdevel_cz" {
   zone_id = cloudflare_zone.vmdevel_cz.id
   name    = "staging.yggdrasil"
-  value   = data.cloudflare_record.ingress_cthulhu_k8s_vxm_cz.hostname
+  content = data.cloudflare_record.ingress_cthulhu_k8s_vxm_cz.hostname
   type    = "CNAME"
   proxied = false
 }
