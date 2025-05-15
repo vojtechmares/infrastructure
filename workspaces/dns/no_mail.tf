@@ -16,12 +16,6 @@ module "maresdemo_com_no_mail" {
   zone_id = cloudflare_zone.maresdemo_com.id
 }
 
-module "vojtechmares_blog_no_mail" {
-  source  = "vojtechmares/no-mail/cloudflare"
-  version = "1.0.0"
-  zone_id = cloudflare_zone.vojtechmares_blog.id
-}
-
 module "devops_skoleni_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "1.0.0"
