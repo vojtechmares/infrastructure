@@ -34,13 +34,6 @@ resource "cloudflare_record" "spf_mareshq_com" {
 }
 
 ##
-# DNS for vmpkg.com
-##
-
-# TODO: go.vmpkg.com
-# TODO: registry.vmpkg.com
-
-##
 # DNS for devopsvkapse.cz
 ##
 
