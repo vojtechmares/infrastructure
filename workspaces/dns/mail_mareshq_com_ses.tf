@@ -49,13 +49,13 @@ resource "aws_iam_access_key" "ses_mail_mareshq_com" {
 }
 
 output "ses_mail_mareshq_com_access_key" {
-  content     = aws_iam_access_key.ses_mail_mareshq_com.id
+  value       = aws_iam_access_key.ses_mail_mareshq_com.id
   description = "Access key for SES for Keycloak"
   sensitive   = true
 }
 
 output "ses_mail_mareshq_com_smtp_password_v4" {
-  content     = aws_iam_access_key.ses_mail_mareshq_com.ses_smtp_password_v4
+  value       = aws_iam_access_key.ses_mail_mareshq_com.ses_smtp_password_v4
   description = "SES SMTP password for SES for mail.mareshq.com"
   sensitive   = true
 }
