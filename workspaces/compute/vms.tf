@@ -78,7 +78,7 @@ resource "cloudflare_record" "gitlab_runner_amd64_vxm_cz_v6" {
 
 resource "hcloud_server" "valhalla" {
   name        = "valhalla"
-  image       = "rocky-9"
+  image       = "debian-12"
   server_type = "cx32"
   location    = "fsn1"
   ssh_keys    = [hcloud_ssh_key.vojtechmares.name]
