@@ -3,16 +3,9 @@
 
 provider "registry.terraform.io/cloudflare/cloudflare" {
   version     = "5.4.0"
-  constraints = "5.4.0"
+  constraints = ">= 5.4.0"
   hashes = [
-    "h1:2HNOqQW+BwSE1tz7G0liIKTvxI86LVE0iOjatLo5qU8=",
-    "h1:3xFn2F6/2TSD9xZpGfyfeDGBMWp+Hj69JQrz9OTNkVU=",
-    "h1:9V0LknTHRbeI5JFD4uZeWoEm/28V7i5xIcXwl+zfeFU=",
-    "h1:FmJaqlwWinj1lVYdOBzVwgTMtGK0ju3s/apstsxQmRs=",
     "h1:KjToQWBCake9Stqj8aZ5cld29sWRCTy/2CIM3MJJEvQ=",
-    "h1:NIgprcRbfjxddUFHWPlgNdIxDr6YGNt1DVaRRkwXu/g=",
-    "h1:Rs5gaiRip5QqC3cV6BhTtvfAvOILxTmY40Ktty3DeYY=",
-    "h1:jfBBxi1ZUIPsyizlFOZHDMKacz7vb5sWkl1Gogc9mtU=",
     "zh:08b35ad7c1125bd0f34a0e719231389a679dc4a0247aa7c46374a55f13658a5a",
     "zh:10c68c3a847b22c85db45d401febb9b34e0c0dadc38c4cc8f22b031cc9ff53de",
     "zh:1750f58bd37db19f1d92a4232db359505993f1e2d8ba7d6732b1b59f098da902",
@@ -27,22 +20,9 @@ provider "registry.terraform.io/cloudflare/cloudflare" {
 
 provider "registry.terraform.io/hetznercloud/hcloud" {
   version     = "1.50.1"
-  constraints = "1.50.1"
+  constraints = ">= 1.50.1"
   hashes = [
-    "h1:22/4EBsGFw4MGoSJvH/CwfekQ8zLfqf1w2KvKreI3NI=",
-    "h1:2kEBbUW4mezu5WQYo4vQDJMoMzkYT7ypx2hO95eJuJI=",
-    "h1:4ykG9Soi7r1Q0rjdvSJYzHAwHFjXq0xUGNki4qyE+ME=",
-    "h1:JdwSgwofJ6nQLABFqU3JhVAA67YX4OP/zyLPoQyiVDw=",
-    "h1:ZoTG9FlnSxKYUW2Ah1cz9HwH/nQomiPRNUSdv5V+hJk=",
-    "h1:dcqtmJCIfr6X4m3PgHPINYkOnKN82tc5lZWZxG187Vc=",
     "h1:gwKiif52Nt+M3M4jo41DLUQxP/u4uZP9VS2mIwEAh6I=",
-    "h1:j0JLdbZRLTRzEzR8ku/78IPNHibqM+b0jjRtgHa+b7U=",
-    "h1:k3POQY/7NbIyphLz+wVQp5/jiEAAlq9fQvDPll1pcWI=",
-    "h1:qYZcVQgSXP392WUEz1GnQTIkD4c3ruMFnOwSswnsD0s=",
-    "h1:u9TtvPxuUlr3XXWfzlcYc6+ZEbUqZra+Fhgpb6QKVJc=",
-    "h1:uPBIZmXM6rOmMQ0nM4mspwmklYb8cE6skhyKIIT4dvg=",
-    "h1:vtP9LdKKbpmIZWOK1TxYQ9Jt9raKeMKpbsezV6XhfUo=",
-    "h1:yv3DNe9Ank5sKKf0dZDXtFfzopfzlCtAoD6UWLkTUTQ=",
     "zh:14417f21a91bf12f2f152cfa42271d833be0cce5a341016bcd2308a078e8b015",
     "zh:18de1bc63135bf72046d26ff53b685a0058919dd520122e6ae7d2c0fd6a579d1",
     "zh:2aa7edea02e380f3572d70705d4ba54b6d88645610db49eebeb5196cd7c72e30",
