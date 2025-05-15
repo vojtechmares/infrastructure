@@ -92,41 +92,6 @@ resource "cloudflare_zone_settings_override" "vojtechmares_dev" {
   }
 }
 
-resource "cloudflare_zone" "acaslab_com" {
-  account_id = local.cloudflare_account_id
-  zone       = "acaslab.com"
-}
-
-resource "cloudflare_zone_dnssec" "acaslab_com" {
-  zone_id = cloudflare_zone.acaslab_com.id
-}
-
-resource "cloudflare_zone_settings_override" "acaslab_com" {
-  zone_id = cloudflare_zone.acaslab_com.id
-  settings {
-    always_use_https         = "on"
-    automatic_https_rewrites = "on"
-    ssl                      = "full"
-  }
-}
-
-resource "cloudflare_zone" "vojtechmares_blog" {
-  account_id = local.cloudflare_account_id
-  zone       = "vojtechmares.blog"
-}
-
-resource "cloudflare_zone_dnssec" "vojtechmares_blog" {
-  zone_id = cloudflare_zone.vojtechmares_blog.id
-}
-
-resource "cloudflare_zone_settings_override" "vojtechmares_blog" {
-  zone_id = cloudflare_zone.vojtechmares_blog.id
-  settings {
-    always_use_https         = "on"
-    automatic_https_rewrites = "on"
-    ssl                      = "full"
-  }
-}
 
 resource "cloudflare_zone" "maresdemo_com" {
   account_id = local.cloudflare_account_id
