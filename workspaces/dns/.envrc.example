@@ -1,0 +1,10 @@
+# direnv template - copy to `.envrc`, fill in real values, then run `direnv allow`.
+# `.envrc` is gitignored; this `.envrc.example` is committed as documentation.
+
+# Inherit shared R2 backend credentials from the repo-root `.envrc`.
+source_up
+
+# Provider credentials for this workspace (Cloudflare + AWS).
+export TF_VAR_cloudflare_api_token="<cloudflare-api-token>"
+export TF_VAR_aws_access_key="<aws-iam-access-key>"
+export TF_VAR_aws_secret_key="<aws-iam-secret-key>"

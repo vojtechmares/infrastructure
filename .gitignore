@@ -1,2 +1,11 @@
 **/variables.auto.tfvars
 **/.terraform
+
+# direnv - local credential files (keep .envrc.example tracked)
+**/.envrc
+**/.direnv
+
+# local state snapshots taken during backend migration
+state-backups/
+*.tfstate
+*.tfstate.*

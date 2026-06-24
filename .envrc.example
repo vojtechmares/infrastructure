@@ -1,0 +1,9 @@
+# direnv template - copy to `.envrc`, fill in real values, then run `direnv allow`.
+# `.envrc` is gitignored; this `.envrc.example` is committed as documentation.
+#
+# Shared Cloudflare R2 backend credentials (S3-compatible API token with
+# Object Read & Write on the state bucket). Used by every workspace's
+# `backend "s3"` block. Per-workspace `.envrc` files inherit these via `source_up`.
+
+export AWS_ACCESS_KEY_ID="<r2-access-key-id>"
+export AWS_SECRET_ACCESS_KEY="<r2-secret-access-key>"
