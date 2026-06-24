@@ -16,13 +16,14 @@ I also wanted to try out Terraform Cloud and organization management in Terrafor
 
 ## Workspaces
 
-`terraform/workspaces` directly mirrors Terraform Cloud's workspaces.
+- Cloudflare (`dns`)
+- HCloud (`compute`)
+- AWS backup storage (`backup-storage`)
 
-- Cloudflare
-- GitLab
-- HCloud
-- Terraform Cloud
+## State backend
 
-## Terraform Cloud
-
-Everything is under single Terraform Cloud organization [`vojtechmares`](https://app.terraform.io/app/vojtechmares).
+State was originally kept in a single Terraform Cloud organization (`vojtechmares`) with
+remote execution. It has since been migrated to a single Cloudflare R2 bucket (S3-compatible
+backend) with local execution; each workspace stores its state under
+`<workspace>/terraform.tfstate`. The former `terraform-cloud` workspace (which managed the
+TFC organization itself) was retired as part of that move.
