@@ -18,7 +18,6 @@ I also wanted to try out Terraform Cloud and organization management in Terrafor
 
 - Cloudflare (`dns`)
 - HCloud (`compute`)
-- AWS backup storage (`backup-storage`)
 
 ## State backend
 
