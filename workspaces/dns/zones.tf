@@ -74,25 +74,6 @@ resource "cloudflare_zone_settings_override" "mareshq_com" {
 #   value = cloudflare_zone.vojtamares_com.name_servers
 # }
 
-resource "cloudflare_zone" "vojtechmares_dev" {
-  account_id = local.cloudflare_account_id
-  zone       = "vojtechmares.dev"
-}
-
-resource "cloudflare_zone_dnssec" "vojtechmares_dev" {
-  zone_id = cloudflare_zone.vojtechmares_dev.id
-}
-
-resource "cloudflare_zone_settings_override" "vojtechmares_dev" {
-  zone_id = cloudflare_zone.vojtechmares_dev.id
-  settings {
-    always_use_https         = "on"
-    automatic_https_rewrites = "on"
-    ssl                      = "full"
-  }
-}
-
-
 resource "cloudflare_zone" "maresdemo_com" {
   account_id = local.cloudflare_account_id
   zone       = "maresdemo.com"
@@ -104,24 +85,6 @@ resource "cloudflare_zone_dnssec" "maresdemo_com" {
 
 resource "cloudflare_zone_settings_override" "maresdemo_com" {
   zone_id = cloudflare_zone.maresdemo_com.id
-  settings {
-    always_use_https         = "on"
-    automatic_https_rewrites = "on"
-    ssl                      = "full"
-  }
-}
-
-resource "cloudflare_zone" "vmpkg_com" {
-  account_id = local.cloudflare_account_id
-  zone       = "vmpkg.com"
-}
-
-resource "cloudflare_zone_dnssec" "vmpkg_com" {
-  zone_id = cloudflare_zone.vmpkg_com.id
-}
-
-resource "cloudflare_zone_settings_override" "vmpkg_com" {
-  zone_id = cloudflare_zone.vmpkg_com.id
   settings {
     always_use_https         = "on"
     automatic_https_rewrites = "on"
@@ -443,11 +406,6 @@ resource "cloudflare_zone" "cloudflare_skoleni_cz" {
   zone       = "cloudflare-skoleni.cz"
 }
 
-resource "cloudflare_zone" "zig_skoleni_cz" {
-  account_id = local.cloudflare_account_id
-  zone       = "zig-skoleni.cz"
-}
-
 resource "cloudflare_zone" "docker_skoleni_cz" {
   account_id = local.cloudflare_account_id
   zone       = "docker-skoleni.cz"
@@ -471,9 +429,4 @@ resource "cloudflare_zone" "devopsvkapse_cz" {
 resource "cloudflare_zone" "maresmail_cz" {
   account_id = local.cloudflare_account_id
   zone       = "maresmail.cz"
-}
-
-resource "cloudflare_zone" "vmdevel_cz" {
-  account_id = local.cloudflare_account_id
-  zone       = "vmdevel.cz"
 }
