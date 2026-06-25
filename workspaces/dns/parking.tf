@@ -23,6 +23,11 @@ module "devopsakademie_cz_parking" {
   zone_id = cloudflare_zone.devopsakademie_cz.id
 }
 
+module "devopsvkapse_cz_parking" {
+  source  = "../../modules/domain-parking/v1"
+  zone_id = cloudflare_zone.devopsvkapse_cz.id
+}
+
 module "eks_skoleni_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.eks_skoleni_cz.id
