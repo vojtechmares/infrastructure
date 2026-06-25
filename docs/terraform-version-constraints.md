@@ -19,4 +19,4 @@ Our modules should not be that restrictive and should use `>=` constraint.
 
 I also recommend adding `, <` against next major version which is expected to have BC breaks.
 
-Fro example: `>=2.14.0, <3.0.0`.
+For example: `>=2.14.0, <3.0.0`.
