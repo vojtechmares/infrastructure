@@ -767,3 +767,11 @@ resource "cloudflare_zone" "ziglang_cz" {
   name = "ziglang.cz"
   type = "full"
 }
+
+resource "cloudflare_zone" "zjaponska_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "zjaponska.cz"
+  type = "full"
+}

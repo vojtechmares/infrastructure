@@ -195,3 +195,9 @@ module "ziglang_cz_no_mail" {
   version = "3.0.0"
   zone_id = cloudflare_zone.ziglang_cz.id
 }
+
+module "zjaponska_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.zjaponska_cz.id
+}

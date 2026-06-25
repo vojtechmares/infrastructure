@@ -8,6 +8,11 @@ module "argocd_skoleni_cz_parking" {
   zone_id = cloudflare_zone.argocd_skoleni_cz.id
 }
 
+module "cloudflare_skoleni_cz_parking" {
+  source  = "../../modules/domain-parking/v1"
+  zone_id = cloudflare_zone.cloudflare_skoleni_cz.id
+}
+
 module "devops_akademie_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.devops_akademie_cz.id
@@ -26,6 +31,11 @@ module "devopsakademie_cz_parking" {
 module "devopsvkapse_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.devopsvkapse_cz.id
+}
+
+module "docker_skoleni_cz_parking" {
+  source  = "../../modules/domain-parking/v1"
+  zone_id = cloudflare_zone.docker_skoleni_cz.id
 }
 
 module "eks_skoleni_cz_parking" {
@@ -136,4 +146,9 @@ module "terraform_skoleni_cz_parking" {
 module "ziglang_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.ziglang_cz.id
+}
+
+module "zjaponska_cz_parking" {
+  source  = "../../modules/domain-parking/v1"
+  zone_id = cloudflare_zone.zjaponska_cz.id
 }
