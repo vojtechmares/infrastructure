@@ -12,6 +12,6 @@ resource "cloudflare_dns_record" "parking" {
   name    = "@"
   type    = "A"
   content = local.parking_ip
-  ttl     = 86400
+  ttl     = 1
   proxied = true
 }
