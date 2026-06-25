@@ -701,3 +701,69 @@ resource "cloudflare_zone" "maresmail_cz" {
   name = "maresmail.cz"
   type = "full"
 }
+
+# Parked domains
+
+resource "cloudflare_zone" "github_actions_skoleni_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "github-actions-skoleni.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone" "gitlab_ci_skoleni_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "gitlab-ci-skoleni.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone" "gopheri_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "gopheri.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone" "openstack_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "openstack.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone" "opentelemetry_skoleni_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "opentelemetry-skoleni.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone" "pid1_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "pid1.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone" "sportenka_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "sportenka.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone" "ziglang_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "ziglang.cz"
+  type = "full"
+}

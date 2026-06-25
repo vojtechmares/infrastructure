@@ -141,3 +141,57 @@ module "maresmail_cz_no_mail" {
   version = "3.0.0"
   zone_id = cloudflare_zone.maresmail_cz.id
 }
+
+module "devopsvkapse_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.devopsvkapse_cz.id
+}
+
+module "github_actions_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.github_actions_skoleni_cz.id
+}
+
+module "gitlab_ci_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.gitlab_ci_skoleni_cz.id
+}
+
+module "gopheri_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.gopheri_cz.id
+}
+
+module "openstack_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.openstack_cz.id
+}
+
+module "opentelemetry_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.opentelemetry_skoleni_cz.id
+}
+
+module "pid1_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.pid1_cz.id
+}
+
+module "sportenka_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.sportenka_cz.id
+}
+
+module "ziglang_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.ziglang_cz.id
+}
