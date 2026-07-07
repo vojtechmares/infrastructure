@@ -3,11 +3,6 @@ module "aks_skoleni_cz_parking" {
   zone_id = cloudflare_zone.aks_skoleni_cz.id
 }
 
-module "argocd_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.argocd_skoleni_cz.id
-}
-
 module "cloudflare_skoleni_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.cloudflare_skoleni_cz.id
@@ -33,29 +28,9 @@ module "devopsvkapse_cz_parking" {
   zone_id = cloudflare_zone.devopsvkapse_cz.id
 }
 
-module "docker_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.docker_skoleni_cz.id
-}
-
 module "eks_skoleni_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.eks_skoleni_cz.id
-}
-
-module "git_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.git_skoleni_cz.id
-}
-
-module "github_actions_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.github_actions_skoleni_cz.id
-}
-
-module "gitlab_ci_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.gitlab_ci_skoleni_cz.id
 }
 
 module "gitlab_skoleni_cz_parking" {
@@ -98,11 +73,6 @@ module "kubeflow_skoleni_cz_parking" {
   zone_id = cloudflare_zone.kubeflow_skoleni_cz.id
 }
 
-module "kubernetes_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.kubernetes_skoleni_cz.id
-}
-
 module "openstack_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.openstack_cz.id
@@ -136,11 +106,6 @@ module "rust_skoleni_cz_parking" {
 module "sportenka_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.sportenka_cz.id
-}
-
-module "terraform_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.terraform_skoleni_cz.id
 }
 
 module "ziglang_cz_parking" {
