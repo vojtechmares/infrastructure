@@ -662,12 +662,58 @@ resource "cloudflare_zone" "cloudflare_skoleni_cz" {
   type = "full"
 }
 
+resource "cloudflare_zone_dnssec" "cloudflare_skoleni_cz" {
+  zone_id = cloudflare_zone.cloudflare_skoleni_cz.id
+  status  = "active"
+}
+
+resource "cloudflare_zone_setting" "cloudflare_skoleni_cz_always_use_https" {
+  zone_id    = cloudflare_zone.cloudflare_skoleni_cz.id
+  setting_id = "always_use_https"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "cloudflare_skoleni_cz_automatic_https_rewrites" {
+  zone_id    = cloudflare_zone.cloudflare_skoleni_cz.id
+  setting_id = "automatic_https_rewrites"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "cloudflare_skoleni_cz_ssl" {
+  zone_id    = cloudflare_zone.cloudflare_skoleni_cz.id
+  setting_id = "ssl"
+  value      = "full"
+}
+
 resource "cloudflare_zone" "docker_skoleni_cz" {
   account = {
     id = local.cloudflare_account_id
   }
   name = "docker-skoleni.cz"
   type = "full"
+}
+
+resource "cloudflare_zone_dnssec" "docker_skoleni_cz" {
+  zone_id = cloudflare_zone.docker_skoleni_cz.id
+  status  = "active"
+}
+
+resource "cloudflare_zone_setting" "docker_skoleni_cz_always_use_https" {
+  zone_id    = cloudflare_zone.docker_skoleni_cz.id
+  setting_id = "always_use_https"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "docker_skoleni_cz_automatic_https_rewrites" {
+  zone_id    = cloudflare_zone.docker_skoleni_cz.id
+  setting_id = "automatic_https_rewrites"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "docker_skoleni_cz_ssl" {
+  zone_id    = cloudflare_zone.docker_skoleni_cz.id
+  setting_id = "ssl"
+  value      = "full"
 }
 
 resource "cloudflare_zone" "devops_akademie_cz" {
@@ -712,12 +758,58 @@ resource "cloudflare_zone" "github_actions_skoleni_cz" {
   type = "full"
 }
 
+resource "cloudflare_zone_dnssec" "github_actions_skoleni_cz" {
+  zone_id = cloudflare_zone.github_actions_skoleni_cz.id
+  status  = "active"
+}
+
+resource "cloudflare_zone_setting" "github_actions_skoleni_cz_always_use_https" {
+  zone_id    = cloudflare_zone.github_actions_skoleni_cz.id
+  setting_id = "always_use_https"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "github_actions_skoleni_cz_automatic_https_rewrites" {
+  zone_id    = cloudflare_zone.github_actions_skoleni_cz.id
+  setting_id = "automatic_https_rewrites"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "github_actions_skoleni_cz_ssl" {
+  zone_id    = cloudflare_zone.github_actions_skoleni_cz.id
+  setting_id = "ssl"
+  value      = "full"
+}
+
 resource "cloudflare_zone" "gitlab_ci_skoleni_cz" {
   account = {
     id = local.cloudflare_account_id
   }
   name = "gitlab-ci-skoleni.cz"
   type = "full"
+}
+
+resource "cloudflare_zone_dnssec" "gitlab_ci_skoleni_cz" {
+  zone_id = cloudflare_zone.gitlab_ci_skoleni_cz.id
+  status  = "active"
+}
+
+resource "cloudflare_zone_setting" "gitlab_ci_skoleni_cz_always_use_https" {
+  zone_id    = cloudflare_zone.gitlab_ci_skoleni_cz.id
+  setting_id = "always_use_https"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "gitlab_ci_skoleni_cz_automatic_https_rewrites" {
+  zone_id    = cloudflare_zone.gitlab_ci_skoleni_cz.id
+  setting_id = "automatic_https_rewrites"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "gitlab_ci_skoleni_cz_ssl" {
+  zone_id    = cloudflare_zone.gitlab_ci_skoleni_cz.id
+  setting_id = "ssl"
+  value      = "full"
 }
 
 resource "cloudflare_zone" "gopheri_cz" {
@@ -742,6 +834,29 @@ resource "cloudflare_zone" "opentelemetry_skoleni_cz" {
   }
   name = "opentelemetry-skoleni.cz"
   type = "full"
+}
+
+resource "cloudflare_zone_dnssec" "opentelemetry_skoleni_cz" {
+  zone_id = cloudflare_zone.opentelemetry_skoleni_cz.id
+  status  = "active"
+}
+
+resource "cloudflare_zone_setting" "opentelemetry_skoleni_cz_always_use_https" {
+  zone_id    = cloudflare_zone.opentelemetry_skoleni_cz.id
+  setting_id = "always_use_https"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "opentelemetry_skoleni_cz_automatic_https_rewrites" {
+  zone_id    = cloudflare_zone.opentelemetry_skoleni_cz.id
+  setting_id = "automatic_https_rewrites"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "opentelemetry_skoleni_cz_ssl" {
+  zone_id    = cloudflare_zone.opentelemetry_skoleni_cz.id
+  setting_id = "ssl"
+  value      = "full"
 }
 
 resource "cloudflare_zone" "pid1_cz" {
