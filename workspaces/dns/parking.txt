@@ -1,0 +1,15 @@
+devopsvkapse.cz
+eks-skoleni.cz
+gke-skoleni.cz
+go-skoleni.cz
+golang-skoleni.cz
+gopheri.cz
+k3s-skoleni.cz
+kafka-skoleni.cz
+kubeflow-skoleni.cz
+openstack.cz
+pid1.cz
+rke2-skoleni.cz
+rust-skoleni.cz
+sportenka.cz
+ziglang.cz
