@@ -592,6 +592,37 @@ resource "cloudflare_zone_setting" "aks_skoleni_cz_ssl" {
   value      = "full"
 }
 
+resource "cloudflare_zone" "azure_skoleni_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "azure-skoleni.cz"
+  type = "full"
+}
+
+resource "cloudflare_zone_dnssec" "azure_skoleni_cz" {
+  zone_id = cloudflare_zone.azure_skoleni_cz.id
+  status  = "active"
+}
+
+resource "cloudflare_zone_setting" "azure_skoleni_cz_always_use_https" {
+  zone_id    = cloudflare_zone.azure_skoleni_cz.id
+  setting_id = "always_use_https"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "azure_skoleni_cz_automatic_https_rewrites" {
+  zone_id    = cloudflare_zone.azure_skoleni_cz.id
+  setting_id = "automatic_https_rewrites"
+  value      = "on"
+}
+
+resource "cloudflare_zone_setting" "azure_skoleni_cz_ssl" {
+  zone_id    = cloudflare_zone.azure_skoleni_cz.id
+  setting_id = "ssl"
+  value      = "full"
+}
+
 resource "cloudflare_zone" "gke_skoleni_cz" {
   account = {
     id = local.cloudflare_account_id

@@ -100,6 +100,12 @@ module "aks_skoleni_cz_no_mail" {
   zone_id = cloudflare_zone.aks_skoleni_cz.id
 }
 
+module "azure_skoleni_cz_no_mail" {
+  source  = "vojtechmares/no-mail/cloudflare"
+  version = "3.0.0"
+  zone_id = cloudflare_zone.azure_skoleni_cz.id
+}
+
 module "gke_skoleni_cz_no_mail" {
   source  = "vojtechmares/no-mail/cloudflare"
   version = "3.0.0"
