@@ -53,11 +53,6 @@ module "pid1_cz_parking" {
   zone_id = cloudflare_zone.pid1_cz.id
 }
 
-module "prometheus_skoleni_cz_parking" {
-  source  = "../../modules/domain-parking/v1"
-  zone_id = cloudflare_zone.prometheus_skoleni_cz.id
-}
-
 module "rke2_skoleni_cz_parking" {
   source  = "../../modules/domain-parking/v1"
   zone_id = cloudflare_zone.rke2_skoleni_cz.id
