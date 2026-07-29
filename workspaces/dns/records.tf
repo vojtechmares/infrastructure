@@ -23,6 +23,24 @@ resource "cloudflare_dns_record" "dmarc_mares_cz" {
 ##
 # Mail is hosted on iCloud+ Custom Email Domain.
 
+resource "cloudflare_dns_record" "mx01_vojtamares_cz" {
+  zone_id  = cloudflare_zone.vojtamares_cz.id
+  name     = "vojtamares.cz"
+  content  = "mx01.mail.icloud.com"
+  type     = "MX"
+  priority = 10
+  ttl      = 1
+}
+
+resource "cloudflare_dns_record" "mx02_vojtamares_cz" {
+  zone_id  = cloudflare_zone.vojtamares_cz.id
+  name     = "vojtamares.cz"
+  content  = "mx02.mail.icloud.com"
+  type     = "MX"
+  priority = 10
+  ttl      = 1
+}
+
 resource "cloudflare_dns_record" "spf_vojtamares_cz" {
   zone_id = cloudflare_zone.vojtamares_cz.id
   name    = "vojtamares.cz"

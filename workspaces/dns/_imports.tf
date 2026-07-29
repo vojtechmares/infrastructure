@@ -25,3 +25,13 @@ import {
   to = cloudflare_dns_record.dkim_vojtamares_cz
   id = "9aaee1bb46c113ac4d37f60dea6ea0b9/7e891ad39d8f683fdca5989414a1618f"
 }
+
+import {
+  to = cloudflare_dns_record.mx01_vojtamares_cz
+  id = "9aaee1bb46c113ac4d37f60dea6ea0b9/4fc94d6656f6aba674c43ede8309777c"
+}
+
+import {
+  to = cloudflare_dns_record.mx02_vojtamares_cz
+  id = "9aaee1bb46c113ac4d37f60dea6ea0b9/08ea418b2f9259c0a569d089cfb8c402"
+}
