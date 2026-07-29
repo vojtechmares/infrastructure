@@ -35,3 +35,18 @@ import {
   to = cloudflare_dns_record.mx02_vojtamares_cz
   id = "9aaee1bb46c113ac4d37f60dea6ea0b9/08ea418b2f9259c0a569d089cfb8c402"
 }
+
+import {
+  to = cloudflare_dns_record.a_vojtamares_cz
+  id = "9aaee1bb46c113ac4d37f60dea6ea0b9/0cf22c72708952e85921220d5427be53"
+}
+
+import {
+  to = cloudflare_dns_record.a_wildcard_vojtamares_cz
+  id = "9aaee1bb46c113ac4d37f60dea6ea0b9/421eb39f35c1695b9795575c8ba020be"
+}
+
+import {
+  to = cloudflare_dns_record.aaaa_www_vojtamares_cz
+  id = "9aaee1bb46c113ac4d37f60dea6ea0b9/4fb4ff3f1a911eeeba4b45946f635532"
+}

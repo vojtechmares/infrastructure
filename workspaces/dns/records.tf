@@ -66,6 +66,37 @@ resource "cloudflare_dns_record" "dkim_vojtamares_cz" {
   proxied = false
 }
 
+# 192.0.0.1 and 100:: are Cloudflare's documented placeholder addresses. The
+# records exist only to make the hostnames proxiable so the edge can answer
+# them; no traffic ever reaches these origins.
+
+resource "cloudflare_dns_record" "a_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "vojtamares.cz"
+  content = "192.0.0.1"
+  type    = "A"
+  ttl     = 1
+  proxied = true
+}
+
+resource "cloudflare_dns_record" "a_wildcard_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "*.vojtamares.cz"
+  content = "192.0.0.1"
+  type    = "A"
+  ttl     = 1
+  proxied = true
+}
+
+resource "cloudflare_dns_record" "aaaa_www_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "www.vojtamares.cz"
+  content = "100::"
+  type    = "AAAA"
+  ttl     = 1
+  proxied = true
+}
+
 ##
 # DNS for mareshq.com
 ##
