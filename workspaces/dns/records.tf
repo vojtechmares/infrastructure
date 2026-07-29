@@ -39,14 +39,10 @@ resource "cloudflare_dns_record" "dmarc_vojtamares_cz" {
   ttl     = 1
 }
 
-# NOTE: the live target points at the iCloud DKIM key for hello.com, not for
-# this zone, so DKIM does not currently validate. Imported as-is to keep the
-# import clean; see the follow-up to repoint it at
-# sig1.dkim.vojtamares.cz.at.icloudmailadmin.com.
 resource "cloudflare_dns_record" "dkim_vojtamares_cz" {
   zone_id = cloudflare_zone.vojtamares_cz.id
   name    = "sig1._domainkey.vojtamares.cz"
-  content = "sig1.dkim.hello.com.at.icloudmailadmin.com"
+  content = "sig1.dkim.vojtamares.cz.at.icloudmailadmin.com"
   type    = "CNAME"
   ttl     = 1
   proxied = false
