@@ -13,7 +13,7 @@ resource "cloudflare_dns_record" "spf_mares_cz" {
 resource "cloudflare_dns_record" "dmarc_mares_cz" {
   zone_id = cloudflare_zone.mares_cz.id
   name    = "_dmarc.mares.cz"
-  content = "\"v=DMARC1; p=none; rua=mailto:28d5580aaf1f4bbd87d5d3c732333fde@dmarc-reports.cloudflare.net; pct=100; adkim=s; aspf=s\""
+  content = "\"v=DMARC1; p=quarantine; rua=mailto:28d5580aaf1f4bbd87d5d3c732333fde@dmarc-reports.cloudflare.net; pct=100; adkim=s; aspf=s\""
   type    = "TXT"
   ttl     = 1
 }
