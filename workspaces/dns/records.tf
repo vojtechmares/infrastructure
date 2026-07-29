@@ -52,7 +52,7 @@ resource "cloudflare_dns_record" "spf_vojtamares_cz" {
 resource "cloudflare_dns_record" "dmarc_vojtamares_cz" {
   zone_id = cloudflare_zone.vojtamares_cz.id
   name    = "_dmarc.vojtamares.cz"
-  content = "\"v=DMARC1; p=reject; rua=mailto:247b37b4c95e4a9783e0f4853d6b0ab5@dmarc-reports.cloudflare.net\""
+  content = "\"v=DMARC1; p=reject; sp=reject; rua=mailto:247b37b4c95e4a9783e0f4853d6b0ab5@dmarc-reports.cloudflare.net\""
   type    = "TXT"
   ttl     = 1
 }
