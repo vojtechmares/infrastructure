@@ -44,7 +44,7 @@ resource "cloudflare_dns_record" "mx02_vojtamares_cz" {
 resource "cloudflare_dns_record" "spf_vojtamares_cz" {
   zone_id = cloudflare_zone.vojtamares_cz.id
   name    = "vojtamares.cz"
-  content = "\"v=spf1 include:icloud.com ~all\""
+  content = "\"v=spf1 include:icloud.com -all\""
   type    = "TXT"
   ttl     = 1
 }
