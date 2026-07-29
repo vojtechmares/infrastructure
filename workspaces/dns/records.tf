@@ -97,6 +97,18 @@ resource "cloudflare_dns_record" "aaaa_www_vojtamares_cz" {
   proxied = true
 }
 
+resource "cloudflare_dns_record" "caa_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "vojtamares.cz"
+  type    = "CAA"
+  ttl     = 1
+  data = {
+    flags = 0
+    tag   = "issue"
+    value = "letsencrypt.org"
+  }
+}
+
 ##
 # DNS for mareshq.com
 ##

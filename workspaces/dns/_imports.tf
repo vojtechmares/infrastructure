@@ -50,3 +50,8 @@ import {
   to = cloudflare_dns_record.aaaa_www_vojtamares_cz
   id = "9aaee1bb46c113ac4d37f60dea6ea0b9/4fb4ff3f1a911eeeba4b45946f635532"
 }
+
+import {
+  to = cloudflare_dns_record.caa_vojtamares_cz
+  id = "9aaee1bb46c113ac4d37f60dea6ea0b9/648c7c0c10c22a31f72529aee61a2418"
+}
