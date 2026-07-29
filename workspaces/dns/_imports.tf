@@ -55,3 +55,8 @@ import {
   to = cloudflare_dns_record.caa_vojtamares_cz
   id = "9aaee1bb46c113ac4d37f60dea6ea0b9/648c7c0c10c22a31f72529aee61a2418"
 }
+
+import {
+  to = cloudflare_dns_record.apple_domain_vojtamares_cz
+  id = "9aaee1bb46c113ac4d37f60dea6ea0b9/a71e61ffb889cd80b113e78bd6460dbc"
+}

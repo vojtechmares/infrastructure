@@ -41,6 +41,16 @@ resource "cloudflare_dns_record" "mx02_vojtamares_cz" {
   ttl      = 1
 }
 
+# Ownership proof for the iCloud+ Custom Email Domain setup. Apple re-checks
+# it, so removing the record breaks mail delivery rather than just tidying up.
+resource "cloudflare_dns_record" "apple_domain_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "vojtamares.cz"
+  content = "\"apple-domain=KWUWRPOiO0Ev3vGw\""
+  type    = "TXT"
+  ttl     = 1
+}
+
 resource "cloudflare_dns_record" "spf_vojtamares_cz" {
   zone_id = cloudflare_zone.vojtamares_cz.id
   name    = "vojtamares.cz"
