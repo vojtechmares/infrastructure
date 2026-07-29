@@ -19,6 +19,40 @@ resource "cloudflare_dns_record" "dmarc_mares_cz" {
 }
 
 ##
+# DNS for vojtamares.cz
+##
+# Mail is hosted on iCloud+ Custom Email Domain.
+
+resource "cloudflare_dns_record" "spf_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "vojtamares.cz"
+  content = "\"v=spf1 include:icloud.com ~all\""
+  type    = "TXT"
+  ttl     = 1
+}
+
+resource "cloudflare_dns_record" "dmarc_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "_dmarc.vojtamares.cz"
+  content = "\"v=DMARC1; p=none; rua=mailto:247b37b4c95e4a9783e0f4853d6b0ab5@dmarc-reports.cloudflare.net\""
+  type    = "TXT"
+  ttl     = 1
+}
+
+# NOTE: the live target points at the iCloud DKIM key for hello.com, not for
+# this zone, so DKIM does not currently validate. Imported as-is to keep the
+# import clean; see the follow-up to repoint it at
+# sig1.dkim.vojtamares.cz.at.icloudmailadmin.com.
+resource "cloudflare_dns_record" "dkim_vojtamares_cz" {
+  zone_id = cloudflare_zone.vojtamares_cz.id
+  name    = "sig1._domainkey.vojtamares.cz"
+  content = "sig1.dkim.hello.com.at.icloudmailadmin.com"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = false
+}
+
+##
 # DNS for mareshq.com
 ##
 

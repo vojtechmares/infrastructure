@@ -952,6 +952,14 @@ resource "cloudflare_zone" "sportenka_cz" {
   type = "full"
 }
 
+resource "cloudflare_zone" "vojtamares_cz" {
+  account = {
+    id = local.cloudflare_account_id
+  }
+  name = "vojtamares.cz"
+  type = "full"
+}
+
 resource "cloudflare_zone" "ziglang_cz" {
   account = {
     id = local.cloudflare_account_id
