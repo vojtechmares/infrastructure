@@ -5,7 +5,7 @@
 resource "cloudflare_dns_record" "spf_mares_cz" {
   zone_id = cloudflare_zone.mares_cz.id
   name    = "mares.cz"
-  content = "\"v=spf1 include:_spf.google.com ~all\""
+  content = "\"v=spf1 include:_spf.google.com -all\""
   type    = "TXT"
   ttl     = 3600
 }
