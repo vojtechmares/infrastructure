@@ -130,3 +130,26 @@ resource "cloudflare_dns_record" "spf_mareshq_com" {
   type    = "TXT"
   ttl     = 1
 }
+
+# Services hosted on the asgard VM, behind the Cloudflare proxy. They CNAME to
+# asgard.vxm.cz rather than its A record so an origin IP change is a one-line
+# edit in the vxm.cz zone instead of a sweep through every dependent hostname.
+# Same shape as account.mareshq.com (Zitadel), which is not managed here.
+
+resource "cloudflare_dns_record" "crawl_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "crawl.mareshq.com"
+  content = "asgard.vxm.cz"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = true
+}
+
+resource "cloudflare_dns_record" "flow_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "flow.mareshq.com"
+  content = "asgard.vxm.cz"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = true
+}
