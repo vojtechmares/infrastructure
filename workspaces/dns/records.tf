@@ -153,3 +153,24 @@ resource "cloudflare_dns_record" "flow_mareshq_com" {
   ttl     = 1
   proxied = true
 }
+
+resource "cloudflare_dns_record" "git_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "git.mareshq.com"
+  content = "asgard.vxm.cz"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = true
+}
+
+# Git over SSH cannot pass through the HTTP proxy, so this hostname stays DNS
+# only and resolves straight to the origin. It exists as a separate name from
+# git.mareshq.com so the web UI keeps its proxied record.
+resource "cloudflare_dns_record" "ssh_git_mareshq_com" {
+  zone_id = cloudflare_zone.mareshq_com.id
+  name    = "ssh.git.mareshq.com"
+  content = "asgard.vxm.cz"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = false
+}
